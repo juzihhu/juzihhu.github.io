@@ -20,29 +20,32 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":true,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":false,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="直到这一刻微笑着说话为止，我至少留下了一公升眼泪">
-<meta property="og:type" content="website">
-<meta property="og:title" content="juzi">
-<meta property="og:url" content="http://example.com/index.html">
+  <meta name="description" content="本文简单介绍动态规划思想、模板以及部分例题。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="动态规划">
+<meta property="og:url" content="http://example.com/2022/05/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/index.html">
 <meta property="og:site_name" content="juzi">
-<meta property="og:description" content="直到这一刻微笑着说话为止，我至少留下了一公升眼泪">
+<meta property="og:description" content="本文简单介绍动态规划思想、模板以及部分例题。">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-05-10T09:10:52.000Z">
+<meta property="article:modified_time" content="2022-05-11T07:05:33.781Z">
+<meta property="article:tag" content="动态规划">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/">
+<link rel="canonical" href="http://example.com/2022/05/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>juzi</title>
+  <title>动态规划 | juzi</title>
   
 
 
@@ -184,9 +187,10 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
+
+    
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
@@ -202,10 +206,9 @@
       <meta itemprop="name" content="juzi">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/05/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="post-title-link" itemprop="url">动态规划</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          动态规划
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -240,6 +243,13 @@
               </span>
               <span class="post-meta-item-text">阅读次数：</span>
               <span class="leancloud-visitors-count"></span>
+            </span>
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
             </span>
   
   <span class="post-meta-item">
@@ -279,387 +289,112 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>本文简单介绍动态规划思想、模板以及部分例题。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/05/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
+        <p>本文简单介绍动态规划思想、模板以及部分例题。</p>
+<span id="more"></span>   
+<ul>
+<li><a href="#与贪心算法的区别">与贪心算法的区别</a></li>
+<li><a href="#解题步骤">解题步骤</a></li>
+<li><a href="#leetcode典型题目">LeetCode典型题目</a><ul>
+<li><a href="#使用最小花费爬楼梯">使用最小花费爬楼梯</a></li>
+</ul>
+</li>
+</ul>
+<h1 id="与贪心算法的区别"><a href="#与贪心算法的区别" class="headerlink" title="与贪心算法的区别"></a>与贪心算法的区别</h1><p>动态规划，英文：Dynamic Programming，简称DP，如果某一问题有很多重叠子问题，使用动态规划是最有效的。<br>动态规划中每一个状态一定是由上一个状态推导出来的，<br>这一点就区分于贪心，贪心没有状态推导，而是从局部直接选最优的，    </p>
+<h1 id="解题步骤"><a href="#解题步骤" class="headerlink" title="解题步骤"></a>解题步骤</h1><ol>
+<li>确定dp数组（dp table）以及下标的含义</li>
+<li>确定递推公式</li>
+<li>dp数组如何初始化</li>
+<li>确定遍历顺序</li>
+<li>举例推导dp数组</li>
+</ol>
+<h1 id="LeetCode典型题目"><a href="#LeetCode典型题目" class="headerlink" title="LeetCode典型题目"></a>LeetCode典型题目</h1><h2 id="使用最小花费爬楼梯"><a href="#使用最小花费爬楼梯" class="headerlink" title="使用最小花费爬楼梯"></a>使用最小花费爬楼梯</h2><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/min-cost-climbing-stairs">746. 使用最小花费爬楼梯</a>  </p>
+<p>给你一个整数数组 cost ，其中 cost[i] 是从楼梯第 i 个台阶向上爬需要支付的费用。一旦你支付此费用，即可选择向上爬一个或者两个台阶。</p>
+<p>你可以选择从下标为 0 或下标为 1 的台阶开始爬楼梯。</p>
+<p>请你计算并返回达到楼梯顶部的最低花费。</p>
+<p><strong>示例 1：</strong></p>
+<pre><code>输入：cost = [10,15,20]
+输出：15
+解释：你将从下标为 1 的台阶开始。
+- 支付 15 ，向上爬两个台阶，到达楼梯顶部。
+总花费为 15 。
+
+
+输入：cost = [1,100,1,1,1,100,1,1,100,1]
+</code></pre><p><strong>示例 2：</strong></p>
+<pre><code>输出：6
+解释：你将从下标为 0 的台阶开始。
+- 支付 1 ，向上爬两个台阶，到达下标为 2 的台阶。
+- 支付 1 ，向上爬两个台阶，到达下标为 4 的台阶。
+- 支付 1 ，向上爬两个台阶，到达下标为 6 的台阶。
+- 支付 1 ，向上爬一个台阶，到达下标为 7 的台阶。
+- 支付 1 ，向上爬两个台阶，到达下标为 9 的台阶。
+- 支付 1 ，向上爬一个台阶，到达楼梯顶部。
+总花费为 6 。
+</code></pre><ol>
+<li><p>确定dp数组以及下标的含义</p>
+<p> dp[i]的定义：到达第i个台阶后继续向上所花费的最少体力为dp[i]</p>
+</li>
+<li><p>确定递推公式<br>可以有两个途径得到dp[i]，一个是dp[i-1] 一个是dp[i-2]。<br>所以dp[i] = min(dp[i - 1], dp[i - 2]) + cost[i];   </p>
+</li>
+<li><p>dp数组如何初始化<br><code>vector&lt;int&gt; dp(cost.size());</code><br><code>dp[0] = cost[0];</code><br><code>dp[1] = cost[1];</code>  </p>
+</li>
+<li><p>确定遍历顺序<br>因为是模拟台阶，而且dp[i]又dp[i-1]dp[i-2]推出，所以是从前到后遍历cost数组就可以了。  </p>
+<p>但是稍稍有点难度的动态规划，其遍历顺序并不容易确定下来。   </p>
+<p>例如：01背包，都知道两个for循环，一个for遍历物品嵌套一个for遍历背包容量，那么为什么不是一个for遍历背包容量嵌套一个for遍历物品呢？ 以及在使用一维dp数组的时候遍历背包容量为什么要倒序呢</p>
+</li>
+<li><p>举例推导dp数组<br>拿示例2：cost = [1, 100, 1, 1, 1, 100, 1, 1, 100, 1] ，来模拟一下dp数组的状态变化，如下：    </p>
+<p>1 100 2 3 3 103 4 5 104 6 </p>
+</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 版本一</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">minCostClimbingStairs</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; cost)</span> </span>&#123;</span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">dp</span><span class="params">(cost.size())</span></span>;</span><br><span class="line">        dp[<span class="number">0</span>] = cost[<span class="number">0</span>];</span><br><span class="line">        dp[<span class="number">1</span>] = cost[<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">2</span>; i &lt; cost.<span class="built_in">size</span>(); i++) &#123;</span><br><span class="line">            dp[i] = <span class="built_in">min</span>(dp[i - <span class="number">1</span>], dp[i - <span class="number">2</span>]) + cost[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 注意最后一步可以理解为不用花费，所以取倒数第一步，第二步的最少值</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">min</span>(dp[cost.<span class="built_in">size</span>() - <span class="number">1</span>], dp[cost.<span class="built_in">size</span>() - <span class="number">2</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>还可以优化空间复杂度，因为dp[i]就是由前两位推出来的，那么也不用dp数组了，C++代码如下：</p>
+ <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">// 版本二</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">minCostClimbingStairs</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; cost)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> dp0 = cost[<span class="number">0</span>];</span><br><span class="line">        <span class="type">int</span> dp1 = cost[<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">2</span>; i &lt; cost.<span class="built_in">size</span>(); i++) &#123;</span><br><span class="line">            <span class="type">int</span> dpi = <span class="built_in">min</span>(dp0, dp1) + cost[i];</span><br><span class="line">            dp0 = dp1; <span class="comment">// 记录一下前两位</span></span><br><span class="line">            dp1 = dpi;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">min</span>(dp0, dp1);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p> 从题目描述可以看出：要不是第一步不需要花费体力，要不就是第最后一步不需要花费体力，<br> 如果理解为第一步不需要花费体力</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    </span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">minCostClimbingStairs</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; cost)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> n=cost.<span class="built_in">size</span>();</span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">dp</span><span class="params">(<span class="number">1001</span>,<span class="number">-1</span>)</span></span>;</span><br><span class="line">        dp[<span class="number">0</span>]=<span class="number">0</span>;</span><br><span class="line">        dp[<span class="number">1</span>]=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">2</span>;i&lt;=n;++i)&#123;</span><br><span class="line">            dp[i]=<span class="built_in">min</span>(dp[i<span class="number">-1</span>]+cost[i<span class="number">-1</span>],dp[i<span class="number">-2</span>]+cost[i<span class="number">-2</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[n];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
     </div>
 
     
     
     
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/04/git%E4%B8%8Egithub%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0%E4%B8%8E%E4%B8%8B%E8%BD%BD/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/girl2.png">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="直到这一刻微笑着说话为止，我至少留下了一公升眼泪">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="juzi">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/05/04/git%E4%B8%8Egithub%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0%E4%B8%8E%E4%B8%8B%E8%BD%BD/" class="post-title-link" itemprop="url">git与github项目上传与下载</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-05-04 21:52:00" itemprop="dateCreated datePublished" datetime="2022-05-04T21:52:00+08:00">2022-05-04</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-05-08 21:46:10" itemprop="dateModified" datetime="2022-05-08T21:46:10+08:00">2022-05-08</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%93%8D%E4%BD%9C%E6%95%99%E7%A8%8B/" itemprop="url" rel="index"><span itemprop="name">操作教程</span></a>
-                </span>
-            </span>
-
-          
-            <span id="/2022/05/04/git%E4%B8%8Egithub%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0%E4%B8%8E%E4%B8%8B%E8%BD%BD/" class="post-meta-item leancloud_visitors" data-flag-title="git与github项目上传与下载" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2022/05/04/git%E4%B8%8Egithub%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0%E4%B8%8E%E4%B8%8B%E8%BD%BD/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2022/05/04/git%E4%B8%8Egithub%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0%E4%B8%8E%E4%B8%8B%E8%BD%BD/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>2.1k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>介绍git的简单使用<br></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/05/04/git%E4%B8%8Egithub%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0%E4%B8%8E%E4%B8%8B%E8%BD%BD/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
+      <div>
         
-      
-    </div>
-
+          <div>
     
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
     
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+</div>
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/04/%E8%B4%AA%E5%BF%83/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/girl2.png">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="直到这一刻微笑着说话为止，我至少留下了一公升眼泪">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="juzi">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/05/04/%E8%B4%AA%E5%BF%83/" class="post-title-link" itemprop="url">贪心</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-05-04 21:48:28" itemprop="dateCreated datePublished" datetime="2022-05-04T21:48:28+08:00">2022-05-04</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-05-05 10:48:23" itemprop="dateModified" datetime="2022-05-05T10:48:23+08:00">2022-05-05</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a>
-                </span>
-            </span>
-
-          
-            <span id="/2022/05/04/%E8%B4%AA%E5%BF%83/" class="post-meta-item leancloud_visitors" data-flag-title="贪心" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2022/05/04/%E8%B4%AA%E5%BF%83/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2022/05/04/%E8%B4%AA%E5%BF%83/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>3.1k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>3 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>介绍贪心算法思想以及常用的案例</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/05/04/%E8%B4%AA%E5%BF%83/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
         
-      
-    </div>
-
-    
-    
-    
+      </div>
       <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+          <div class="post-tags">
+              <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag"># 动态规划</a>
+          </div>
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/04/%E5%9B%9E%E6%BA%AF/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/girl2.png">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="直到这一刻微笑着说话为止，我至少留下了一公升眼泪">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="juzi">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/05/04/%E5%9B%9E%E6%BA%AF/" class="post-title-link" itemprop="url">回溯</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-05-04 21:38:43" itemprop="dateCreated datePublished" datetime="2022-05-04T21:38:43+08:00">2022-05-04</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-05-17 00:23:09" itemprop="dateModified" datetime="2022-05-17T00:23:09+08:00">2022-05-17</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a>
-                </span>
-            </span>
-
-          
-            <span id="/2022/05/04/%E5%9B%9E%E6%BA%AF/" class="post-meta-item leancloud_visitors" data-flag-title="回溯" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2022/05/04/%E5%9B%9E%E6%BA%AF/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2022/05/04/%E5%9B%9E%E6%BA%AF/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>12k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>11 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>简单介绍回溯法的思想以及常用的模板案例<br></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/05/04/%E5%9B%9E%E6%BA%AF/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
         
-      
-    </div>
 
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/05/04/git%E4%B8%8Egithub%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0%E4%B8%8E%E4%B8%8B%E8%BD%BD/" rel="prev" title="git与github项目上传与下载">
+      <i class="fa fa-chevron-left"></i> git与github项目上传与下载
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
       </footer>
+    
   </article>
   
   
   
-
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
-  </nav>
 
 
 
           </div>
           
+    <div class="comments" id="valine-comments"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -706,6 +441,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%8E%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">1.</span> <span class="nav-text">与贪心算法的区别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%AD%A5%E9%AA%A4"><span class="nav-number">2.</span> <span class="nav-text">解题步骤</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#LeetCode%E5%85%B8%E5%9E%8B%E9%A2%98%E7%9B%AE"><span class="nav-number">3.</span> <span class="nav-text">LeetCode典型题目</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%9C%80%E5%B0%8F%E8%8A%B1%E8%B4%B9%E7%88%AC%E6%A5%BC%E6%A2%AF"><span class="nav-number">3.1.</span> <span class="nav-text">使用最小花费爬楼梯</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

@@ -20,29 +20,37 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":true,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":false,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="直到这一刻微笑着说话为止，我至少留下了一公升眼泪">
-<meta property="og:type" content="website">
-<meta property="og:title" content="juzi">
-<meta property="og:url" content="http://example.com/index.html">
+  <meta name="description" content="介绍git的简单使用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="git与github项目上传与下载">
+<meta property="og:url" content="http://example.com/2022/05/04/git%E4%B8%8Egithub%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0%E4%B8%8E%E4%B8%8B%E8%BD%BD/index.html">
 <meta property="og:site_name" content="juzi">
-<meta property="og:description" content="直到这一刻微笑着说话为止，我至少留下了一公升眼泪">
+<meta property="og:description" content="介绍git的简单使用">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2022/05/04/git%E4%B8%8Egithub%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0%E4%B8%8E%E4%B8%8B%E8%BD%BD/ssh_key.jpg">
+<meta property="og:image" content="http://example.com/2022/05/04/git%E4%B8%8Egithub%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0%E4%B8%8E%E4%B8%8B%E8%BD%BD/02.jpg">
+<meta property="og:image" content="http://example.com/2022/05/04/git%E4%B8%8Egithub%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0%E4%B8%8E%E4%B8%8B%E8%BD%BD/03.jpg">
+<meta property="og:image" content="http://example.com/2022/05/04/git%E4%B8%8Egithub%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0%E4%B8%8E%E4%B8%8B%E8%BD%BD/04.jpg">
+<meta property="article:published_time" content="2022-05-04T13:52:00.000Z">
+<meta property="article:modified_time" content="2022-05-08T13:46:10.072Z">
+<meta property="article:tag" content="git">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2022/05/04/git%E4%B8%8Egithub%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0%E4%B8%8E%E4%B8%8B%E8%BD%BD/ssh_key.jpg">
 
-<link rel="canonical" href="http://example.com/">
+<link rel="canonical" href="http://example.com/2022/05/04/git%E4%B8%8Egithub%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0%E4%B8%8E%E4%B8%8B%E8%BD%BD/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>juzi</title>
+  <title>git与github项目上传与下载 | juzi</title>
   
 
 
@@ -184,125 +192,10 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/girl2.png">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="直到这一刻微笑着说话为止，我至少留下了一公升眼泪">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="juzi">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/05/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="post-title-link" itemprop="url">动态规划</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-05-10 17:10:52" itemprop="dateCreated datePublished" datetime="2022-05-10T17:10:52+08:00">2022-05-10</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-05-11 15:05:33" itemprop="dateModified" datetime="2022-05-11T15:05:33+08:00">2022-05-11</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a>
-                </span>
-            </span>
-
-          
-            <span id="/2022/05/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="post-meta-item leancloud_visitors" data-flag-title="动态规划" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2022/05/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2022/05/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>2.1k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
-            </span>
-
-        </div>
-      </header>
 
     
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>本文简单介绍动态规划思想、模板以及部分例题。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/05/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
@@ -318,10 +211,9 @@
       <meta itemprop="name" content="juzi">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/05/04/git%E4%B8%8Egithub%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0%E4%B8%8E%E4%B8%8B%E8%BD%BD/" class="post-title-link" itemprop="url">git与github项目上传与下载</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          git与github项目上传与下载
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -356,6 +248,13 @@
               </span>
               <span class="post-meta-item-text">阅读次数：</span>
               <span class="leancloud-visitors-count"></span>
+            </span>
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
             </span>
   
   <span class="post-meta-item">
@@ -395,271 +294,110 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>介绍git的简单使用<br></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/05/04/git%E4%B8%8Egithub%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0%E4%B8%8E%E4%B8%8B%E8%BD%BD/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
+        <p>介绍git的简单使用<br><span id="more"></span>        </p>
+<h1 id="git与github项目上传与下载"><a href="#git与github项目上传与下载" class="headerlink" title="git与github项目上传与下载"></a>git与github项目上传与下载</h1><ul>
+<li><a href="#git与github项目上传与下载">git与github项目上传与下载</a><ul>
+<li><a href="#基础配置">基础配置</a></li>
+<li><a href="#从github上下载项目到本地仓库">从GitHub上下载项目到本地仓库</a></li>
+<li><a href="#从本地git上传项目到github">从本地git上传项目到github</a></li>
+<li><a href="#删除github上的文件">删除GitHub上的文件</a></li>
+<li><a href="#注意事项">注意事项</a></li>
+<li><a href="#常用git命令">常用git命令</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="基础配置"><a href="#基础配置" class="headerlink" title="基础配置"></a>基础配置</h2><ul>
+<li>github账号</li>
+<li>管理本地仓库的 git<ul>
+<li>windows平台下<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/242540359">git安装</a></li>
+<li>linux平台下（Ubuntu系统为例）apt-get install git<br>查看git版本 git —version</li>
+</ul>
+</li>
+<li><p>配置ssh:本地Git仓库和Github仓库之间的传输是通过SSH加密的</p>
+<ol>
+<li>找到本机的公钥：<br> windows:位于C:\Users\86159.ssh下的id_rsa.pub文件<br> linux:/home/panan/.ssh<br> 如果没有则通过控制命令台生成<br> ssh-keygen -t rsa -C “注册github时用的邮箱” 默认回车即可</li>
+<li>在GitHub上输入id_rsa.pub文件的内容<br><img src="/2022/05/04/git%E4%B8%8Egithub%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0%E4%B8%8E%E4%B8%8B%E8%BD%BD/ssh_key.jpg" alt="ssh"><br>在settings中  点击New SSH key    </li>
+</ol>
+</li>
+<li><p>GitHub选项介绍<br>  Repository name: 仓库名称（输入名字，最好不要使用中文）<br>  Description(可选): 仓库描述介绍<br>  Public, Private : 仓库权限（公开共享，私有或指定合作者）<br>  Initialize this repository with a README: 添加一个README.md</p>
+</li>
+</ul>
+<h2 id="从GitHub上下载项目到本地仓库"><a href="#从GitHub上下载项目到本地仓库" class="headerlink" title="从GitHub上下载项目到本地仓库"></a>从GitHub上下载项目到本地仓库</h2><ol>
+<li>选择项目下载的文件夹 在git终端中进入该目录<br><img src="/2022/05/04/git%E4%B8%8Egithub%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0%E4%B8%8E%E4%B8%8B%E8%BD%BD/02.jpg" alt="ssh"></li>
+<li>git clone （项目链接）<a target="_blank" rel="noopener" href="https://github.com/JuZiHHU/Note.git">https://github.com/JuZiHHU/Note.git</a><br><img src="/2022/05/04/git%E4%B8%8Egithub%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0%E4%B8%8E%E4%B8%8B%E8%BD%BD/03.jpg" alt="ssh"><br><img src="/2022/05/04/git%E4%B8%8Egithub%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0%E4%B8%8E%E4%B8%8B%E8%BD%BD/04.jpg" alt="ssh"><br>然后在该文件夹下就可以看到下载的项目</li>
+<li>linux平台下在终端直接执行相应命令即可</li>
+</ol>
+<h2 id="从本地git上传项目到github"><a href="#从本地git上传项目到github" class="headerlink" title="从本地git上传项目到github"></a>从本地git上传项目到github</h2><ol>
+<li>创建本地项目文件 右键 git bash here进入该目录<br>输入git init创建git仓库</li>
+<li>在github上创建仓库</li>
+<li>本地仓库与远程仓库关联</li>
+<li>推送远程</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br><span class="line">git add README.md <span class="comment">//git add (将文件添加到本地仓库，git add  * 是添加全部文件)</span></span><br><span class="line">git commit -m <span class="string">&quot;first commit&quot;</span>  提交到本地缓冲 <span class="string">&quot;&quot;</span> 中为注释</span><br><span class="line"><span class="comment">//将本地仓库和远程仓库进行关联</span></span><br><span class="line"><span class="comment">//也可以</span></span><br><span class="line">git remote add origin https:<span class="comment">//github.com/hongduhong/test.git</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">推送到远程 </span></span><br><span class="line"><span class="comment">git push -u origin master</span></span><br><span class="line"><span class="comment">新建的远程仓库是空的，所以要加上-u这个参数，等远程仓库里面有了内容之后，</span></span><br><span class="line"><span class="comment">下次再从本地库上传内容的时候只需下面这样就可以了</span></span><br><span class="line"><span class="comment">*/</span> </span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
+<h2 id="删除GitHub上的文件"><a href="#删除GitHub上的文件" class="headerlink" title="删除GitHub上的文件"></a>删除GitHub上的文件</h2><ol>
+<li><p>取消暂存文件/目录 使用git rm -r —cached 命令标记文件以进行取消暂存：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ git rm -r --cached backup/</span><br><span class="line"></span><br><span class="line">rm <span class="string">&#x27;backup/backup.sh&#x27;</span></span><br><span class="line"></span><br><span class="line">rm <span class="string">&#x27;backup/rsync_exclude.lst&#x27;</span></span><br><span class="line"></span><br><span class="line">将buckup/替换为你的目录或文件。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>进行新的提交 将新的提交对象/更改保存到本地Git存储库：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ git commit -m <span class="string">&#x27;Remove newly ignored directory &quot;./backup&quot;&#x27;</span></span><br><span class="line"></span><br><span class="line">master d631061] Remove newly ignored directory <span class="string">&quot;./backup&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="number">2</span> files changed, <span class="number">14</span> <span class="built_in">deletions</span>(-)</span><br><span class="line"></span><br><span class="line"><span class="keyword">delete</span> mode <span class="number">100644</span> backup/backup.sh</span><br><span class="line"></span><br><span class="line"><span class="keyword">delete</span> mode <span class="number">100644</span> backup/rsync_exclude.lst</span><br></pre></td></tr></table></figure></li>
+<li>将更改推送到远程git存储库 上一个命令将更改保存到本地git存储库，使用以下命令将它们推送到远程存储库：<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push origin master</span><br></pre></td></tr></table></figure>
+<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42136791/article/details/116651886">参考博客: linux删除远程目录,从远程存储库中删除.gitignore中的git文件/目录</a></li>
+</ol>
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><ol>
+<li>在docs命令窗口看到下边的提示：<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">$git config --global user.name <span class="string">&quot;Jhon&quot;</span> </span><br><span class="line"></span><br><span class="line">$git config --global user.email Jhon@example.com<span class="string">&quot;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">解决方案：</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">按照上面的提示，输入</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&gt;git config --global user.name &quot;</span>这里是你github的用户名<span class="string">&quot; </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&gt;git config --global user.email 这里是你注册github的邮箱</span></span><br></pre></td></tr></table></figure></li>
+<li><p>提交到远程仓库的时候，提示：<em>fatal ：remote origin already exists</em><br>解决方案：删除远程仓库；输入命令：<em>git remote rm origin</em></p>
+</li>
+<li><p>昨天还可以git push代码到远程仓库，今天git push时报了这个错：<br><em>fatal: unable to access ‘<a target="_blank" rel="noopener" href="https://github.com/">https://github.com/</a>…….’: OpenSSL SSL_read: Connection was reset, errno 10054</em></p>
+</li>
+</ol>
+<h2 id="常用git命令"><a href="#常用git命令" class="headerlink" title="常用git命令"></a>常用git命令</h2><p><a target="_blank" rel="noopener" href="https://www.runoob.com/git/git-basic-operations.html">git操作</a><br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/du-hong/p/9921214.html">参考博客：Git的使用—如何将本地项目上传到Github</a></p>
+
     </div>
 
     
     
     
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/04/%E8%B4%AA%E5%BF%83/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/girl2.png">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="直到这一刻微笑着说话为止，我至少留下了一公升眼泪">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="juzi">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/05/04/%E8%B4%AA%E5%BF%83/" class="post-title-link" itemprop="url">贪心</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-05-04 21:48:28" itemprop="dateCreated datePublished" datetime="2022-05-04T21:48:28+08:00">2022-05-04</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-05-05 10:48:23" itemprop="dateModified" datetime="2022-05-05T10:48:23+08:00">2022-05-05</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a>
-                </span>
-            </span>
-
-          
-            <span id="/2022/05/04/%E8%B4%AA%E5%BF%83/" class="post-meta-item leancloud_visitors" data-flag-title="贪心" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2022/05/04/%E8%B4%AA%E5%BF%83/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2022/05/04/%E8%B4%AA%E5%BF%83/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>3.1k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>3 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>介绍贪心算法思想以及常用的案例</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/05/04/%E8%B4%AA%E5%BF%83/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
+      <div>
         
-      
-    </div>
-
+          <div>
     
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
     
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+</div>
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/04/%E5%9B%9E%E6%BA%AF/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/girl2.png">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="直到这一刻微笑着说话为止，我至少留下了一公升眼泪">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="juzi">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/05/04/%E5%9B%9E%E6%BA%AF/" class="post-title-link" itemprop="url">回溯</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-05-04 21:38:43" itemprop="dateCreated datePublished" datetime="2022-05-04T21:38:43+08:00">2022-05-04</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-05-17 00:23:09" itemprop="dateModified" datetime="2022-05-17T00:23:09+08:00">2022-05-17</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a>
-                </span>
-            </span>
-
-          
-            <span id="/2022/05/04/%E5%9B%9E%E6%BA%AF/" class="post-meta-item leancloud_visitors" data-flag-title="回溯" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2022/05/04/%E5%9B%9E%E6%BA%AF/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2022/05/04/%E5%9B%9E%E6%BA%AF/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>12k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>11 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>简单介绍回溯法的思想以及常用的模板案例<br></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/05/04/%E5%9B%9E%E6%BA%AF/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
         
-      
-    </div>
-
-    
-    
-    
+      </div>
       <footer class="post-footer">
-        <div class="post-eof"></div>
+          <div class="post-tags">
+              <a href="/tags/git/" rel="tag"># git</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/05/04/%E8%B4%AA%E5%BF%83/" rel="prev" title="贪心">
+      <i class="fa fa-chevron-left"></i> 贪心
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/05/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="next" title="动态规划">
+      动态规划 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
       </footer>
+    
   </article>
   
   
   
-
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
-  </nav>
 
 
 
           </div>
           
+    <div class="comments" id="valine-comments"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -706,6 +444,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#git%E4%B8%8Egithub%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0%E4%B8%8E%E4%B8%8B%E8%BD%BD"><span class="nav-number">1.</span> <span class="nav-text">git与github项目上传与下载</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE"><span class="nav-number">1.1.</span> <span class="nav-text">基础配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8EGitHub%E4%B8%8A%E4%B8%8B%E8%BD%BD%E9%A1%B9%E7%9B%AE%E5%88%B0%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93"><span class="nav-number">1.2.</span> <span class="nav-text">从GitHub上下载项目到本地仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8E%E6%9C%AC%E5%9C%B0git%E4%B8%8A%E4%BC%A0%E9%A1%B9%E7%9B%AE%E5%88%B0github"><span class="nav-number">1.3.</span> <span class="nav-text">从本地git上传项目到github</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%A0%E9%99%A4GitHub%E4%B8%8A%E7%9A%84%E6%96%87%E4%BB%B6"><span class="nav-number">1.4.</span> <span class="nav-text">删除GitHub上的文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-number">1.5.</span> <span class="nav-text">注意事项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8git%E5%91%BD%E4%BB%A4"><span class="nav-number">1.6.</span> <span class="nav-text">常用git命令</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
