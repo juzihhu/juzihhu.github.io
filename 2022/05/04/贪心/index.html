@@ -29,7 +29,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/2022/05/04/%E8%B4%AA%E5%BF%83/摆动序列.png">
 <meta property="article:published_time" content="2022-05-04T13:48:28.000Z">
-<meta property="article:modified_time" content="2022-05-21T14:09:37.814Z">
+<meta property="article:modified_time" content="2022-05-22T13:24:52.851Z">
 <meta property="article:tag" content="算法">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/2022/05/04/%E8%B4%AA%E5%BF%83/摆动序列.png">
@@ -226,7 +226,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-05-21 22:09:37" itemprop="dateModified" datetime="2022-05-21T22:09:37+08:00">2022-05-21</time>
+                <time title="修改时间：2022-05-22 21:24:52" itemprop="dateModified" datetime="2022-05-22T21:24:52+08:00">2022-05-22</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -272,14 +272,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>5.6k</span>
+              <span>6.7k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>5 分钟</span>
+              <span>6 分钟</span>
             </span>
 
         </div>
@@ -303,6 +303,7 @@
 <li><a href="#买卖股票的最佳时机ii">买卖股票的最佳时机II</a></li>
 <li><a href="#跳跃游戏">跳跃游戏</a></li>
 <li><a href="#跳跃游戏-ii">跳跃游戏 II</a></li>
+<li><a href="#加油站">加油站</a></li>
 </ul>
 </li>
 </ul>
@@ -406,6 +407,30 @@ dp[i][1] = max(dp[i][1], dp[j][0] + 1)，其中0 &lt; j &lt; i且nums[j] &gt; nu
 <p>每一步选择跨最远距离</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 版本二</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">jump</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> curDistance = <span class="number">0</span>;    <span class="comment">// 当前覆盖的最远距离下标</span></span><br><span class="line">        <span class="type">int</span> ans = <span class="number">0</span>;            <span class="comment">// 记录走的最大步数</span></span><br><span class="line">        <span class="type">int</span> nextDistance = <span class="number">0</span>;   <span class="comment">// 下一步覆盖的最远距离下标</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; nums.<span class="built_in">size</span>() - <span class="number">1</span>; i++) &#123; <span class="comment">// 注意这里是小于nums.size() - 1，这是关键所在</span></span><br><span class="line">            nextDistance = <span class="built_in">max</span>(nums[i] + i, nextDistance); <span class="comment">// 更新下一步覆盖的最远距离下标</span></span><br><span class="line">            <span class="keyword">if</span> (i == curDistance) &#123;                 <span class="comment">// 遇到当前覆盖的最远距离下标</span></span><br><span class="line">                curDistance = nextDistance;         <span class="comment">// 更新当前覆盖的最远距离下标</span></span><br><span class="line">                ans++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
  <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">jump</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(nums.<span class="built_in">size</span>()==<span class="number">1</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> cover=nums[<span class="number">0</span>],steps=<span class="number">1</span>,max=<span class="number">0</span>,temp=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span>(cover&gt;=nums.<span class="built_in">size</span>()<span class="number">-1</span>) <span class="keyword">return</span> steps;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=cover;++i)&#123;</span><br><span class="line">            temp=i+nums[i];</span><br><span class="line">            <span class="keyword">if</span>(temp&gt;max)&#123;</span><br><span class="line">                max=temp;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(i==cover||max&gt;=nums.<span class="built_in">size</span>()<span class="number">-1</span>)&#123;</span><br><span class="line">                ++steps;</span><br><span class="line">                cover=max;</span><br><span class="line">                <span class="keyword">if</span>(cover&gt;=nums.<span class="built_in">size</span>()<span class="number">-1</span>)&#123;<span class="comment">// 当前覆盖范围到达终点，返回步数</span></span><br><span class="line">                    <span class="keyword">return</span> steps;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> steps;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="加油站"><a href="#加油站" class="headerlink" title="加油站"></a>加油站</h3><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/gas-station">134. 加油站</a></p>
+<p>在一条环路上有 n 个加油站，其中第 i 个加油站有汽油 gas[i] 升。</p>
+<p>你有一辆油箱容量无限的的汽车，从第 i 个加油站开往第 i+1 个加油站需要消耗汽油 cost[i] 升。你从其中的一个加油站出发，开始时油箱为空。</p>
+<p>给定两个整数数组 gas 和 cost ，如果你可以绕环路行驶一周，则返回出发时加油站的编号，否则返回 -1 。如果存在解，则 保证 它是 唯一 的。</p>
+<pre><code>输入: gas = [1,2,3,4,5], cost = [3,4,5,1,2]
+输出: 3
+解释:
+从 3 号加油站(索引为 3 处)出发，可获得 4 升汽油。此时油箱有 = 0 + 4 = 4 升汽油
+开往 4 号加油站，此时油箱有 4 - 1 + 5 = 8 升汽油
+开往 0 号加油站，此时油箱有 8 - 2 + 1 = 7 升汽油
+开往 1 号加油站，此时油箱有 7 - 3 + 2 = 6 升汽油
+开往 2 号加油站，此时油箱有 6 - 4 + 3 = 5 升汽油
+开往 3 号加油站，你需要消耗 5 升汽油，正好足够你返回到 3 号加油站。
+因此，3 可为起始索引。
+</code></pre><p><strong>思路</strong>：</p>
+<ol>
+<li>暴力双重循环，第二次用while环形遍历</li>
+<li><p>贪心思想：<code>每个加油站的剩余量rest[i]为gas[i] - cost[i]</code>    </p>
+<p>如果总油量减去总消耗大于等于零那么一定可以跑完一圈，说明 各个站点的加油站 剩油量rest[i]相加一定是大于等于零的。             </p>
+<p>i从0开始累加rest[i]，和记为curSum，一旦curSum小于零，说明[0, i]区间都不能作为起始位置，起始位置从i+1算起，再从0计算curSum</p>
+<p><strong>局部最优</strong>：当前累加rest[j]的和curSum一旦小于0，起始位置至少要是j+1，因为从j开始一定不行。<br><strong>全局最优</strong>：找到可以跑一圈的起始位置。<br><strong>局部最优可以推出全局最优</strong></p>
+</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">canCompleteCircuit</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; gas, vector&lt;<span class="type">int</span>&gt;&amp; cost)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> curSum = <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> totalSum = <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> start = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; gas.<span class="built_in">size</span>(); i++) &#123;</span><br><span class="line">            curSum += gas[i] - cost[i];</span><br><span class="line">            totalSum += gas[i] - cost[i];</span><br><span class="line">            <span class="keyword">if</span> (curSum &lt; <span class="number">0</span>) &#123;   <span class="comment">// 当前累加rest[i]和 curSum一旦小于0</span></span><br><span class="line">                start = i + <span class="number">1</span>;  <span class="comment">// 起始位置更新为i+1</span></span><br><span class="line">                curSum = <span class="number">0</span>;     <span class="comment">// curSum从0开始</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (totalSum &lt; <span class="number">0</span>) <span class="keyword">return</span> <span class="number">-1</span>; <span class="comment">// 说明怎么走都不可能跑一圈了</span></span><br><span class="line">        <span class="keyword">return</span> start;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -499,7 +524,7 @@ dp[i][1] = max(dp[i][1], dp[j][0] + 1)，其中0 &lt; j &lt; i且nums[j] &gt; nu
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC4%E7%AB%A0-%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">第4章 贪心算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%E6%A6%82%E8%BF%B0"><span class="nav-number">1.1.</span> <span class="nav-text">贪心算法概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B4%AA%E5%BF%83%E4%B8%80%E8%88%AC%E8%A7%A3%E9%A2%98%E6%AD%A5%E9%AA%A4"><span class="nav-number">1.2.</span> <span class="nav-text">贪心一般解题步骤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%E5%B8%B8%E8%A7%81%E6%A1%88%E4%BE%8B"><span class="nav-number">1.3.</span> <span class="nav-text">贪心算法常见案例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E5%8F%91%E9%A5%BC%E5%B9%B2"><span class="nav-number">1.3.1.</span> <span class="nav-text">分发饼干</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%91%86%E5%8A%A8%E5%BA%8F%E5%88%97"><span class="nav-number">1.3.2.</span> <span class="nav-text">摆动序列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BAII"><span class="nav-number">1.3.3.</span> <span class="nav-text">买卖股票的最佳时机II</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F"><span class="nav-number">1.3.4.</span> <span class="nav-text">跳跃游戏</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F-II"><span class="nav-number">1.3.5.</span> <span class="nav-text">跳跃游戏 II</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC4%E7%AB%A0-%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">第4章 贪心算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%E6%A6%82%E8%BF%B0"><span class="nav-number">1.1.</span> <span class="nav-text">贪心算法概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B4%AA%E5%BF%83%E4%B8%80%E8%88%AC%E8%A7%A3%E9%A2%98%E6%AD%A5%E9%AA%A4"><span class="nav-number">1.2.</span> <span class="nav-text">贪心一般解题步骤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%E5%B8%B8%E8%A7%81%E6%A1%88%E4%BE%8B"><span class="nav-number">1.3.</span> <span class="nav-text">贪心算法常见案例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E5%8F%91%E9%A5%BC%E5%B9%B2"><span class="nav-number">1.3.1.</span> <span class="nav-text">分发饼干</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%91%86%E5%8A%A8%E5%BA%8F%E5%88%97"><span class="nav-number">1.3.2.</span> <span class="nav-text">摆动序列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BAII"><span class="nav-number">1.3.3.</span> <span class="nav-text">买卖股票的最佳时机II</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F"><span class="nav-number">1.3.4.</span> <span class="nav-text">跳跃游戏</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F-II"><span class="nav-number">1.3.5.</span> <span class="nav-text">跳跃游戏 II</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A0%E6%B2%B9%E7%AB%99"><span class="nav-number">1.3.6.</span> <span class="nav-text">加油站</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -572,13 +597,13 @@ dp[i][1] = max(dp[i][1], dp[j][0] + 1)，其中0 &lt; j &lt; i且nums[j] &gt; nu
       <i class="fa fa-area-chart"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">117k</span>
+    <span title="站点总字数">118k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">3:14</span>
+    <span title="站点阅读时长">3:16</span>
 </div>
 
 <!-- 新增访客统计代码 -->
