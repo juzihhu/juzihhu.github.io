@@ -20,29 +20,31 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":true,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":false,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="直到这一刻微笑着说话为止，至少留下了一公升汗水">
-<meta property="og:type" content="website">
-<meta property="og:title" content="JuZi">
-<meta property="og:url" content="http://example.com/index.html">
+  <meta name="description" content="python基础实践文件解压与遍历123456789101112import zipfileimport osdef unzip_data(src_path,target_path):    # 解压原始数据集，将src_path路径下的zip包解压至target_path目录下    if(not os.path.isdir(target_path)):             z &#x3D; zipf">
+<meta property="og:type" content="article">
+<meta property="og:title" content="机器学习实践笔记">
+<meta property="og:url" content="http://example.com/2022/05/26/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E8%B7%B5%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="JuZi">
-<meta property="og:description" content="直到这一刻微笑着说话为止，至少留下了一公升汗水">
+<meta property="og:description" content="python基础实践文件解压与遍历123456789101112import zipfileimport osdef unzip_data(src_path,target_path):    # 解压原始数据集，将src_path路径下的zip包解压至target_path目录下    if(not os.path.isdir(target_path)):             z &#x3D; zipf">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-05-26T07:05:42.000Z">
+<meta property="article:modified_time" content="2022-05-26T09:47:03.421Z">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/">
+<link rel="canonical" href="http://example.com/2022/05/26/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E8%B7%B5%E7%AC%94%E8%AE%B0/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>JuZi</title>
+  <title>机器学习实践笔记 | JuZi</title>
   
 
 
@@ -184,9 +186,10 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
+
+    
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
@@ -202,10 +205,9 @@
       <meta itemprop="name" content="JuZi">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/05/26/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E8%B7%B5%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">机器学习实践笔记</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          机器学习实践笔记
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -225,6 +227,13 @@
               </span>
               <span class="post-meta-item-text">阅读次数：</span>
               <span class="leancloud-visitors-count"></span>
+            </span>
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
             </span>
   
   <span class="post-meta-item">
@@ -264,7 +273,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="python基础实践"><a href="#python基础实践" class="headerlink" title="python基础实践"></a>python基础实践</h1><h2 id="文件解压与遍历"><a href="#文件解压与遍历" class="headerlink" title="文件解压与遍历"></a>文件解压与遍历</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> zipfile</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">unzip_data</span>(<span class="params">src_path,target_path</span>):</span><br><span class="line">    <span class="comment"># 解压原始数据集，将src_path路径下的zip包解压至target_path目录下</span></span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">not</span> os.path.isdir(target_path)):     </span><br><span class="line">        z = zipfile.ZipFile(src_path, <span class="string">&#x27;r&#x27;</span>)</span><br><span class="line">        z.extractall(path=target_path)</span><br><span class="line">        z.close()</span><br><span class="line"></span><br><span class="line">unzip_data(<span class="string">&#x27;data/data10954/cat_12_test.zip&#x27;</span>,<span class="string">&#x27;data/data10954/cat_12_test&#x27;</span>)</span><br><span class="line">unzip_data(<span class="string">&#x27;data/data10954/cat_12_train.zip&#x27;</span>,<span class="string">&#x27;data/data10954/cat_12_train&#x27;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+        <h1 id="python基础实践"><a href="#python基础实践" class="headerlink" title="python基础实践"></a>python基础实践</h1><h2 id="文件解压与遍历"><a href="#文件解压与遍历" class="headerlink" title="文件解压与遍历"></a>文件解压与遍历</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> zipfile</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">unzip_data</span>(<span class="params">src_path,target_path</span>):</span><br><span class="line">    <span class="comment"># 解压原始数据集，将src_path路径下的zip包解压至target_path目录下</span></span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">not</span> os.path.isdir(target_path)):     </span><br><span class="line">        z = zipfile.ZipFile(src_path, <span class="string">&#x27;r&#x27;</span>)</span><br><span class="line">        z.extractall(path=target_path)</span><br><span class="line">        z.close()</span><br><span class="line"></span><br><span class="line">unzip_data(<span class="string">&#x27;data/data10954/cat_12_test.zip&#x27;</span>,<span class="string">&#x27;data/data10954/cat_12_test&#x27;</span>)</span><br><span class="line">unzip_data(<span class="string">&#x27;data/data10954/cat_12_train.zip&#x27;</span>,<span class="string">&#x27;data/data10954/cat_12_train&#x27;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <blockquote>
 <p><code>files = os.listdir(path)</code><br>返回指定路径下的文件和文件夹列表</p>
 <p><code>os.path.join(path, filename)</code><br>把目录和文件名合成一个路径<br><code>print( os.path.join(&#39;root&#39;,&#39;test&#39;,&#39;runoob.txt&#39;) )</code><br>输出：root/test/runoob.txt</p>
@@ -280,372 +289,46 @@
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> jieba <span class="comment"># jieba中文分词库</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;data/data131368/test.txt&#x27;</span>, <span class="string">&#x27;r&#x27;</span>, encoding=<span class="string">&#x27;UTF-8&#x27;</span>) <span class="keyword">as</span> novelFile:</span><br><span class="line">    novel = novelFile.read()</span><br><span class="line"><span class="comment">#print(novel)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">stopwords = [line.strip() <span class="keyword">for</span> line <span class="keyword">in</span> <span class="built_in">open</span>(<span class="string">&#x27;data/data131368/stop.txt&#x27;</span>, <span class="string">&#x27;r&#x27;</span>, encoding=<span class="string">&#x27;UTF-8&#x27;</span>).readlines()]</span><br><span class="line">novelList = <span class="built_in">list</span>(jieba.lcut(novel))</span><br><span class="line">novelDict = &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 统计出词频字典</span></span><br><span class="line"><span class="keyword">for</span> word <span class="keyword">in</span> novelList:</span><br><span class="line">    <span class="keyword">if</span> word <span class="keyword">not</span> <span class="keyword">in</span> stopwords:</span><br><span class="line">            <span class="comment"># 不统计字数为一的词</span></span><br><span class="line">            <span class="keyword">if</span> <span class="built_in">len</span>(word) == <span class="number">1</span>:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                novelDict[word] = novelDict.get(word, <span class="number">0</span>) + <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 对词频进行排序</span></span><br><span class="line">novelListSorted = <span class="built_in">list</span>(novelDict.items())</span><br><span class="line">novelListSorted.sort(key=<span class="keyword">lambda</span> e: e[<span class="number">1</span>], reverse=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 打印前10词频 </span></span><br><span class="line">topWordNum = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> topWordTup <span class="keyword">in</span> novelListSorted[:<span class="number">10</span>]:<span class="comment">#元组引索</span></span><br><span class="line">    <span class="built_in">print</span>(topWordTup)</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> matplotlib <span class="keyword">import</span> pyplot <span class="keyword">as</span> plt</span><br><span class="line">x = [c <span class="keyword">for</span> c,v <span class="keyword">in</span> novelListSorted]</span><br><span class="line">y = [v <span class="keyword">for</span> c,v <span class="keyword">in</span> novelListSorted]</span><br><span class="line">plt.plot(x[:<span class="number">10</span>],y[:<span class="number">10</span>],color=<span class="string">&#x27;r&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
 <h1 id="数据爬取与分析"><a href="#数据爬取与分析" class="headerlink" title="数据爬取与分析"></a>数据爬取与分析</h1><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> urllib</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">GetImage</span>():</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self,keyword=<span class="string">&#x27;大雁&#x27;</span>,paginator=<span class="number">1</span></span>):</span><br><span class="line">        <span class="comment"># self.url: 链接头</span></span><br><span class="line">        self.url = <span class="string">&#x27;http://image.baidu.com/search/acjson?&#x27;</span></span><br><span class="line">        self.headers = &#123;</span><br><span class="line">            <span class="string">&#x27;User-Agent&#x27;</span>: <span class="string">&#x27;Mozilla/5.0 (Windows NT\</span></span><br><span class="line"><span class="string">             10.0; WOW64) AppleWebKit/537.36\</span></span><br><span class="line"><span class="string">              (KHTML, like Gecko) Chrome/69.0.\</span></span><br><span class="line"><span class="string">            3497.81 Safari/537.36&#x27;</span>&#125;</span><br><span class="line">        self.headers_image = &#123;</span><br><span class="line">            <span class="string">&#x27;User-Agent&#x27;</span>: <span class="string">&#x27;Mozilla/5.0 (Windows\</span></span><br><span class="line"><span class="string">             NT 10.0; WOW64) AppleWebKit/537.36 \</span></span><br><span class="line"><span class="string">             (KHTML, like Gecko) Chrome/69.0.\</span></span><br><span class="line"><span class="string">            3497.81 Safari/537.36&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;Referer&#x27;</span>: <span class="string">&#x27;http://image.baidu.com/\</span></span><br><span class="line"><span class="string">            search/index?tn=baiduimage&amp;ipn=r&amp;\</span></span><br><span class="line"><span class="string">            ct=201326592&amp;cl=2&amp;lm=-1&amp;st=-1&amp;\</span></span><br><span class="line"><span class="string">            fm=result&amp;fr=&amp;sf=1&amp;fmq=1557124645631_R&amp;\</span></span><br><span class="line"><span class="string">            pv=&amp;ic=&amp;nc=1&amp;z=&amp;hd=1&amp;latest=0&amp;copyright\</span></span><br><span class="line"><span class="string">            =0&amp;se=1&amp;showtab=0&amp;fb=0&amp;width=&amp;height=\</span></span><br><span class="line"><span class="string">            &amp;face=0&amp;istype=2&amp;ie=utf-8&amp;sid=&amp;word=%\</span></span><br><span class="line"><span class="string">            E8%83%A1%E6%AD%8C&#x27;</span>&#125;</span><br><span class="line">        self.keyword = keyword      <span class="comment"># 定义关键词</span></span><br><span class="line">        self.paginator = paginator  <span class="comment"># 定义要爬取的页数</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">get_param</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="comment"># 将中文关键词转换为符合规则的编码</span></span><br><span class="line">        keyword = urllib.parse.quote(self.keyword)</span><br><span class="line">        params = []</span><br><span class="line">        <span class="comment"># 为爬取的每页链接定制参数</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, self.paginator + <span class="number">1</span>):</span><br><span class="line">            params.append(</span><br><span class="line">                <span class="string">&#x27;tn=resultjson_com&amp;ipn=rj&amp;ct=201326592&amp;is=&amp;\</span></span><br><span class="line"><span class="string">                fp=result&amp;queryWord=&#123;&#125;&amp;cl=2&amp;lm=-1&amp;ie=utf-8&amp;o\</span></span><br><span class="line"><span class="string">                e=utf-8&amp;adpicid=&amp;st=-1&amp;z=&amp;ic=&amp;hd=1&amp;latest=0&amp;\</span></span><br><span class="line"><span class="string">                copyright=0&amp;word=&#123;&#125;&amp;s=&amp;se=&amp;tab=&amp;width=&amp;height\</span></span><br><span class="line"><span class="string">                =&amp;face=0&amp;istype=2&amp;qc=&amp;nc=1&amp;fr=&amp;expermode=&amp;for\</span></span><br><span class="line"><span class="string">                ce=&amp;cg=star&amp;pn=&#123;&#125;&amp;rn=30&amp;gsm=78&amp;1557125391211\</span></span><br><span class="line"><span class="string">                =&#x27;</span>.<span class="built_in">format</span>(keyword, keyword, <span class="number">30</span> * i))</span><br><span class="line">        <span class="keyword">return</span> params   <span class="comment"># 返回链接参数</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">get_urls</span>(<span class="params">self, params</span>):</span><br><span class="line">        urls = []</span><br><span class="line">        <span class="keyword">for</span> param <span class="keyword">in</span> params:</span><br><span class="line">            <span class="comment"># 拼接每页的链接</span></span><br><span class="line">            urls.append(self.url + param)</span><br><span class="line">        <span class="keyword">return</span> urls   <span class="comment"># 返回每页链接</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">get_image_url</span>(<span class="params">self, urls</span>):</span><br><span class="line">        image_url = []</span><br><span class="line">        <span class="keyword">for</span> url <span class="keyword">in</span> urls:</span><br><span class="line">            json_data = requests.get(url, headers=self.headers).json()</span><br><span class="line">            json_data = json_data.get(<span class="string">&#x27;data&#x27;</span>)</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> json_data:</span><br><span class="line">                <span class="keyword">if</span> i:</span><br><span class="line">                    image_url.append(i.get(<span class="string">&#x27;thumbURL&#x27;</span>))</span><br><span class="line">        <span class="keyword">return</span> image_url</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">get_image</span>(<span class="params">self, image_url</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        根据图片url，在本地目录下新建一个以搜索关键字命名的文件夹，然后将每一个图片存入。</span></span><br><span class="line"><span class="string">        :param image_url:</span></span><br><span class="line"><span class="string">        :return:</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        cwd = os.getcwd()</span><br><span class="line">        file_name = os.path.join(cwd, self.keyword)</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(self.keyword):</span><br><span class="line">            os.mkdir(file_name)</span><br><span class="line">        <span class="keyword">for</span> index, url <span class="keyword">in</span> <span class="built_in">enumerate</span>(image_url, start=<span class="number">1</span>):</span><br><span class="line">            <span class="keyword">with</span> <span class="built_in">open</span>(file_name+<span class="string">&#x27;/&#123;&#125;_0.jpg&#x27;</span>.<span class="built_in">format</span>(index), <span class="string">&#x27;wb&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">                f.write(requests.get(url, headers=self.headers_image).content)</span><br><span class="line">            <span class="keyword">if</span> index != <span class="number">0</span> <span class="keyword">and</span> index % <span class="number">30</span> == <span class="number">0</span>:</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&#x27;第&#123;&#125;页下载完成&#x27;</span>.<span class="built_in">format</span>(index/<span class="number">30</span>))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__call__</span>(<span class="params">self, *args, **kwargs</span>):</span><br><span class="line">        params = self.get_param()  <span class="comment"># 获取链接参数</span></span><br><span class="line">        urls = self.get_urls(params)</span><br><span class="line">        image_url = self.get_image_url(urls)</span><br><span class="line">        self.get_image(image_url)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    spider = GetImage(<span class="string">&#x27;二次元&#x27;</span>, <span class="number">3</span>)</span><br><span class="line">    spider()</span><br></pre></td></tr></table></figure>
 <h1 id="基于线性回归实现房价预测"><a href="#基于线性回归实现房价预测" class="headerlink" title="基于线性回归实现房价预测"></a>基于线性回归实现房价预测</h1><h1 id="基于逻辑回归模型实现手写数字识别"><a href="#基于逻辑回归模型实现手写数字识别" class="headerlink" title="基于逻辑回归模型实现手写数字识别"></a>基于逻辑回归模型实现手写数字识别</h1>
-      
     </div>
 
     
     
     
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/18/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/canvas4.png">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="直到这一刻微笑着说话为止，至少留下了一公升汗水">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="JuZi">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/05/18/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/" class="post-title-link" itemprop="url">hexo搭建个人博客网站</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2022-05-18 22:47:08 / 修改时间：23:45:24" itemprop="dateCreated datePublished" datetime="2022-05-18T22:47:08+08:00">2022-05-18</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%93%8D%E4%BD%9C%E6%95%99%E7%A8%8B/" itemprop="url" rel="index"><span itemprop="name">操作教程</span></a>
-                </span>
-            </span>
-
-          
-            <span id="/2022/05/18/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/" class="post-meta-item leancloud_visitors" data-flag-title="hexo搭建个人博客网站" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2022/05/18/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2022/05/18/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1.5k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>基于hexo+github搭建个人博客网站，使用next主题</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/05/18/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
+      <div>
         
-      
-    </div>
-
+          <div>
     
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
     
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+</div>
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/canvas4.png">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="直到这一刻微笑着说话为止，至少留下了一公升汗水">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="JuZi">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/05/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="post-title-link" itemprop="url">动态规划</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-05-10 17:10:52" itemprop="dateCreated datePublished" datetime="2022-05-10T17:10:52+08:00">2022-05-10</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-05-27 22:05:55" itemprop="dateModified" datetime="2022-05-27T22:05:55+08:00">2022-05-27</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a>
-                </span>
-            </span>
-
-          
-            <span id="/2022/05/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="post-meta-item leancloud_visitors" data-flag-title="动态规划" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2022/05/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2022/05/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>7k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>6 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>本文简单介绍动态规划思想、模板以及部分例题。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/05/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
         
-      
-    </div>
-
-    
-    
-    
+      </div>
       <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/04/git%E4%B8%8Egithub%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0%E4%B8%8E%E4%B8%8B%E8%BD%BD/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/canvas4.png">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="直到这一刻微笑着说话为止，至少留下了一公升汗水">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="JuZi">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/05/04/git%E4%B8%8Egithub%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0%E4%B8%8E%E4%B8%8B%E8%BD%BD/" class="post-title-link" itemprop="url">git与github项目上传与下载</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-05-04 21:52:00" itemprop="dateCreated datePublished" datetime="2022-05-04T21:52:00+08:00">2022-05-04</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-05-08 21:46:10" itemprop="dateModified" datetime="2022-05-08T21:46:10+08:00">2022-05-08</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%93%8D%E4%BD%9C%E6%95%99%E7%A8%8B/" itemprop="url" rel="index"><span itemprop="name">操作教程</span></a>
-                </span>
-            </span>
-
-          
-            <span id="/2022/05/04/git%E4%B8%8Egithub%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0%E4%B8%8E%E4%B8%8B%E8%BD%BD/" class="post-meta-item leancloud_visitors" data-flag-title="git与github项目上传与下载" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2022/05/04/git%E4%B8%8Egithub%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0%E4%B8%8E%E4%B8%8B%E8%BD%BD/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2022/05/04/git%E4%B8%8Egithub%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0%E4%B8%8E%E4%B8%8B%E8%BD%BD/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>2.1k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>介绍git的简单使用<br></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/05/04/git%E4%B8%8Egithub%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0%E4%B8%8E%E4%B8%8B%E8%BD%BD/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
         
-      
-    </div>
 
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/05/18/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/" rel="prev" title="hexo搭建个人博客网站">
+      <i class="fa fa-chevron-left"></i> hexo搭建个人博客网站
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
       </footer>
+    
   </article>
   
   
   
-
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
-  </nav>
 
 
 
           </div>
           
+    <div class="comments" id="valine-comments"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -692,6 +375,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#python%E5%9F%BA%E7%A1%80%E5%AE%9E%E8%B7%B5"><span class="nav-number">1.</span> <span class="nav-text">python基础实践</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E8%A7%A3%E5%8E%8B%E4%B8%8E%E9%81%8D%E5%8E%86"><span class="nav-number">1.1.</span> <span class="nav-text">文件解压与遍历</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E8%AE%A1%E7%AE%97%E5%99%A8%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="nav-number">1.2.</span> <span class="nav-text">简单计算器的实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%BE%E5%83%8F%E5%8F%91%E5%B8%83%E7%9B%B4%E6%96%B9%E5%9B%BE"><span class="nav-number">1.3.</span> <span class="nav-text">图像发布直方图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E6%9C%AC%E8%AF%8D%E9%A2%91%E5%88%86%E6%9E%90"><span class="nav-number">1.4.</span> <span class="nav-text">文本词频分析</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%88%AC%E5%8F%96%E4%B8%8E%E5%88%86%E6%9E%90"><span class="nav-number">2.</span> <span class="nav-text">数据爬取与分析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E5%AE%9E%E7%8E%B0%E6%88%BF%E4%BB%B7%E9%A2%84%E6%B5%8B"><span class="nav-number">3.</span> <span class="nav-text">基于线性回归实现房价预测</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B%E5%AE%9E%E7%8E%B0%E6%89%8B%E5%86%99%E6%95%B0%E5%AD%97%E8%AF%86%E5%88%AB"><span class="nav-number">4.</span> <span class="nav-text">基于逻辑回归模型实现手写数字识别</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
