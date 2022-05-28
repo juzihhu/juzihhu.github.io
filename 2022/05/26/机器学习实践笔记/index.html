@@ -20,15 +20,15 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":true,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":false,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="python基础实践文件解压与遍历123456789101112import zipfileimport osdef unzip_data(src_path,target_path):    # 解压原始数据集，将src_path路径下的zip包解压至target_path目录下    if(not os.path.isdir(target_path)):             z &#x3D;">
+  <meta name="description" content="机器学习笔记！">
 <meta property="og:type" content="article">
 <meta property="og:title" content="机器学习实践笔记">
 <meta property="og:url" content="http://example.com/2022/05/26/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E8%B7%B5%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="JuZi">
-<meta property="og:description" content="python基础实践文件解压与遍历123456789101112import zipfileimport osdef unzip_data(src_path,target_path):    # 解压原始数据集，将src_path路径下的zip包解压至target_path目录下    if(not os.path.isdir(target_path)):             z &#x3D;">
+<meta property="og:description" content="机器学习笔记！">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-05-26T07:05:42.000Z">
-<meta property="article:modified_time" content="2022-05-27T14:10:01.858Z">
+<meta property="article:modified_time" content="2022-05-28T03:06:34.931Z">
 <meta property="article:tag" content="机器学习">
 <meta name="twitter:card" content="summary">
 
@@ -224,7 +224,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-05-27 22:10:01" itemprop="dateModified" datetime="2022-05-27T22:10:01+08:00">2022-05-27</time>
+                <time title="修改时间：2022-05-28 11:06:34" itemprop="dateModified" datetime="2022-05-28T11:06:34+08:00">2022-05-28</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -289,7 +289,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <span id="more"></span>   
+        <p>机器学习笔记！<br><span id="more"></span>   </p>
 <h1 id="python基础实践"><a href="#python基础实践" class="headerlink" title="python基础实践"></a>python基础实践</h1><h2 id="文件解压与遍历"><a href="#文件解压与遍历" class="headerlink" title="文件解压与遍历"></a>文件解压与遍历</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> zipfile</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">unzip_data</span>(<span class="params">src_path,target_path</span>):</span><br><span class="line">    <span class="comment"># 解压原始数据集，将src_path路径下的zip包解压至target_path目录下</span></span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">not</span> os.path.isdir(target_path)):     </span><br><span class="line">        z = zipfile.ZipFile(src_path, <span class="string">&#x27;r&#x27;</span>)</span><br><span class="line">        z.extractall(path=target_path)</span><br><span class="line">        z.close()</span><br><span class="line"></span><br><span class="line">unzip_data(<span class="string">&#x27;data/data10954/cat_12_test.zip&#x27;</span>,<span class="string">&#x27;data/data10954/cat_12_test&#x27;</span>)</span><br><span class="line">unzip_data(<span class="string">&#x27;data/data10954/cat_12_train.zip&#x27;</span>,<span class="string">&#x27;data/data10954/cat_12_train&#x27;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <blockquote>
 <p><code>files = os.listdir(path)</code><br>返回指定路径下的文件和文件夹列表</p>
