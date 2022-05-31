@@ -1,6 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>hexo搭建个人博客网站</title>
+    <url>/2022/05/18/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/</url>
+    <content><![CDATA[<p>基于hexo+github搭建个人博客网站，使用next主题</p>
+<span id="more"></span>   
+<h1 id="网站效果"><a href="#网站效果" class="headerlink" title="网站效果"></a>网站效果</h1><p><a href="https://juzihhu.github.io/">https://juzihhu.github.io/</a><br>我的整个项目文件已经可从百度网盘下载</p>
+<h1 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h1><ol>
+<li>github账号与特殊仓库<br> 创建repository 命名为{GitHub账户名.github.io}<br><img src="/2022/05/18/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/github配置.png" alt></li>
+</ol>
+<p>在浏览器输入<code>GitHub账户名.github.io</code>,出现如下结果则表示成功<br><img src="/2022/05/18/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/github404.png" alt></p>
+<ol>
+<li><p>安装Node.js<br><a href="https://nodejs.org/dist/v4.2.3/node-v4.2.3-x86.msi">https://nodejs.org/dist/v4.2.3/node-v4.2.3-x86.msi</a>   </p>
+<p><a href="https://nodejs.org/dist/v4.2.3/node-v4.2.3-x64.msi">https://nodejs.org/dist/v4.2.3/node-v4.2.3-x64.msi</a>   </p>
+</li>
+<li><p>安装git,配置git环境</p>
+<p>具体可以参考我的这篇博客<br><a href="https://juzihhu.github.io/2022/05/04/git%E4%B8%8Egithub%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0%E4%B8%8E%E4%B8%8B%E8%BD%BD/">git与github项目上传与下载</a></p>
+</li>
+<li><p>检查安装环境配置<br>打开cmd命令行(win+r 输入cmd回车)分别执行<br>node -v<br>npm -v<br>git —version</p>
+<p><img src="/2022/05/18/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/安装环境配置.png" alt></p>
+</li>
+<li><p>安装Hexo<br>打开cmd命令行(win+r 输入cmd回车)分别执行<br><code>npm install hexo-cli -g</code>   </p>
+<p>等待自动安装完成后。输入<br> <code>hexo -v</code></p>
+<p> 结果如下：<br> $ hexo -v<br> INFO  Validating config<br> hexo: 6.2.0<br> hexo-cli: 4.3.0<br> os: win32 10.0.19043<br> node: 16.15.0<br> v8: 9.4.146.24-node.20<br> uv: 1.43.0<br> zlib: 1.2.11<br> brotli: 1.0.9<br> ares: 1.18.1<br> modules: 93<br> nghttp2: 1.47.0<br> napi: 8<br> llhttp: 6.0.4<br> openssl: 1.1.1n+quic<br> cldr: 40.0<br> icu: 70.1<br> tz: 2021a3<br> unicode: 14.0<br> ngtcp2: 0.1.0-DEV<br> nghttp3: 0.1.0-DEV</p>
+</li>
+</ol>
+<h1 id="网站搭建"><a href="#网站搭建" class="headerlink" title="网站搭建"></a>网站搭建</h1><ol>
+<li><p>新建存放网站项目的文件夹<br>比如我的是新建 HexoBlog</p>
+</li>
+<li><p>右键该文件夹git blash进入<br><img src="/2022/05/18/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/博客文件夹.png" alt></p>
+</li>
+<li><p>使用如下指令</p>
+<p> <code>hexo init</code><br> 初始化hexo。这个命令和git 仓库命令相似。意思一样都是初始化。</p>
+<p> <code>npm install hexo --save</code><br> 初始化hexo基础配置文件。初始化时间比较长，不用急，等完成后输入</p>
+<p> <code>npm install</code><br> 配置node。然后输入</p>
+<p> <code>hexo g</code>（或者 <code>hexo generate</code>）<br> 加载hexo基础html、css、js等文件。</p>
+<p> 在这完成后等于已经在本地创建了一个网页，输入<br> <code>hexo s</code>(或者<code>hexo serve</code>)</p>
+<p> 在浏览器输入：<a href="http://localhost:4000">http://localhost:4000</a><br> <img src="/2022/05/18/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/hexos.jpg" alt></p>
+</li>
+</ol>
+<p><strong>至此博客的初步框架已经搭建完成</strong></p>
+<h1 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h1><ol>
+<li>打开根目录下的 _config.yml 文件,修改如下部分内容 </li>
+</ol>
+<p>在部署之前，我们需要先知道博客的部署地址，它需要对应 GitHub 的一个 Repository 的地址，这个信息需要我们来配置一下。 </p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"># <span class="title class_">Deployment</span></span><br><span class="line">## <span class="title class_">Docs</span>: <span class="attr">https</span>:<span class="comment">//hexo.io/docs/one-command-deployment</span></span><br><span class="line"><span class="attr">deploy</span>:</span><br><span class="line">  <span class="attr">type</span>: git</span><br><span class="line">  <span class="attr">repo</span>: git@github.<span class="property">com</span>:juzihhu/juzihhu.<span class="property">github</span>.<span class="property">io</span>.<span class="property">git</span></span><br><span class="line">  <span class="attr">branch</span>: main</span><br></pre></td></tr></table></figure>
+<p>另外我们还需要额外安装一个支持 Git 的部署插件，名字叫做 hexo-deployer-git，有了它我们才可以顺利将其部署到 GitHub 上面，如果不安装的话，在执行部署命令时会报如下错误：</p>
+<p><code>npm install hexo-deployer-git --save</code><br>安装成功之后，执行部署命令：<br><code>hexo deploy</code></p>
+<ol>
+<li><p>访问<br>浏览器输入博客网站域名<br>这里我的是 <a href="https://juzihhu.github.io/">https://juzihhu.github.io/</a></p>
+<p><img src="/2022/05/18/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/hexo博客初步.jpg" alt></p>
+</li>
+</ol>
+<p>至此博客网站已经初步搭建成功了</p>
+<h1 id="网站信息配置以及主题配置"><a href="#网站信息配置以及主题配置" class="headerlink" title="网站信息配置以及主题配置"></a>网站信息配置以及主题配置</h1><p>更新中…..</p>
+]]></content>
+      <categories>
+        <category>操作教程</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>git与github项目上传与下载</title>
     <url>/2022/05/04/git%E4%B8%8Egithub%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0%E4%B8%8E%E4%B8%8B%E8%BD%BD/</url>
     <content><![CDATA[<p>介绍git的简单使用<br><span id="more"></span>        </p>
@@ -66,68 +128,6 @@
       </categories>
       <tags>
         <tag>git</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>hexo搭建个人博客网站</title>
-    <url>/2022/05/18/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/</url>
-    <content><![CDATA[<p>基于hexo+github搭建个人博客网站，使用next主题</p>
-<span id="more"></span>   
-<h1 id="网站效果"><a href="#网站效果" class="headerlink" title="网站效果"></a>网站效果</h1><p><a href="https://juzihhu.github.io/">https://juzihhu.github.io/</a><br>我的整个项目文件已经可从百度网盘下载</p>
-<h1 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h1><ol>
-<li>github账号与特殊仓库<br> 创建repository 命名为{GitHub账户名.github.io}<br><img src="/2022/05/18/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/github配置.png" alt></li>
-</ol>
-<p>在浏览器输入<code>GitHub账户名.github.io</code>,出现如下结果则表示成功<br><img src="/2022/05/18/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/github404.png" alt></p>
-<ol>
-<li><p>安装Node.js<br><a href="https://nodejs.org/dist/v4.2.3/node-v4.2.3-x86.msi">https://nodejs.org/dist/v4.2.3/node-v4.2.3-x86.msi</a>   </p>
-<p><a href="https://nodejs.org/dist/v4.2.3/node-v4.2.3-x64.msi">https://nodejs.org/dist/v4.2.3/node-v4.2.3-x64.msi</a>   </p>
-</li>
-<li><p>安装git,配置git环境</p>
-<p>具体可以参考我的这篇博客<br><a href="https://juzihhu.github.io/2022/05/04/git%E4%B8%8Egithub%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0%E4%B8%8E%E4%B8%8B%E8%BD%BD/">git与github项目上传与下载</a></p>
-</li>
-<li><p>检查安装环境配置<br>打开cmd命令行(win+r 输入cmd回车)分别执行<br>node -v<br>npm -v<br>git —version</p>
-<p><img src="/2022/05/18/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/安装环境配置.png" alt></p>
-</li>
-<li><p>安装Hexo<br>打开cmd命令行(win+r 输入cmd回车)分别执行<br><code>npm install hexo-cli -g</code>   </p>
-<p>等待自动安装完成后。输入<br> <code>hexo -v</code></p>
-<p> 结果如下：<br> $ hexo -v<br> INFO  Validating config<br> hexo: 6.2.0<br> hexo-cli: 4.3.0<br> os: win32 10.0.19043<br> node: 16.15.0<br> v8: 9.4.146.24-node.20<br> uv: 1.43.0<br> zlib: 1.2.11<br> brotli: 1.0.9<br> ares: 1.18.1<br> modules: 93<br> nghttp2: 1.47.0<br> napi: 8<br> llhttp: 6.0.4<br> openssl: 1.1.1n+quic<br> cldr: 40.0<br> icu: 70.1<br> tz: 2021a3<br> unicode: 14.0<br> ngtcp2: 0.1.0-DEV<br> nghttp3: 0.1.0-DEV</p>
-</li>
-</ol>
-<h1 id="网站搭建"><a href="#网站搭建" class="headerlink" title="网站搭建"></a>网站搭建</h1><ol>
-<li><p>新建存放网站项目的文件夹<br>比如我的是新建 HexoBlog</p>
-</li>
-<li><p>右键该文件夹git blash进入<br><img src="/2022/05/18/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/博客文件夹.png" alt></p>
-</li>
-<li><p>使用如下指令</p>
-<p> <code>hexo init</code><br> 初始化hexo。这个命令和git 仓库命令相似。意思一样都是初始化。</p>
-<p> <code>npm install hexo --save</code><br> 初始化hexo基础配置文件。初始化时间比较长，不用急，等完成后输入</p>
-<p> <code>npm install</code><br> 配置node。然后输入</p>
-<p> <code>hexo g</code>（或者 <code>hexo generate</code>）<br> 加载hexo基础html、css、js等文件。</p>
-<p> 在这完成后等于已经在本地创建了一个网页，输入<br> <code>hexo s</code>(或者<code>hexo serve</code>)</p>
-<p> 在浏览器输入：<a href="http://localhost:4000">http://localhost:4000</a><br> <img src="/2022/05/18/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/hexos.jpg" alt></p>
-</li>
-</ol>
-<p><strong>至此博客的初步框架已经搭建完成</strong></p>
-<h1 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h1><ol>
-<li>打开根目录下的 _config.yml 文件,修改如下部分内容 </li>
-</ol>
-<p>在部署之前，我们需要先知道博客的部署地址，它需要对应 GitHub 的一个 Repository 的地址，这个信息需要我们来配置一下。 </p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"># <span class="title class_">Deployment</span></span><br><span class="line">## <span class="title class_">Docs</span>: <span class="attr">https</span>:<span class="comment">//hexo.io/docs/one-command-deployment</span></span><br><span class="line"><span class="attr">deploy</span>:</span><br><span class="line">  <span class="attr">type</span>: git</span><br><span class="line">  <span class="attr">repo</span>: git@github.<span class="property">com</span>:juzihhu/juzihhu.<span class="property">github</span>.<span class="property">io</span>.<span class="property">git</span></span><br><span class="line">  <span class="attr">branch</span>: main</span><br></pre></td></tr></table></figure>
-<p>另外我们还需要额外安装一个支持 Git 的部署插件，名字叫做 hexo-deployer-git，有了它我们才可以顺利将其部署到 GitHub 上面，如果不安装的话，在执行部署命令时会报如下错误：</p>
-<p><code>npm install hexo-deployer-git --save</code><br>安装成功之后，执行部署命令：<br><code>hexo deploy</code></p>
-<ol>
-<li><p>访问<br>浏览器输入博客网站域名<br>这里我的是 <a href="https://juzihhu.github.io/">https://juzihhu.github.io/</a></p>
-<p><img src="/2022/05/18/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/hexo博客初步.jpg" alt></p>
-</li>
-</ol>
-<p>至此博客网站已经初步搭建成功了</p>
-<h1 id="网站信息配置以及主题配置"><a href="#网站信息配置以及主题配置" class="headerlink" title="网站信息配置以及主题配置"></a>网站信息配置以及主题配置</h1><p>更新中…..</p>
-]]></content>
-      <categories>
-        <category>操作教程</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
       </tags>
   </entry>
   <entry>
@@ -305,6 +305,7 @@
 <li><a href="#不同路径">不同路径</a></li>
 <li><a href="#整数拆分">整数拆分</a></li>
 <li><a href="#不同的二叉搜索树">不同的二叉搜索树</a></li>
+<li><a href="#0-1背包理论基础">0-1背包理论基础</a></li>
 </ul>
 </li>
 </ul>
@@ -451,6 +452,92 @@
 <p>dp[i]的值为卡塔兰数<br><img src="/2022/05/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/equation.svg" alt><br><img src="/2022/05/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/卡塔兰数递推公式.png" alt></p>
 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">numTrees</span><span class="params">(<span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="type">long</span> <span class="type">long</span> C = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">            C = C * <span class="number">2</span> * (<span class="number">2</span> * i + <span class="number">1</span>) / (i + <span class="number">2</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> (<span class="type">int</span>)C;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <p><a href="https://zhuanlan.zhihu.com/p/97619085">卡特兰数介绍</a></p>
+<h2 id="0-1背包理论基础"><a href="#0-1背包理论基础" class="headerlink" title="0-1背包理论基础"></a>0-1背包理论基础</h2><p>有n件物品和一个最多能背重量为w 的背包。第i件物品的重量是weight[i]，得到的价值是value[i] 。<br>每件物品只能用一次，求解将哪些物品装入背包里物品价值总和最大。</p>
+<p><strong>暴力思想</strong></p>
+<p>每一件物品其实只有两个状态，取或者不取，所以可以使用回溯法搜索出所有的情况，那么时间复杂度就是$o(2^n)$，这里的n表示物品数量。</p>
+<p>重量     价值<br>物品0     1         15<br>物品1     3         20<br>物品2     4         30</p>
+<p><strong>二维dp数组01背包</strong></p>
+<p><strong>首先理解动态规划与贪心的区别在于：动态规划有状态推导</strong></p>
+<ol>
+<li><p>确定dp数组以及下标的含义<br>dp[i][j] 表示从下标为[0-i]的物品里任意取，放进容量为j的背包，价值总和最大是多少。</p>
+</li>
+<li><p>确定递推公式<br>再回顾一下dp[i][j]的含义：从下标为[0-i]的物品里任意取，放进容量为j的背包，价值总和最大是多少。</p>
+<p> 那么可以有两个方向推出来dp[i][j]:</p>
+<ul>
+<li>不放物品i：由dp[i - 1][j]推出，即背包容量为j，里面不放物品i的最大价值，此时dp[i][j]就是dp[i - 1][j]。(其实就是当物品i的重量大于背包j的重量时，物品i无法放进背包中，所以被背包内的价值依然和前面相同。)</li>
+<li><p>放物品i：由<code>dp[i - 1][j - weight[i]]</code>推出，<code>dp[i - 1][j - weight[i]]</code>为背包容量为j - weight[i]的时候不放物品i的最大价值，那么<code>dp[i - 1][j - weight[i]] + value[i]</code>（物品i的价值），就是背包放物品i得到的最大价值</p>
+<p>所以递归公式： <code>dp[i][j] = max(dp[i - 1][j], dp[i - 1][j - weight[i]] + value[i]);</code></p>
+</li>
+</ul>
+</li>
+<li><p>dp数组如何初始化<br>首先从dp[i][j]的定义出发，如果背包容量j为0的话，即dp[i][0]，无论是选取哪些物品，背包价值总和一定为0。<br>状态转移方程 dp[i][j] = max(dp[i - 1][j], dp[i - 1][j - weight[i]] + value[i]); 可以看出i 是由 i-1 推导出来，那么i为0的时候就一定要初始化<br><img src="/2022/05/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/01背包dp初始化.png" alt></p>
+</li>
+</ol>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 初始化 dp</span></span><br><span class="line">vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">dp</span>(weight.<span class="built_in">size</span>(), <span class="built_in">vector</span>&lt;<span class="type">int</span>&gt;(bagweight + <span class="number">1</span>, <span class="number">0</span>));</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> j = weight[<span class="number">0</span>]; j &lt;= bagweight; j++) &#123;</span><br><span class="line">    dp[<span class="number">0</span>][j] = value[<span class="number">0</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>确定遍历顺序<br>有两个遍历的维度：物品与背包重量</li>
+</ol>
+<p><strong>先遍历物品更好理解</strong><br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// weight数组的大小 就是物品个数</span></span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt; weight.<span class="built_in">size</span>(); i++) &#123; <span class="comment">// 遍历物品</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j &lt;= bagweight; j++) &#123; <span class="comment">// 遍历背包容量</span></span><br><span class="line">        <span class="keyword">if</span> (j &lt; weight[i]) dp[i][j] = dp[i - <span class="number">1</span>][j]; </span><br><span class="line">        <span class="keyword">else</span> dp[i][j] = <span class="built_in">max</span>(dp[i - <span class="number">1</span>][j], dp[i - <span class="number">1</span>][j - weight[i]] + value[i]);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>先遍历背包，再遍历物品，也是可以的！（注意我这里使用的二维dp数组）</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// weight数组的大小 就是物品个数</span></span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j &lt;= bagweight; j++) &#123; <span class="comment">// 遍历背包容量</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt; weight.<span class="built_in">size</span>(); i++) &#123; <span class="comment">// 遍历物品</span></span><br><span class="line">        <span class="keyword">if</span> (j &lt; weight[i]) dp[i][j] = dp[i - <span class="number">1</span>][j];</span><br><span class="line">        <span class="keyword">else</span> dp[i][j] = <span class="built_in">max</span>(dp[i - <span class="number">1</span>][j], dp[i - <span class="number">1</span>][j - weight[i]] + value[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>dp[i][j] = max(dp[i - 1][j], dp[i - 1][j - weight[i]] + value[i]);</code> 递归公式中可以看出dp[i][j]是靠dp[i-1][j]和dp[i - 1][j - weight[i]]推导出来的。</p>
+<p>dp[i-1][j]和dp[i - 1][j - weight[i]] 都在dp[i][j]的左上角方向（包括正上方向）   </p>
+<p><img src="/2022/05/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/01背包dp推导过程.png" alt></p>
+<ol>
+<li>举例推导结果</li>
+</ol>
+<p><img src="/2022/05/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/01背包dp推导结果.png" alt></p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">test_2_wei_bag_problem1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; weight = &#123;<span class="number">1</span>, <span class="number">3</span>, <span class="number">4</span>&#125;;</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; value = &#123;<span class="number">15</span>, <span class="number">20</span>, <span class="number">30</span>&#125;;</span><br><span class="line">    <span class="type">int</span> bagweight = <span class="number">4</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 二维数组</span></span><br><span class="line">    vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">dp</span>(weight.<span class="built_in">size</span>(), <span class="built_in">vector</span>&lt;<span class="type">int</span>&gt;(bagweight + <span class="number">1</span>, <span class="number">0</span>));</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 初始化</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> j = weight[<span class="number">0</span>]; j &lt;= bagweight; j++) &#123;</span><br><span class="line">        dp[<span class="number">0</span>][j] = value[<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// weight数组的大小 就是物品个数</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt; weight.<span class="built_in">size</span>(); i++) &#123; <span class="comment">// 遍历物品</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j &lt;= bagweight; j++) &#123; <span class="comment">// 遍历背包容量</span></span><br><span class="line">            <span class="keyword">if</span> (j &lt; weight[i]) dp[i][j] = dp[i - <span class="number">1</span>][j];</span><br><span class="line">            <span class="keyword">else</span> dp[i][j] = <span class="built_in">max</span>(dp[i - <span class="number">1</span>][j], dp[i - <span class="number">1</span>][j - weight[i]] + value[i]);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    cout &lt;&lt; dp[weight.<span class="built_in">size</span>() - <span class="number">1</span>][bagweight] &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">test_2_wei_bag_problem1</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>难点在于如何初始化和遍历顺序上</strong></p>
+<p><strong>滚动数组实现01背包问题</strong><br>在二维的dp推导中可以发现，<code>dp[i][j] = max(dp[i - 1][j], dp[i - 1][j - weight[i]] + value[i]);</code><br>当前的推导来源于推导表格的上一行，故而可以用一维数组实现动态规划（可以先理解<strong>不同路径</strong>那题中的一维数组实现）</p>
+<p>在使用二维数组的时候，递推公式：<code>dp[i][j] = max(dp[i - 1][j], dp[i - 1][j - weight[i]] + value[i]);</code></p>
+<p>其实可以发现如果把dp[i - 1]那一层拷贝到dp[i]上，表达式完全可以是：<code>dp[i][j] = max(dp[i][j], dp[i][j - weight[i]] + value[i]);</code></p>
+<p>与其把dp[i - 1]这一层拷贝到dp[i]上，不如只用一个一维数组了，只用dp[j]（一维数组，也可以理解是一个滚动数组）。</p>
+<p>这就是滚动数组的由来，需要满足的条件是上一层可以重复利用，直接拷贝到当前层。</p>
+<ol>
+<li>确定dp数组的定义</li>
+</ol>
+<blockquote>
+<p>dp[j]表示：容量为j的背包，所背的物品价值可以最大为dp[j]。</p>
+</blockquote>
+<ol>
+<li>递推公式</li>
+</ol>
+<blockquote>
+<p>dp[j]可以通过dp[j - weight[i]]推导出来，dp[j - weight[i]]表示容量为j - weight[i]的背包所背的最大价值。</p>
+<p><code>dp[j - weight[i]] + value[i]</code>表示 容量为 j - 物品i重量 的背包 加上 物品i的价值。（也就是容量为j的背包，放入物品i了之后的价值即：dp[j]）</p>
+<p>此时dp[j]有两个选择，一个是取自己dp[j] 相当于 二维dp数组中的dp[i-1][j]，即不放物品i<br>一个是取dp[j - weight[i]] + value[i]，即放物品i，指定是取最大的，毕竟是求最大价值</p>
+<p><code>dp[j] = max(dp[j], dp[j - weight[i]] + value[i]);</code></p>
+</blockquote>
+<ol>
+<li><p>一维dp数组如何初始化<br>dp[j]表示：容量为j的背包，所背的物品价值可以最大为dp[j]，那么dp[0]就应该是0，因为背包容量为0所背的物品的最大价值就是0。</p>
+<p> 那么dp数组除了下标0的位置，初始为0，其他下标应该初始化多少呢？</p>
+<p> 看一下递归公式：dp[j] = max(dp[j], dp[j - weight[i]] + value[i]);</p>
+<p> dp数组在推导的时候一定是取价值最大的数，如果题目给的价值都是正整数那么非0下标都初始化为0就可以了。</p>
+<p> 这样才能让dp数组在递归公式的过程中取的最大的价值，而不是被初始值覆盖了。</p>
+<p> 那么我假设物品价值都是大于0的，所以dp数组初始化的时候，都初始为0就可以了。</p>
+</li>
+<li><p>一维dp数组遍历顺序</p>
+</li>
+</ol>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; weight.<span class="built_in">size</span>(); i++) &#123; <span class="comment">// 遍历物品</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> j = bagWeight; j &gt;= weight[i]; j--) &#123; <span class="comment">// 遍历背包容量</span></span><br><span class="line">        dp[j] = <span class="built_in">max</span>(dp[j], dp[j - weight[i]] + value[i]);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里大家发现和二维dp的写法中，遍历背包的顺序是不一样的！</p>
+<p>二维dp遍历的时候，背包容量是从小到大，而一维dp遍历的时候，背包是从大到小。</p>
+<p>为什么呢？</p>
+<p>倒序遍历是为了保证物品i只被放入一次！。但如果一旦正序遍历了，那么物品0就会被重复加入多次！</p>
+<p>举一个例子：物品0的重量weight[0] = 1，价值value[0] = 15</p>
+<p>如果正序遍历</p>
+<p>dp[1] = dp[1 - weight[0]] + value[0] = 15</p>
+<p>dp[2] = dp[2 - weight[0]] + value[0] = 30</p>
+<p>此时dp[2]就已经是30了，意味着物品0，被放入了两次，所以不能正序遍历。</p>
+<p>为什么倒序遍历，就可以保证物品只放入一次呢？</p>
+<p>倒序就是先算dp[2]</p>
+<p>dp[2] = dp[2 - weight[0]] + value[0] = 15 （dp数组已经都初始化为0）</p>
+<p>dp[1] = dp[1 - weight[0]] + value[0] = 15</p>
+<p>所以从后往前循环，每次取得状态不会和之前取得状态重合，这样每种物品就只取一次了。</p>
+<p>那么问题又来了，为什么二维dp数组历的时候不用倒序呢？</p>
+<p>因为对于二维dp，dp[i][j]都是通过上一层即dp[i - 1][j]计算而来，本层的dp[i][j]并不会被覆盖！</p>
+<p><img src="/2022/05/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/01背包一维dp推导.png" alt></p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">test_1_wei_bag_problem</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; weight = &#123;<span class="number">1</span>, <span class="number">3</span>, <span class="number">4</span>&#125;;</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; value = &#123;<span class="number">15</span>, <span class="number">20</span>, <span class="number">30</span>&#125;;</span><br><span class="line">    <span class="type">int</span> bagWeight = <span class="number">4</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 初始化</span></span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">dp</span><span class="params">(bagWeight + <span class="number">1</span>, <span class="number">0</span>)</span></span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; weight.<span class="built_in">size</span>(); i++) &#123; <span class="comment">// 遍历物品</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j = bagWeight; j &gt;= weight[i]; j--) &#123; <span class="comment">// 遍历背包容量</span></span><br><span class="line">            dp[j] = <span class="built_in">max</span>(dp[j], dp[j - weight[i]] + value[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; dp[bagWeight] &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">test_1_wei_bag_problem</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>学习笔记</category>
@@ -691,6 +778,30 @@
       </categories>
       <tags>
         <tag>机器学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>鸟哥的Linux私房菜笔记</title>
+    <url>/2022/05/28/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<p>记录《鸟哥的Linux私房菜》简要笔记<br><span id="more"></span>   </p>
+<h1 id="0-计算器概论"><a href="#0-计算器概论" class="headerlink" title="0. 计算器概论"></a>0. 计算器概论</h1><h1 id="1-Linux是什么与如何学习"><a href="#1-Linux是什么与如何学习" class="headerlink" title="1. Linux是什么与如何学习"></a>1. Linux是什么与如何学习</h1><h1 id="2-主机规划与磁盘分区"><a href="#2-主机规划与磁盘分区" class="headerlink" title="2. 主机规划与磁盘分区"></a>2. 主机规划与磁盘分区</h1><h1 id="3-安装CentOS7-x"><a href="#3-安装CentOS7-x" class="headerlink" title="3. 安装CentOS7.x"></a>3. 安装CentOS7.x</h1><h1 id="4-首次登录与在线求助"><a href="#4-首次登录与在线求助" class="headerlink" title="4. 首次登录与在线求助"></a>4. 首次登录与在线求助</h1><h2 id="4-2-文本模式下指令的下达"><a href="#4-2-文本模式下指令的下达" class="headerlink" title="4.2 文本模式下指令的下达"></a>4.2 文本模式下指令的下达</h2><p>1.指令格式：command options parameters<br>2.基础指令操作：<br>    date  (<code>date +%Y/%m/%d</code>)<br>    cal<br>    bc 计算机  quit退出</p>
+<ol>
+<li>几个简单热键</li>
+</ol>
+<p><strong>Tab</strong><br>[Tab]接在一串指令的第一个字的后面，则为“命令补<br>[Tab]接在一串指令的第二个字以后时，则为“文件补<br>[tab]在某些指令后面使用按键时，可以进行“选项/参数的补齐”功能</p>
+<p>例如： ca[Tab][Tab]</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">panan@ecs-kc1-large-2-linux-20220314145535:~$ ca </span><br><span class="line">.bash_history              .config/                   .lesshst                   .npm/                      .ssh/                      .vscode-remote-containers/ .Xauthority</span><br><span class="line">.bash_logout               .ghost/                    Linux/                     .profile                   update                     .vscode-server/            .yarn/</span><br><span class="line">.bashrc                    .gitconfig                 .<span class="built_in">local</span>/                    quit                       .viminfo                   webserver/                 </span><br><span class="line">.cache/                    .gnupg/                    .mysql_history             .rpmdb/                    .vscode/                   .wget-hsts             </span><br></pre></td></tr></table></figure>
+<p><strong>[Ctrl]+C</strong><br>中断目前程序的按键<br><strong>[Ctrl]+D</strong><br>键盘输入结束</p>
+<p><strong>[shift]+{[PageUP]|[Page Down]按键</strong><br>使用[Shift]+[Page Down]来往后翻页！</p>
+<p><strong>—help</strong><br><strong>man</strong><br>在终端机模式中，如果你知道某个指令，但却忘记了相关选项与参数，请先善用—help的功能来查询相关信息；</p>
+<p>当有任何你不知道的指令或文件格式这种玩意儿，但是你想要了解他，请赶快使用man或者info来查<br>询！</p>
+<p>而如果你想要架设一些其他的服务，或想要利用一整组软件来达成某项功能时，请赶快到/usr/share/doc下面查一查有没有该服务的说明文档</p>
+<h1 id="5-文件权限与目录配置"><a href="#5-文件权限与目录配置" class="headerlink" title="5. 文件权限与目录配置"></a>5. 文件权限与目录配置</h1>]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
       </tags>
   </entry>
   <entry>

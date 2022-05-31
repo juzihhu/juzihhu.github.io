@@ -31,8 +31,12 @@
 <meta property="og:image" content="http://example.com/2022/05/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/不同的二叉搜索树2.png">
 <meta property="og:image" content="http://example.com/2022/05/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/equation.svg">
 <meta property="og:image" content="http://example.com/2022/05/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/卡塔兰数递推公式.png">
+<meta property="og:image" content="http://example.com/2022/05/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/01背包dp初始化.png">
+<meta property="og:image" content="http://example.com/2022/05/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/01背包dp推导过程.png">
+<meta property="og:image" content="http://example.com/2022/05/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/01背包dp推导结果.png">
+<meta property="og:image" content="http://example.com/2022/05/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/01背包一维dp推导.png">
 <meta property="article:published_time" content="2022-05-10T09:10:52.000Z">
-<meta property="article:modified_time" content="2022-05-27T14:05:55.522Z">
+<meta property="article:modified_time" content="2022-05-31T16:03:00.963Z">
 <meta property="article:tag" content="动态规划">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/2022/05/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/不同的二叉搜索树1.png">
@@ -229,7 +233,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-05-27 22:05:55" itemprop="dateModified" datetime="2022-05-27T22:05:55+08:00">2022-05-27</time>
+                <time title="修改时间：2022-06-01 00:03:00" itemprop="dateModified" datetime="2022-06-01T00:03:00+08:00">2022-06-01</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -275,14 +279,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>7k</span>
+              <span>11k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>6 分钟</span>
+              <span>10 分钟</span>
             </span>
 
         </div>
@@ -304,6 +308,7 @@
 <li><a href="#不同路径">不同路径</a></li>
 <li><a href="#整数拆分">整数拆分</a></li>
 <li><a href="#不同的二叉搜索树">不同的二叉搜索树</a></li>
+<li><a href="#0-1背包理论基础">0-1背包理论基础</a></li>
 </ul>
 </li>
 </ul>
@@ -450,6 +455,92 @@
 <p>dp[i]的值为卡塔兰数<br><img src="/2022/05/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/equation.svg" alt><br><img src="/2022/05/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/卡塔兰数递推公式.png" alt></p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">numTrees</span><span class="params">(<span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="type">long</span> <span class="type">long</span> C = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">            C = C * <span class="number">2</span> * (<span class="number">2</span> * i + <span class="number">1</span>) / (i + <span class="number">2</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> (<span class="type">int</span>)C;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/97619085">卡特兰数介绍</a></p>
+<h2 id="0-1背包理论基础"><a href="#0-1背包理论基础" class="headerlink" title="0-1背包理论基础"></a>0-1背包理论基础</h2><p>有n件物品和一个最多能背重量为w 的背包。第i件物品的重量是weight[i]，得到的价值是value[i] 。<br>每件物品只能用一次，求解将哪些物品装入背包里物品价值总和最大。</p>
+<p><strong>暴力思想</strong></p>
+<p>每一件物品其实只有两个状态，取或者不取，所以可以使用回溯法搜索出所有的情况，那么时间复杂度就是$o(2^n)$，这里的n表示物品数量。</p>
+<p>重量     价值<br>物品0     1         15<br>物品1     3         20<br>物品2     4         30</p>
+<p><strong>二维dp数组01背包</strong></p>
+<p><strong>首先理解动态规划与贪心的区别在于：动态规划有状态推导</strong></p>
+<ol>
+<li><p>确定dp数组以及下标的含义<br>dp[i][j] 表示从下标为[0-i]的物品里任意取，放进容量为j的背包，价值总和最大是多少。</p>
+</li>
+<li><p>确定递推公式<br>再回顾一下dp[i][j]的含义：从下标为[0-i]的物品里任意取，放进容量为j的背包，价值总和最大是多少。</p>
+<p> 那么可以有两个方向推出来dp[i][j]:</p>
+<ul>
+<li>不放物品i：由dp[i - 1][j]推出，即背包容量为j，里面不放物品i的最大价值，此时dp[i][j]就是dp[i - 1][j]。(其实就是当物品i的重量大于背包j的重量时，物品i无法放进背包中，所以被背包内的价值依然和前面相同。)</li>
+<li><p>放物品i：由<code>dp[i - 1][j - weight[i]]</code>推出，<code>dp[i - 1][j - weight[i]]</code>为背包容量为j - weight[i]的时候不放物品i的最大价值，那么<code>dp[i - 1][j - weight[i]] + value[i]</code>（物品i的价值），就是背包放物品i得到的最大价值</p>
+<p>所以递归公式： <code>dp[i][j] = max(dp[i - 1][j], dp[i - 1][j - weight[i]] + value[i]);</code></p>
+</li>
+</ul>
+</li>
+<li><p>dp数组如何初始化<br>首先从dp[i][j]的定义出发，如果背包容量j为0的话，即dp[i][0]，无论是选取哪些物品，背包价值总和一定为0。<br>状态转移方程 dp[i][j] = max(dp[i - 1][j], dp[i - 1][j - weight[i]] + value[i]); 可以看出i 是由 i-1 推导出来，那么i为0的时候就一定要初始化<br><img src="/2022/05/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/01背包dp初始化.png" alt></p>
+</li>
+</ol>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 初始化 dp</span></span><br><span class="line">vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">dp</span>(weight.<span class="built_in">size</span>(), <span class="built_in">vector</span>&lt;<span class="type">int</span>&gt;(bagweight + <span class="number">1</span>, <span class="number">0</span>));</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> j = weight[<span class="number">0</span>]; j &lt;= bagweight; j++) &#123;</span><br><span class="line">    dp[<span class="number">0</span>][j] = value[<span class="number">0</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>确定遍历顺序<br>有两个遍历的维度：物品与背包重量</li>
+</ol>
+<p><strong>先遍历物品更好理解</strong><br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// weight数组的大小 就是物品个数</span></span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt; weight.<span class="built_in">size</span>(); i++) &#123; <span class="comment">// 遍历物品</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j &lt;= bagweight; j++) &#123; <span class="comment">// 遍历背包容量</span></span><br><span class="line">        <span class="keyword">if</span> (j &lt; weight[i]) dp[i][j] = dp[i - <span class="number">1</span>][j]; </span><br><span class="line">        <span class="keyword">else</span> dp[i][j] = <span class="built_in">max</span>(dp[i - <span class="number">1</span>][j], dp[i - <span class="number">1</span>][j - weight[i]] + value[i]);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>先遍历背包，再遍历物品，也是可以的！（注意我这里使用的二维dp数组）</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// weight数组的大小 就是物品个数</span></span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j &lt;= bagweight; j++) &#123; <span class="comment">// 遍历背包容量</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt; weight.<span class="built_in">size</span>(); i++) &#123; <span class="comment">// 遍历物品</span></span><br><span class="line">        <span class="keyword">if</span> (j &lt; weight[i]) dp[i][j] = dp[i - <span class="number">1</span>][j];</span><br><span class="line">        <span class="keyword">else</span> dp[i][j] = <span class="built_in">max</span>(dp[i - <span class="number">1</span>][j], dp[i - <span class="number">1</span>][j - weight[i]] + value[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>dp[i][j] = max(dp[i - 1][j], dp[i - 1][j - weight[i]] + value[i]);</code> 递归公式中可以看出dp[i][j]是靠dp[i-1][j]和dp[i - 1][j - weight[i]]推导出来的。</p>
+<p>dp[i-1][j]和dp[i - 1][j - weight[i]] 都在dp[i][j]的左上角方向（包括正上方向）   </p>
+<p><img src="/2022/05/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/01背包dp推导过程.png" alt></p>
+<ol>
+<li>举例推导结果</li>
+</ol>
+<p><img src="/2022/05/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/01背包dp推导结果.png" alt></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">test_2_wei_bag_problem1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; weight = &#123;<span class="number">1</span>, <span class="number">3</span>, <span class="number">4</span>&#125;;</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; value = &#123;<span class="number">15</span>, <span class="number">20</span>, <span class="number">30</span>&#125;;</span><br><span class="line">    <span class="type">int</span> bagweight = <span class="number">4</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 二维数组</span></span><br><span class="line">    vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">dp</span>(weight.<span class="built_in">size</span>(), <span class="built_in">vector</span>&lt;<span class="type">int</span>&gt;(bagweight + <span class="number">1</span>, <span class="number">0</span>));</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 初始化</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> j = weight[<span class="number">0</span>]; j &lt;= bagweight; j++) &#123;</span><br><span class="line">        dp[<span class="number">0</span>][j] = value[<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// weight数组的大小 就是物品个数</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt; weight.<span class="built_in">size</span>(); i++) &#123; <span class="comment">// 遍历物品</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j &lt;= bagweight; j++) &#123; <span class="comment">// 遍历背包容量</span></span><br><span class="line">            <span class="keyword">if</span> (j &lt; weight[i]) dp[i][j] = dp[i - <span class="number">1</span>][j];</span><br><span class="line">            <span class="keyword">else</span> dp[i][j] = <span class="built_in">max</span>(dp[i - <span class="number">1</span>][j], dp[i - <span class="number">1</span>][j - weight[i]] + value[i]);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    cout &lt;&lt; dp[weight.<span class="built_in">size</span>() - <span class="number">1</span>][bagweight] &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">test_2_wei_bag_problem1</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>难点在于如何初始化和遍历顺序上</strong></p>
+<p><strong>滚动数组实现01背包问题</strong><br>在二维的dp推导中可以发现，<code>dp[i][j] = max(dp[i - 1][j], dp[i - 1][j - weight[i]] + value[i]);</code><br>当前的推导来源于推导表格的上一行，故而可以用一维数组实现动态规划（可以先理解<strong>不同路径</strong>那题中的一维数组实现）</p>
+<p>在使用二维数组的时候，递推公式：<code>dp[i][j] = max(dp[i - 1][j], dp[i - 1][j - weight[i]] + value[i]);</code></p>
+<p>其实可以发现如果把dp[i - 1]那一层拷贝到dp[i]上，表达式完全可以是：<code>dp[i][j] = max(dp[i][j], dp[i][j - weight[i]] + value[i]);</code></p>
+<p>与其把dp[i - 1]这一层拷贝到dp[i]上，不如只用一个一维数组了，只用dp[j]（一维数组，也可以理解是一个滚动数组）。</p>
+<p>这就是滚动数组的由来，需要满足的条件是上一层可以重复利用，直接拷贝到当前层。</p>
+<ol>
+<li>确定dp数组的定义</li>
+</ol>
+<blockquote>
+<p>dp[j]表示：容量为j的背包，所背的物品价值可以最大为dp[j]。</p>
+</blockquote>
+<ol>
+<li>递推公式</li>
+</ol>
+<blockquote>
+<p>dp[j]可以通过dp[j - weight[i]]推导出来，dp[j - weight[i]]表示容量为j - weight[i]的背包所背的最大价值。</p>
+<p><code>dp[j - weight[i]] + value[i]</code>表示 容量为 j - 物品i重量 的背包 加上 物品i的价值。（也就是容量为j的背包，放入物品i了之后的价值即：dp[j]）</p>
+<p>此时dp[j]有两个选择，一个是取自己dp[j] 相当于 二维dp数组中的dp[i-1][j]，即不放物品i<br>一个是取dp[j - weight[i]] + value[i]，即放物品i，指定是取最大的，毕竟是求最大价值</p>
+<p><code>dp[j] = max(dp[j], dp[j - weight[i]] + value[i]);</code></p>
+</blockquote>
+<ol>
+<li><p>一维dp数组如何初始化<br>dp[j]表示：容量为j的背包，所背的物品价值可以最大为dp[j]，那么dp[0]就应该是0，因为背包容量为0所背的物品的最大价值就是0。</p>
+<p> 那么dp数组除了下标0的位置，初始为0，其他下标应该初始化多少呢？</p>
+<p> 看一下递归公式：dp[j] = max(dp[j], dp[j - weight[i]] + value[i]);</p>
+<p> dp数组在推导的时候一定是取价值最大的数，如果题目给的价值都是正整数那么非0下标都初始化为0就可以了。</p>
+<p> 这样才能让dp数组在递归公式的过程中取的最大的价值，而不是被初始值覆盖了。</p>
+<p> 那么我假设物品价值都是大于0的，所以dp数组初始化的时候，都初始为0就可以了。</p>
+</li>
+<li><p>一维dp数组遍历顺序</p>
+</li>
+</ol>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; weight.<span class="built_in">size</span>(); i++) &#123; <span class="comment">// 遍历物品</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> j = bagWeight; j &gt;= weight[i]; j--) &#123; <span class="comment">// 遍历背包容量</span></span><br><span class="line">        dp[j] = <span class="built_in">max</span>(dp[j], dp[j - weight[i]] + value[i]);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里大家发现和二维dp的写法中，遍历背包的顺序是不一样的！</p>
+<p>二维dp遍历的时候，背包容量是从小到大，而一维dp遍历的时候，背包是从大到小。</p>
+<p>为什么呢？</p>
+<p>倒序遍历是为了保证物品i只被放入一次！。但如果一旦正序遍历了，那么物品0就会被重复加入多次！</p>
+<p>举一个例子：物品0的重量weight[0] = 1，价值value[0] = 15</p>
+<p>如果正序遍历</p>
+<p>dp[1] = dp[1 - weight[0]] + value[0] = 15</p>
+<p>dp[2] = dp[2 - weight[0]] + value[0] = 30</p>
+<p>此时dp[2]就已经是30了，意味着物品0，被放入了两次，所以不能正序遍历。</p>
+<p>为什么倒序遍历，就可以保证物品只放入一次呢？</p>
+<p>倒序就是先算dp[2]</p>
+<p>dp[2] = dp[2 - weight[0]] + value[0] = 15 （dp数组已经都初始化为0）</p>
+<p>dp[1] = dp[1 - weight[0]] + value[0] = 15</p>
+<p>所以从后往前循环，每次取得状态不会和之前取得状态重合，这样每种物品就只取一次了。</p>
+<p>那么问题又来了，为什么二维dp数组历的时候不用倒序呢？</p>
+<p>因为对于二维dp，dp[i][j]都是通过上一层即dp[i - 1][j]计算而来，本层的dp[i][j]并不会被覆盖！</p>
+<p><img src="/2022/05/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/01背包一维dp推导.png" alt></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">test_1_wei_bag_problem</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; weight = &#123;<span class="number">1</span>, <span class="number">3</span>, <span class="number">4</span>&#125;;</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; value = &#123;<span class="number">15</span>, <span class="number">20</span>, <span class="number">30</span>&#125;;</span><br><span class="line">    <span class="type">int</span> bagWeight = <span class="number">4</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 初始化</span></span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">dp</span><span class="params">(bagWeight + <span class="number">1</span>, <span class="number">0</span>)</span></span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; weight.<span class="built_in">size</span>(); i++) &#123; <span class="comment">// 遍历物品</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j = bagWeight; j &gt;= weight[i]; j--) &#123; <span class="comment">// 遍历背包容量</span></span><br><span class="line">            dp[j] = <span class="built_in">max</span>(dp[j], dp[j - weight[i]] + value[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; dp[bagWeight] &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">test_1_wei_bag_problem</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -543,7 +634,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%8E%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">1.</span> <span class="nav-text">与贪心算法的区别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%AD%A5%E9%AA%A4"><span class="nav-number">2.</span> <span class="nav-text">解题步骤</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#LeetCode%E5%85%B8%E5%9E%8B%E9%A2%98%E7%9B%AE"><span class="nav-number">3.</span> <span class="nav-text">LeetCode典型题目</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%9C%80%E5%B0%8F%E8%8A%B1%E8%B4%B9%E7%88%AC%E6%A5%BC%E6%A2%AF"><span class="nav-number">3.1.</span> <span class="nav-text">使用最小花费爬楼梯</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8D%E5%90%8C%E8%B7%AF%E5%BE%84"><span class="nav-number">3.2.</span> <span class="nav-text">不同路径</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B4%E6%95%B0%E6%8B%86%E5%88%86"><span class="nav-number">3.3.</span> <span class="nav-text">整数拆分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8D%E5%90%8C%E7%9A%84%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91"><span class="nav-number">3.4.</span> <span class="nav-text">不同的二叉搜索树</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%8E%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">1.</span> <span class="nav-text">与贪心算法的区别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%AD%A5%E9%AA%A4"><span class="nav-number">2.</span> <span class="nav-text">解题步骤</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#LeetCode%E5%85%B8%E5%9E%8B%E9%A2%98%E7%9B%AE"><span class="nav-number">3.</span> <span class="nav-text">LeetCode典型题目</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%9C%80%E5%B0%8F%E8%8A%B1%E8%B4%B9%E7%88%AC%E6%A5%BC%E6%A2%AF"><span class="nav-number">3.1.</span> <span class="nav-text">使用最小花费爬楼梯</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8D%E5%90%8C%E8%B7%AF%E5%BE%84"><span class="nav-number">3.2.</span> <span class="nav-text">不同路径</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B4%E6%95%B0%E6%8B%86%E5%88%86"><span class="nav-number">3.3.</span> <span class="nav-text">整数拆分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8D%E5%90%8C%E7%9A%84%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91"><span class="nav-number">3.4.</span> <span class="nav-text">不同的二叉搜索树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0-1%E8%83%8C%E5%8C%85%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80"><span class="nav-number">3.5.</span> <span class="nav-text">0-1背包理论基础</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -559,7 +650,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-count">9</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -572,7 +663,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -616,13 +707,13 @@
       <i class="fa fa-area-chart"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">134k</span>
+    <span title="站点总字数">139k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">3:43</span>
+    <span title="站点阅读时长">3:52</span>
 </div>
 
 <!-- 新增访客统计代码 -->
