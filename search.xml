@@ -1,68 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>hexo搭建个人博客网站</title>
-    <url>/2022/05/18/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/</url>
-    <content><![CDATA[<p>基于hexo+github搭建个人博客网站，使用next主题</p>
-<span id="more"></span>   
-<h1 id="网站效果"><a href="#网站效果" class="headerlink" title="网站效果"></a>网站效果</h1><p><a href="https://juzihhu.github.io/">https://juzihhu.github.io/</a><br>我的整个项目文件已经可从百度网盘下载</p>
-<h1 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h1><ol>
-<li>github账号与特殊仓库<br> 创建repository 命名为{GitHub账户名.github.io}<br><img src="/2022/05/18/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/github配置.png" alt></li>
-</ol>
-<p>在浏览器输入<code>GitHub账户名.github.io</code>,出现如下结果则表示成功<br><img src="/2022/05/18/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/github404.png" alt></p>
-<ol>
-<li><p>安装Node.js<br><a href="https://nodejs.org/dist/v4.2.3/node-v4.2.3-x86.msi">https://nodejs.org/dist/v4.2.3/node-v4.2.3-x86.msi</a>   </p>
-<p><a href="https://nodejs.org/dist/v4.2.3/node-v4.2.3-x64.msi">https://nodejs.org/dist/v4.2.3/node-v4.2.3-x64.msi</a>   </p>
-</li>
-<li><p>安装git,配置git环境</p>
-<p>具体可以参考我的这篇博客<br><a href="https://juzihhu.github.io/2022/05/04/git%E4%B8%8Egithub%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0%E4%B8%8E%E4%B8%8B%E8%BD%BD/">git与github项目上传与下载</a></p>
-</li>
-<li><p>检查安装环境配置<br>打开cmd命令行(win+r 输入cmd回车)分别执行<br>node -v<br>npm -v<br>git —version</p>
-<p><img src="/2022/05/18/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/安装环境配置.png" alt></p>
-</li>
-<li><p>安装Hexo<br>打开cmd命令行(win+r 输入cmd回车)分别执行<br><code>npm install hexo-cli -g</code>   </p>
-<p>等待自动安装完成后。输入<br> <code>hexo -v</code></p>
-<p> 结果如下：<br> $ hexo -v<br> INFO  Validating config<br> hexo: 6.2.0<br> hexo-cli: 4.3.0<br> os: win32 10.0.19043<br> node: 16.15.0<br> v8: 9.4.146.24-node.20<br> uv: 1.43.0<br> zlib: 1.2.11<br> brotli: 1.0.9<br> ares: 1.18.1<br> modules: 93<br> nghttp2: 1.47.0<br> napi: 8<br> llhttp: 6.0.4<br> openssl: 1.1.1n+quic<br> cldr: 40.0<br> icu: 70.1<br> tz: 2021a3<br> unicode: 14.0<br> ngtcp2: 0.1.0-DEV<br> nghttp3: 0.1.0-DEV</p>
-</li>
-</ol>
-<h1 id="网站搭建"><a href="#网站搭建" class="headerlink" title="网站搭建"></a>网站搭建</h1><ol>
-<li><p>新建存放网站项目的文件夹<br>比如我的是新建 HexoBlog</p>
-</li>
-<li><p>右键该文件夹git blash进入<br><img src="/2022/05/18/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/博客文件夹.png" alt></p>
-</li>
-<li><p>使用如下指令</p>
-<p> <code>hexo init</code><br> 初始化hexo。这个命令和git 仓库命令相似。意思一样都是初始化。</p>
-<p> <code>npm install hexo --save</code><br> 初始化hexo基础配置文件。初始化时间比较长，不用急，等完成后输入</p>
-<p> <code>npm install</code><br> 配置node。然后输入</p>
-<p> <code>hexo g</code>（或者 <code>hexo generate</code>）<br> 加载hexo基础html、css、js等文件。</p>
-<p> 在这完成后等于已经在本地创建了一个网页，输入<br> <code>hexo s</code>(或者<code>hexo serve</code>)</p>
-<p> 在浏览器输入：<a href="http://localhost:4000">http://localhost:4000</a><br> <img src="/2022/05/18/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/hexos.jpg" alt></p>
-</li>
-</ol>
-<p><strong>至此博客的初步框架已经搭建完成</strong></p>
-<h1 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h1><ol>
-<li>打开根目录下的 _config.yml 文件,修改如下部分内容 </li>
-</ol>
-<p>在部署之前，我们需要先知道博客的部署地址，它需要对应 GitHub 的一个 Repository 的地址，这个信息需要我们来配置一下。 </p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"># <span class="title class_">Deployment</span></span><br><span class="line">## <span class="title class_">Docs</span>: <span class="attr">https</span>:<span class="comment">//hexo.io/docs/one-command-deployment</span></span><br><span class="line"><span class="attr">deploy</span>:</span><br><span class="line">  <span class="attr">type</span>: git</span><br><span class="line">  <span class="attr">repo</span>: git@github.<span class="property">com</span>:juzihhu/juzihhu.<span class="property">github</span>.<span class="property">io</span>.<span class="property">git</span></span><br><span class="line">  <span class="attr">branch</span>: main</span><br></pre></td></tr></table></figure>
-<p>另外我们还需要额外安装一个支持 Git 的部署插件，名字叫做 hexo-deployer-git，有了它我们才可以顺利将其部署到 GitHub 上面，如果不安装的话，在执行部署命令时会报如下错误：</p>
-<p><code>npm install hexo-deployer-git --save</code><br>安装成功之后，执行部署命令：<br><code>hexo deploy</code></p>
-<ol>
-<li><p>访问<br>浏览器输入博客网站域名<br>这里我的是 <a href="https://juzihhu.github.io/">https://juzihhu.github.io/</a></p>
-<p><img src="/2022/05/18/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/hexo博客初步.jpg" alt></p>
-</li>
-</ol>
-<p>至此博客网站已经初步搭建成功了</p>
-<h1 id="网站信息配置以及主题配置"><a href="#网站信息配置以及主题配置" class="headerlink" title="网站信息配置以及主题配置"></a>网站信息配置以及主题配置</h1><p>更新中…..</p>
-]]></content>
-      <categories>
-        <category>操作教程</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>git与github项目上传与下载</title>
     <url>/2022/05/04/git%E4%B8%8Egithub%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0%E4%B8%8E%E4%B8%8B%E8%BD%BD/</url>
     <content><![CDATA[<p>介绍git的简单使用<br><span id="more"></span>        </p>
@@ -128,6 +66,68 @@
       </categories>
       <tags>
         <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>hexo搭建个人博客网站</title>
+    <url>/2022/05/18/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/</url>
+    <content><![CDATA[<p>基于hexo+github搭建个人博客网站，使用next主题</p>
+<span id="more"></span>   
+<h1 id="网站效果"><a href="#网站效果" class="headerlink" title="网站效果"></a>网站效果</h1><p><a href="https://juzihhu.github.io/">https://juzihhu.github.io/</a><br>我的整个项目文件已经可从百度网盘下载</p>
+<h1 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h1><ol>
+<li>github账号与特殊仓库<br> 创建repository 命名为{GitHub账户名.github.io}<br><img src="/2022/05/18/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/github配置.png" alt></li>
+</ol>
+<p>在浏览器输入<code>GitHub账户名.github.io</code>,出现如下结果则表示成功<br><img src="/2022/05/18/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/github404.png" alt></p>
+<ol>
+<li><p>安装Node.js<br><a href="https://nodejs.org/dist/v4.2.3/node-v4.2.3-x86.msi">https://nodejs.org/dist/v4.2.3/node-v4.2.3-x86.msi</a>   </p>
+<p><a href="https://nodejs.org/dist/v4.2.3/node-v4.2.3-x64.msi">https://nodejs.org/dist/v4.2.3/node-v4.2.3-x64.msi</a>   </p>
+</li>
+<li><p>安装git,配置git环境</p>
+<p>具体可以参考我的这篇博客<br><a href="https://juzihhu.github.io/2022/05/04/git%E4%B8%8Egithub%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0%E4%B8%8E%E4%B8%8B%E8%BD%BD/">git与github项目上传与下载</a></p>
+</li>
+<li><p>检查安装环境配置<br>打开cmd命令行(win+r 输入cmd回车)分别执行<br>node -v<br>npm -v<br>git —version</p>
+<p><img src="/2022/05/18/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/安装环境配置.png" alt></p>
+</li>
+<li><p>安装Hexo<br>打开cmd命令行(win+r 输入cmd回车)分别执行<br><code>npm install hexo-cli -g</code>   </p>
+<p>等待自动安装完成后。输入<br> <code>hexo -v</code></p>
+<p> 结果如下：<br> $ hexo -v<br> INFO  Validating config<br> hexo: 6.2.0<br> hexo-cli: 4.3.0<br> os: win32 10.0.19043<br> node: 16.15.0<br> v8: 9.4.146.24-node.20<br> uv: 1.43.0<br> zlib: 1.2.11<br> brotli: 1.0.9<br> ares: 1.18.1<br> modules: 93<br> nghttp2: 1.47.0<br> napi: 8<br> llhttp: 6.0.4<br> openssl: 1.1.1n+quic<br> cldr: 40.0<br> icu: 70.1<br> tz: 2021a3<br> unicode: 14.0<br> ngtcp2: 0.1.0-DEV<br> nghttp3: 0.1.0-DEV</p>
+</li>
+</ol>
+<h1 id="网站搭建"><a href="#网站搭建" class="headerlink" title="网站搭建"></a>网站搭建</h1><ol>
+<li><p>新建存放网站项目的文件夹<br>比如我的是新建 HexoBlog</p>
+</li>
+<li><p>右键该文件夹git blash进入<br><img src="/2022/05/18/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/博客文件夹.png" alt></p>
+</li>
+<li><p>使用如下指令</p>
+<p> <code>hexo init</code><br> 初始化hexo。这个命令和git 仓库命令相似。意思一样都是初始化。</p>
+<p> <code>npm install hexo --save</code><br> 初始化hexo基础配置文件。初始化时间比较长，不用急，等完成后输入</p>
+<p> <code>npm install</code><br> 配置node。然后输入</p>
+<p> <code>hexo g</code>（或者 <code>hexo generate</code>）<br> 加载hexo基础html、css、js等文件。</p>
+<p> 在这完成后等于已经在本地创建了一个网页，输入<br> <code>hexo s</code>(或者<code>hexo serve</code>)</p>
+<p> 在浏览器输入：<a href="http://localhost:4000">http://localhost:4000</a><br> <img src="/2022/05/18/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/hexos.jpg" alt></p>
+</li>
+</ol>
+<p><strong>至此博客的初步框架已经搭建完成</strong></p>
+<h1 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h1><ol>
+<li>打开根目录下的 _config.yml 文件,修改如下部分内容 </li>
+</ol>
+<p>在部署之前，我们需要先知道博客的部署地址，它需要对应 GitHub 的一个 Repository 的地址，这个信息需要我们来配置一下。 </p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"># <span class="title class_">Deployment</span></span><br><span class="line">## <span class="title class_">Docs</span>: <span class="attr">https</span>:<span class="comment">//hexo.io/docs/one-command-deployment</span></span><br><span class="line"><span class="attr">deploy</span>:</span><br><span class="line">  <span class="attr">type</span>: git</span><br><span class="line">  <span class="attr">repo</span>: git@github.<span class="property">com</span>:juzihhu/juzihhu.<span class="property">github</span>.<span class="property">io</span>.<span class="property">git</span></span><br><span class="line">  <span class="attr">branch</span>: main</span><br></pre></td></tr></table></figure>
+<p>另外我们还需要额外安装一个支持 Git 的部署插件，名字叫做 hexo-deployer-git，有了它我们才可以顺利将其部署到 GitHub 上面，如果不安装的话，在执行部署命令时会报如下错误：</p>
+<p><code>npm install hexo-deployer-git --save</code><br>安装成功之后，执行部署命令：<br><code>hexo deploy</code></p>
+<ol>
+<li><p>访问<br>浏览器输入博客网站域名<br>这里我的是 <a href="https://juzihhu.github.io/">https://juzihhu.github.io/</a></p>
+<p><img src="/2022/05/18/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/hexo博客初步.jpg" alt></p>
+</li>
+</ol>
+<p>至此博客网站已经初步搭建成功了</p>
+<h1 id="网站信息配置以及主题配置"><a href="#网站信息配置以及主题配置" class="headerlink" title="网站信息配置以及主题配置"></a>网站信息配置以及主题配置</h1><p>更新中…..</p>
+]]></content>
+      <categories>
+        <category>操作教程</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
       </tags>
   </entry>
   <entry>
@@ -306,6 +306,8 @@
 <li><a href="#整数拆分">整数拆分</a></li>
 <li><a href="#不同的二叉搜索树">不同的二叉搜索树</a></li>
 <li><a href="#0-1背包理论基础">0-1背包理论基础</a></li>
+<li><a href="#分割等和子集">分割等和子集</a></li>
+<li><a href="#目标和">目标和</a></li>
 </ul>
 </li>
 </ul>
@@ -538,6 +540,44 @@
 <p>因为对于二维dp，dp[i][j]都是通过上一层即dp[i - 1][j]计算而来，本层的dp[i][j]并不会被覆盖！</p>
 <p><img src="/2022/05/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/01背包一维dp推导.png" alt></p>
 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">test_1_wei_bag_problem</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; weight = &#123;<span class="number">1</span>, <span class="number">3</span>, <span class="number">4</span>&#125;;</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; value = &#123;<span class="number">15</span>, <span class="number">20</span>, <span class="number">30</span>&#125;;</span><br><span class="line">    <span class="type">int</span> bagWeight = <span class="number">4</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 初始化</span></span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">dp</span><span class="params">(bagWeight + <span class="number">1</span>, <span class="number">0</span>)</span></span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; weight.<span class="built_in">size</span>(); i++) &#123; <span class="comment">// 遍历物品</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j = bagWeight; j &gt;= weight[i]; j--) &#123; <span class="comment">// 遍历背包容量</span></span><br><span class="line">            dp[j] = <span class="built_in">max</span>(dp[j], dp[j - weight[i]] + value[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; dp[bagWeight] &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">test_1_wei_bag_problem</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="分割等和子集"><a href="#分割等和子集" class="headerlink" title="分割等和子集"></a>分割等和子集</h2><p><a href="https://leetcode-cn.com/problems/partition-equal-subset-sum/">416. 分割等和子集</a></p>
+<p>给定一个只包含正整数的非空数组。是否可以将这个数组分割成两个子集，使得两个子集的元素和相等。</p>
+<p>注意: 每个数组中的元素不会超过 100 数组的大小不会超过 200</p>
+<p>示例 1: 输入: [1, 5, 11, 5] 输出: true 解释: 数组可以分割成 [1, 5, 5] 和 [11].</p>
+<p>示例 2: 输入: [1, 2, 3, 5] 输出: false 解释: 数组不能分割成两个元素和相等的子集.</p>
+<p><strong>思路：</strong></p>
+<ol>
+<li>回溯求相应的子集是否存在</li>
+<li>01背包的角度解决问题</li>
+</ol>
+<p>确定dp数组以及下标的含义</p>
+<blockquote>
+<p>01背包中，dp[j] 表示： 容量为j的背包，所背的物品价值可以最大为dp[j]。<br>套到本题，dp[j]表示 背包总容量是j，最大可以凑成j的子集总和为dp[j]。</p>
+</blockquote>
+<p>确定递推公式</p>
+<blockquote>
+<p><code>dp[j] = max(dp[j], dp[j - nums[i]] + nums[i]);</code></p>
+</blockquote>
+<p>dp数组如何初始化</p>
+<blockquote>
+<p>// 题目中说：每个数组中的元素不会超过 100，数组的大小不会超过 200<br>// 总和不会大于20000，背包最大只需要其中一半，所以10001大小就可以了<br><code>vector&lt;int&gt; dp(10001, 0);</code></p>
+</blockquote>
+<p>确定遍历顺序</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 开始 01背包</span></span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; nums.<span class="built_in">size</span>(); i++) &#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> j = target; j &gt;= nums[i]; j--) &#123; <span class="comment">// 每一个元素一定是不可重复放入，所以从大到小遍历</span></span><br><span class="line">        dp[j] = <span class="built_in">max</span>(dp[j], dp[j - nums[i]] + nums[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> 举例推导dp数组</p>
+ <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">canPartition</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> sum = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// dp[i]中的i表示背包内总和</span></span><br><span class="line">        <span class="comment">// 题目中说：每个数组中的元素不会超过 100，数组的大小不会超过 200</span></span><br><span class="line">        <span class="comment">// 总和不会大于20000，背包最大只需要其中一半，所以10001大小就可以了</span></span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">dp</span><span class="params">(<span class="number">10001</span>, <span class="number">0</span>)</span></span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; nums.<span class="built_in">size</span>(); i++) &#123;</span><br><span class="line">            sum += nums[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (sum % <span class="number">2</span> == <span class="number">1</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="type">int</span> target = sum / <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 开始 01背包</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; nums.<span class="built_in">size</span>(); i++) &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j = target; j &gt;= nums[i]; j--) &#123; <span class="comment">// 每一个元素一定是不可重复放入，所以从大到小遍历</span></span><br><span class="line">                dp[j] = <span class="built_in">max</span>(dp[j], dp[j - nums[i]] + nums[i]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 集合中的元素正好可以凑成总和target</span></span><br><span class="line">        <span class="keyword">if</span> (dp[target] == target) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="目标和"><a href="#目标和" class="headerlink" title="目标和"></a>目标和</h2><p><a href="https://leetcode-cn.com/problems/target-sum/">494. 目标和</a><br> 给定一个非负整数数组，a1, a2, …, an, 和一个目标数，S。现在你有两个符号 + 和 -。对于数组中的任意一个整数，你都可以从 + 或 -中选择一个符号添加在前面。</p>
+<p>返回可以使最终数组和为目标数 S 的所有添加符号的方法数。</p>
+<p>示例：</p>
+<p>输入：nums: [1, 1, 1, 1, 1], S: 3<br>输出：5</p>
+<p>解释：<br>-1+1+1+1+1 = 3<br>+1-1+1+1+1 = 3<br>+1+1-1+1+1 = 3<br>+1+1+1-1+1 = 3<br>+1+1+1+1-1 = 3</p>
+<p>一共有5种方法让最终目标和为3。</p>
+<p><strong>思路</strong><br>本题要如何使表达式结果为target，</p>
+<p>既然为target，那么就一定有 left组合 - right组合 = target。</p>
+<p>left + right等于sum，而sum是固定的。</p>
+<p>公式来了， left - (sum - left) = target -&gt; left = (target + sum)/2 。</p>
+<p>target是固定的，sum是固定的，left就可以求出来。</p>
+<p><strong>从而可以转化为01背包问题</strong><br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">findTargetSumWays</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> S)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; nums.<span class="built_in">size</span>(); i++) sum += nums[i];</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">abs</span>(S) &gt; sum) <span class="keyword">return</span> <span class="number">0</span>; <span class="comment">// 此时没有方案</span></span><br><span class="line">        <span class="keyword">if</span> ((S + sum) % <span class="number">2</span> == <span class="number">1</span>) <span class="keyword">return</span> <span class="number">0</span>; <span class="comment">// 此时没有方案</span></span><br><span class="line">        <span class="type">int</span> bagSize = (S + sum) / <span class="number">2</span>;</span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">dp</span><span class="params">(bagSize + <span class="number">1</span>, <span class="number">0</span>)</span></span>;</span><br><span class="line">        dp[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; nums.<span class="built_in">size</span>(); i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> j = bagSize; j &gt;= nums[i]; j--) &#123;</span><br><span class="line">                dp[j] += dp[j - nums[i]];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[bagSize];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
 ]]></content>
       <categories>
         <category>学习笔记</category>
@@ -781,30 +821,6 @@
       </tags>
   </entry>
   <entry>
-    <title>鸟哥的Linux私房菜笔记</title>
-    <url>/2022/05/28/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<p>记录《鸟哥的Linux私房菜》简要笔记<br><span id="more"></span>   </p>
-<h1 id="0-计算器概论"><a href="#0-计算器概论" class="headerlink" title="0. 计算器概论"></a>0. 计算器概论</h1><h1 id="1-Linux是什么与如何学习"><a href="#1-Linux是什么与如何学习" class="headerlink" title="1. Linux是什么与如何学习"></a>1. Linux是什么与如何学习</h1><h1 id="2-主机规划与磁盘分区"><a href="#2-主机规划与磁盘分区" class="headerlink" title="2. 主机规划与磁盘分区"></a>2. 主机规划与磁盘分区</h1><h1 id="3-安装CentOS7-x"><a href="#3-安装CentOS7-x" class="headerlink" title="3. 安装CentOS7.x"></a>3. 安装CentOS7.x</h1><h1 id="4-首次登录与在线求助"><a href="#4-首次登录与在线求助" class="headerlink" title="4. 首次登录与在线求助"></a>4. 首次登录与在线求助</h1><h2 id="4-2-文本模式下指令的下达"><a href="#4-2-文本模式下指令的下达" class="headerlink" title="4.2 文本模式下指令的下达"></a>4.2 文本模式下指令的下达</h2><p>1.指令格式：command options parameters<br>2.基础指令操作：<br>    date  (<code>date +%Y/%m/%d</code>)<br>    cal<br>    bc 计算机  quit退出</p>
-<ol>
-<li>几个简单热键</li>
-</ol>
-<p><strong>Tab</strong><br>[Tab]接在一串指令的第一个字的后面，则为“命令补<br>[Tab]接在一串指令的第二个字以后时，则为“文件补<br>[tab]在某些指令后面使用按键时，可以进行“选项/参数的补齐”功能</p>
-<p>例如： ca[Tab][Tab]</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">panan@ecs-kc1-large-2-linux-20220314145535:~$ ca </span><br><span class="line">.bash_history              .config/                   .lesshst                   .npm/                      .ssh/                      .vscode-remote-containers/ .Xauthority</span><br><span class="line">.bash_logout               .ghost/                    Linux/                     .profile                   update                     .vscode-server/            .yarn/</span><br><span class="line">.bashrc                    .gitconfig                 .<span class="built_in">local</span>/                    quit                       .viminfo                   webserver/                 </span><br><span class="line">.cache/                    .gnupg/                    .mysql_history             .rpmdb/                    .vscode/                   .wget-hsts             </span><br></pre></td></tr></table></figure>
-<p><strong>[Ctrl]+C</strong><br>中断目前程序的按键<br><strong>[Ctrl]+D</strong><br>键盘输入结束</p>
-<p><strong>[shift]+{[PageUP]|[Page Down]按键</strong><br>使用[Shift]+[Page Down]来往后翻页！</p>
-<p><strong>—help</strong><br><strong>man</strong><br>在终端机模式中，如果你知道某个指令，但却忘记了相关选项与参数，请先善用—help的功能来查询相关信息；</p>
-<p>当有任何你不知道的指令或文件格式这种玩意儿，但是你想要了解他，请赶快使用man或者info来查<br>询！</p>
-<p>而如果你想要架设一些其他的服务，或想要利用一整组软件来达成某项功能时，请赶快到/usr/share/doc下面查一查有没有该服务的说明文档</p>
-<h1 id="5-文件权限与目录配置"><a href="#5-文件权限与目录配置" class="headerlink" title="5. 文件权限与目录配置"></a>5. 文件权限与目录配置</h1>]]></content>
-      <categories>
-        <category>学习笔记</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>贪心</title>
     <url>/2022/05/04/%E8%B4%AA%E5%BF%83/</url>
     <content><![CDATA[<p>介绍贪心算法思想以及常用的案例</p>
@@ -1010,6 +1026,30 @@ dp[i][1] = max(dp[i][1], dp[j][0] + 1)，其中0 &lt; j &lt; i且nums[j] &gt; nu
       </categories>
       <tags>
         <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>鸟哥的Linux私房菜笔记</title>
+    <url>/2022/05/28/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<p>记录《鸟哥的Linux私房菜》简要笔记<br><span id="more"></span>   </p>
+<h1 id="0-计算器概论"><a href="#0-计算器概论" class="headerlink" title="0. 计算器概论"></a>0. 计算器概论</h1><h1 id="1-Linux是什么与如何学习"><a href="#1-Linux是什么与如何学习" class="headerlink" title="1. Linux是什么与如何学习"></a>1. Linux是什么与如何学习</h1><h1 id="2-主机规划与磁盘分区"><a href="#2-主机规划与磁盘分区" class="headerlink" title="2. 主机规划与磁盘分区"></a>2. 主机规划与磁盘分区</h1><h1 id="3-安装CentOS7-x"><a href="#3-安装CentOS7-x" class="headerlink" title="3. 安装CentOS7.x"></a>3. 安装CentOS7.x</h1><h1 id="4-首次登录与在线求助"><a href="#4-首次登录与在线求助" class="headerlink" title="4. 首次登录与在线求助"></a>4. 首次登录与在线求助</h1><h2 id="4-2-文本模式下指令的下达"><a href="#4-2-文本模式下指令的下达" class="headerlink" title="4.2 文本模式下指令的下达"></a>4.2 文本模式下指令的下达</h2><p>1.指令格式：command options parameters<br>2.基础指令操作：<br>    date  (<code>date +%Y/%m/%d</code>)<br>    cal<br>    bc 计算机  quit退出</p>
+<ol>
+<li>几个简单热键</li>
+</ol>
+<p><strong>Tab</strong><br>[Tab]接在一串指令的第一个字的后面，则为“命令补<br>[Tab]接在一串指令的第二个字以后时，则为“文件补<br>[tab]在某些指令后面使用按键时，可以进行“选项/参数的补齐”功能</p>
+<p>例如： ca[Tab][Tab]</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">panan@ecs-kc1-large-2-linux-20220314145535:~$ ca </span><br><span class="line">.bash_history              .config/                   .lesshst                   .npm/                      .ssh/                      .vscode-remote-containers/ .Xauthority</span><br><span class="line">.bash_logout               .ghost/                    Linux/                     .profile                   update                     .vscode-server/            .yarn/</span><br><span class="line">.bashrc                    .gitconfig                 .<span class="built_in">local</span>/                    quit                       .viminfo                   webserver/                 </span><br><span class="line">.cache/                    .gnupg/                    .mysql_history             .rpmdb/                    .vscode/                   .wget-hsts             </span><br></pre></td></tr></table></figure>
+<p><strong>[Ctrl]+C</strong><br>中断目前程序的按键<br><strong>[Ctrl]+D</strong><br>键盘输入结束</p>
+<p><strong>[shift]+{[PageUP]|[Page Down]按键</strong><br>使用[Shift]+[Page Down]来往后翻页！</p>
+<p><strong>—help</strong><br><strong>man</strong><br>在终端机模式中，如果你知道某个指令，但却忘记了相关选项与参数，请先善用—help的功能来查询相关信息；</p>
+<p>当有任何你不知道的指令或文件格式这种玩意儿，但是你想要了解他，请赶快使用man或者info来查<br>询！</p>
+<p>而如果你想要架设一些其他的服务，或想要利用一整组软件来达成某项功能时，请赶快到/usr/share/doc下面查一查有没有该服务的说明文档</p>
+<h1 id="5-文件权限与目录配置"><a href="#5-文件权限与目录配置" class="headerlink" title="5. 文件权限与目录配置"></a>5. 文件权限与目录配置</h1>]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
       </tags>
   </entry>
   <entry>
