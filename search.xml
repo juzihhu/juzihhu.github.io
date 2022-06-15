@@ -1,6 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>git与github项目上传与下载</title>
+    <url>/2022/05/04/git%E4%B8%8Egithub%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0%E4%B8%8E%E4%B8%8B%E8%BD%BD/</url>
+    <content><![CDATA[<p>介绍git的简单使用<br><span id="more"></span>        </p>
+<h1 id="git与github项目上传与下载"><a href="#git与github项目上传与下载" class="headerlink" title="git与github项目上传与下载"></a>git与github项目上传与下载</h1><ul>
+<li><a href="#git与github项目上传与下载">git与github项目上传与下载</a><ul>
+<li><a href="#基础配置">基础配置</a></li>
+<li><a href="#从github上下载项目到本地仓库">从GitHub上下载项目到本地仓库</a></li>
+<li><a href="#从本地git上传项目到github">从本地git上传项目到github</a></li>
+<li><a href="#删除github上的文件">删除GitHub上的文件</a></li>
+<li><a href="#注意事项">注意事项</a></li>
+<li><a href="#常用git命令">常用git命令</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="基础配置"><a href="#基础配置" class="headerlink" title="基础配置"></a>基础配置</h2><ul>
+<li>github账号</li>
+<li>管理本地仓库的 git<ul>
+<li>windows平台下<a href="https://zhuanlan.zhihu.com/p/242540359">git安装</a></li>
+<li>linux平台下（Ubuntu系统为例）apt-get install git<br>查看git版本 git —version</li>
+</ul>
+</li>
+<li><p>配置ssh:本地Git仓库和Github仓库之间的传输是通过SSH加密的</p>
+<ol>
+<li>找到本机的公钥：<br> windows:位于C:\Users\86159.ssh下的id_rsa.pub文件<br> linux:/home/panan/.ssh<br> 如果没有则通过控制命令台生成<br> ssh-keygen -t rsa -C “注册github时用的邮箱” 默认回车即可</li>
+<li>在GitHub上输入id_rsa.pub文件的内容<br><img src="/2022/05/04/git%E4%B8%8Egithub%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0%E4%B8%8E%E4%B8%8B%E8%BD%BD/ssh_key.jpg" alt="ssh"><br>在settings中  点击New SSH key    </li>
+</ol>
+</li>
+<li><p>GitHub选项介绍<br>  Repository name: 仓库名称（输入名字，最好不要使用中文）<br>  Description(可选): 仓库描述介绍<br>  Public, Private : 仓库权限（公开共享，私有或指定合作者）<br>  Initialize this repository with a README: 添加一个README.md</p>
+</li>
+</ul>
+<h2 id="从GitHub上下载项目到本地仓库"><a href="#从GitHub上下载项目到本地仓库" class="headerlink" title="从GitHub上下载项目到本地仓库"></a>从GitHub上下载项目到本地仓库</h2><ol>
+<li>选择项目下载的文件夹 在git终端中进入该目录<br><img src="/2022/05/04/git%E4%B8%8Egithub%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0%E4%B8%8E%E4%B8%8B%E8%BD%BD/02.jpg" alt="ssh"></li>
+<li>git clone （项目链接）<a href="https://github.com/JuZiHHU/Note.git">https://github.com/JuZiHHU/Note.git</a><br><img src="/2022/05/04/git%E4%B8%8Egithub%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0%E4%B8%8E%E4%B8%8B%E8%BD%BD/03.jpg" alt="ssh"><br><img src="/2022/05/04/git%E4%B8%8Egithub%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0%E4%B8%8E%E4%B8%8B%E8%BD%BD/04.jpg" alt="ssh"><br>然后在该文件夹下就可以看到下载的项目</li>
+<li>linux平台下在终端直接执行相应命令即可</li>
+</ol>
+<h2 id="从本地git上传项目到github"><a href="#从本地git上传项目到github" class="headerlink" title="从本地git上传项目到github"></a>从本地git上传项目到github</h2><ol>
+<li>创建本地项目文件 右键 git bash here进入该目录<br>输入git init创建git仓库</li>
+<li>在github上创建仓库</li>
+<li>本地仓库与远程仓库关联</li>
+<li>推送远程</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">git init</span><br><span class="line">git add README.md <span class="comment">//git add (将文件添加到本地仓库，git add  * 是添加全部文件)</span></span><br><span class="line">git commit -m <span class="string">&quot;first commit&quot;</span>  提交到本地缓冲 <span class="string">&quot;&quot;</span> 中为注释</span><br><span class="line"><span class="comment">//将本地仓库和远程仓库进行关联</span></span><br><span class="line"><span class="comment">//也可以</span></span><br><span class="line">git remote add origin https:<span class="comment">//github.com/hongduhong/test.git</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">推送到远程 </span></span><br><span class="line"><span class="comment">git push -u origin master</span></span><br><span class="line"><span class="comment">新建的远程仓库是空的，所以要加上-u这个参数，等远程仓库里面有了内容之后，</span></span><br><span class="line"><span class="comment">下次再从本地库上传内容的时候只需下面这样就可以了</span></span><br><span class="line"><span class="comment">*/</span> </span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
+<h2 id="删除GitHub上的文件"><a href="#删除GitHub上的文件" class="headerlink" title="删除GitHub上的文件"></a>删除GitHub上的文件</h2><ol>
+<li><p>取消暂存文件/目录 使用git rm -r —cached 命令标记文件以进行取消暂存：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">$ git rm -r --cached backup/</span><br><span class="line"></span><br><span class="line">rm <span class="string">&#x27;backup/backup.sh&#x27;</span></span><br><span class="line"></span><br><span class="line">rm <span class="string">&#x27;backup/rsync_exclude.lst&#x27;</span></span><br><span class="line"></span><br><span class="line">将buckup/替换为你的目录或文件。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>进行新的提交 将新的提交对象/更改保存到本地Git存储库：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">$ git commit -m <span class="string">&#x27;Remove newly ignored directory &quot;./backup&quot;&#x27;</span></span><br><span class="line"></span><br><span class="line">master d631061] Remove newly ignored directory <span class="string">&quot;./backup&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="number">2</span> files changed, <span class="number">14</span> <span class="built_in">deletions</span>(-)</span><br><span class="line"></span><br><span class="line"><span class="keyword">delete</span> mode <span class="number">100644</span> backup/backup.sh</span><br><span class="line"></span><br><span class="line"><span class="keyword">delete</span> mode <span class="number">100644</span> backup/rsync_exclude.lst</span><br></pre></td></tr></table></figure></li>
+<li>将更改推送到远程git存储库 上一个命令将更改保存到本地git存储库，使用以下命令将它们推送到远程存储库：<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">$ git push origin master</span><br></pre></td></tr></table></figure>
+<a href="https://blog.csdn.net/weixin_42136791/article/details/116651886">参考博客: linux删除远程目录,从远程存储库中删除.gitignore中的git文件/目录</a></li>
+</ol>
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><ol>
+<li>在docs命令窗口看到下边的提示：<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">$git config --global user.name <span class="string">&quot;Jhon&quot;</span> </span><br><span class="line"></span><br><span class="line">$git config --global user.email Jhon@example.com<span class="string">&quot;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">解决方案：</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">按照上面的提示，输入</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&gt;git config --global user.name &quot;</span>这里是你github的用户名<span class="string">&quot; </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&gt;git config --global user.email 这里是你注册github的邮箱</span></span><br></pre></td></tr></table></figure></li>
+<li><p>提交到远程仓库的时候，提示：<em>fatal ：remote origin already exists</em><br>解决方案：删除远程仓库；输入命令：<em>git remote rm origin</em></p>
+</li>
+<li><p>昨天还可以git push代码到远程仓库，今天git push时报了这个错：<br><em>fatal: unable to access ‘<a href="https://github.com/">https://github.com/</a>…….’: OpenSSL SSL_read: Connection was reset, errno 10054</em></p>
+</li>
+</ol>
+<h2 id="常用git命令"><a href="#常用git命令" class="headerlink" title="常用git命令"></a>常用git命令</h2><p><a href="https://www.runoob.com/git/git-basic-operations.html">git操作</a><br><a href="https://www.cnblogs.com/du-hong/p/9921214.html">参考博客：Git的使用—如何将本地项目上传到Github</a></p>
+]]></content>
+      <categories>
+        <category>操作教程</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>hexo搭建个人博客网站</title>
     <url>/2022/05/18/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/</url>
     <content><![CDATA[<p>基于hexo+github搭建个人博客网站，使用next主题</p>
@@ -60,6 +128,168 @@
       </categories>
       <tags>
         <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>随笔</title>
+    <url>/2022/05/04/note/</url>
+    <content><![CDATA[<p>记录一些暂时未分类的笔记</p>
+<span id="more"></span>              
+<h1 id="Temp-Note"><a href="#Temp-Note" class="headerlink" title="Temp Note"></a>Temp Note</h1><ul>
+<li><a href="#temp-note">Temp Note</a><ul>
+<li><a href="#argcargv的具体含义">argc、argv的具体含义</a></li>
+<li><a href="#前缀表达式与后缀表达式问题">前缀表达式与后缀表达式问题</a></li>
+<li><a href="#c模板类的声明与实现的分离编译问题">c++模板类的声明与实现的分离编译问题</a></li>
+<li><a href="#typedef的用法">typedef的用法</a></li>
+<li><a href="#算法的时间复杂度问题">算法的时间复杂度问题</a><ul>
+<li><a href="#计算算法的时间复杂度">计算算法的时间复杂度</a></li>
+<li><a href="#递归算法的时间复杂度分析">递归算法的时间复杂度分析</a></li>
+<li><a href="#算法的空间复杂度">算法的空间复杂度</a></li>
+</ul>
+</li>
+<li><a href="#快速幂算法">快速幂算法</a></li>
+<li><a href="#递归算法空间复杂度分析">递归算法空间复杂度分析</a></li>
+<li><a href="#c内存管理">c++内存管理</a></li>
+<li><a href="#sizeof与strlen以及字节对齐问题">sizeof()与strlen()以及字节对齐问题</a></li>
+<li><a href="#strlen与sizeof">strlen()与sizeof()</a></li>
+<li><a href="#有关iossync_with_stdiofalse和-cintienullptr的介绍与意">有关ios::sync_with_stdio(false)；和 cin.tie(nullptr)；的介绍与意</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="argc、argv的具体含义"><a href="#argc、argv的具体含义" class="headerlink" title="argc、argv的具体含义"></a>argc、argv的具体含义</h2><blockquote>
+<p>argc和argv参数在用命令行编译程序时有用。main( int argc, char<em> argv[], char *</em>env ) 中 </p>
+<ul>
+<li>第一个参数，int型的argc，为整型，用来统计程序运行时发送给main函数的命令行参数的个数，在VS中默认值为1。 </li>
+<li>第二个参数，char*型的argv[]，为字符串数组，用来存放指向的字符串参数的指针数组，每一个元素指向一个参数。各成员含义如下：<br>argv[0]指向程序运行的全路径名<br>argv[1]指向在DOS命令行中执行程序名后的第一个字符串<br>argv[2]指向执行程序名后的第二个字符串<br>argv[3]指向执行程序名后的第三个字符串<br>argv[argc]为NULL </li>
+</ul>
+</blockquote>
+<ul>
+<li>第三个参数，char**型的env，为字符串数组。env[]的每一个元素都包含ENVVAR=value形式的字符串，其中ENVVAR为环境变量，value为其对应的值。平时使用到的比较少。</li>
+</ul>
+<h2 id="前缀表达式与后缀表达式问题"><a href="#前缀表达式与后缀表达式问题" class="headerlink" title="前缀表达式与后缀表达式问题"></a>前缀表达式与后缀表达式问题</h2><p><img src="/2022/05/04/note/前缀表达式与后缀表达式问题.png" alt><br><img src="/2022/05/04/note/前缀表达式与后缀表达式转换.png" alt></p>
+<p><a href="https://www.cnblogs.com/tech-bird/p/3971555.html">基于栈实现简单表达式的计算</a></p>
+<h2 id="c-模板类的声明与实现的分离编译问题"><a href="#c-模板类的声明与实现的分离编译问题" class="headerlink" title="c++模板类的声明与实现的分离编译问题"></a>c++模板类的声明与实现的分离编译问题</h2><blockquote>
+<p>模板不支持分离编译, 把你模板类的声明和实现放到.h文件里面<br>C++中每一个对象所占用的空间大小，是在编译的时候就确定的，在模板类没有真正的被使用之前，编译器是无法知道，模板类中使用模板类型的对象的所占用的空间的大小的。<br>只有模板被真正使用的时候，编译器才知道，模板套用的是什么类型，应该分配多少空间。<br>在分离式编译的环境下，编译器编译某一个.cpp文件时并不知道另一个.cpp文件的存在，也不会去查找（当遇到未决符号时它会寄希望于连接器）。<br>这种模式在没有模板的情况下运行良好，但遇到模板时就傻眼了，因为模板仅在需要的时候才会实例化出来，所以，当编译器只看到模板的声明时，它不能实例化该模板，只能创建一个具有外部连接的符号并期待连接器能够将符号的地址决议出来。<br>然而当实现该模板的.cpp文件中没有用到模板的实例时，编译器懒得去实例化，所以，整个工程的.obj中就找不到一行模板实例的二进制代码，于是连接器也黔驴技穷了。</p>
+</blockquote>
+<p><a href="https://blog.csdn.net/weixin_40539125/article/details/83375452">https://blog.csdn.net/weixin_40539125/article/details/83375452</a></p>
+<p><a href="https://www.cnblogs.com/qlwy/archive/2012/03/21/2410045.html">https://www.cnblogs.com/qlwy/archive/2012/03/21/2410045.html</a></p>
+<h2 id="typedef的用法"><a href="#typedef的用法" class="headerlink" title="typedef的用法"></a>typedef的用法</h2><ul>
+<li><p>定义一种类型的别名，而不只是简单的宏替换。可以用作同时声明指针型的多个对象。</p>
+<p><code>typedef char* PCHAR;</code> // 一般用大写<br><code>PCHAR pa, pb;</code> // 可行，同时声明了两个指向字符变量的指针</p>
+</li>
+<li><p>用在旧的C的代码中,帮助struct。以前的代码中，声明struct新对象时，必须要带上struct，即形式为： struct 结构名 对象名，如：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">tagPOINT1</span>  &#123;  </span><br><span class="line">    <span class="type">int</span> x;  </span><br><span class="line">    <span class="type">int</span> y;  </span><br><span class="line">&#125;;  </span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">tagPOINT1</span> p1;   </span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">tagPOINT</span>  &#123;  </span><br><span class="line">  <span class="type">int</span> x;  </span><br><span class="line">  <span class="type">int</span> y;  </span><br><span class="line">&#125;POINT;  </span><br><span class="line">POINT p1; <span class="comment">// 这样就比原来的方式少写了一个struct，比较省事，尤其在大量使用的时候  </span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>用typedef来定义与平台无关的类型     </p>
+<blockquote>
+<p>比如定义一个叫 REAL 的浮点类型，在目标平台一上，让它表示最高精度的类型为：<br>typedef long double REAL;<br>在不支持 long double 的平台二上，改为：<br>typedef double REAL;<br>在连 double 都不支持的平台三上，改为：<br>typedef float REAL;<br>也就是说，当跨平台时，只要改下 typedef 本身就行，不用对其他源码做任何修改。<br>标准库就广泛使用了这个技巧，比如size_t。<br>另外，因为typedef是定义了一种类型的新别名，不是简单的字符串替换，所以它比宏来得稳健</p>
+</blockquote>
+</li>
+<li><p>为复杂的声明定义一个新的简单的别名。方法是：在原来的声明里逐步用别名替换一部分复杂声明，如此循环，把带变量名的部分留到最后替换，得到的就是原声明的最简化版。举例：</p>
+<blockquote>
+<p>原声明：int <em>(</em>a[5])(int, char<em>);<br>变量名为a，直接用一个新别名pFun替换a就可以了：<br>typedef int </em>(<em>pFun)(int, char</em>);<br>原声明的最简化版：<br>pFun a[5];</p>
+</blockquote>
+</li>
+</ul>
+<p><strong>陷阱一：</strong></p>
+<p>typedef是定义了一种类型的新别名，不同于宏，它不是简单的字符串替换。比如：<br>先定义：<br><code>typedef char* PSTR;</code><br>然后：<br><code>int mystrcmp(const PSTR, const PSTR);</code></p>
+<p><code>const PSTR</code>实际上相当于<code>const char*</code>吗？不是的，它实际上相当于<code>char* const</code>。<br><strong>原因在于const给予了整个指针本身以常量性</strong>，也就是形成了常量指针<code>char* const</code>。<br>简单来说，记住当const和typedef一起出现时，typedef不会是简单的字符串替换就行。</p>
+<p><strong>陷阱二：</strong><br>typedef在语法上是一个存储类的关键字（如auto、extern、mutable、static、register等一样），虽然它并不真正影响对象的存储特性，如：<br>typedef static int INT2; //不可行<br>编译将失败，会提示“指定了一个以上的存储类”。</p>
+<p><strong>typedef 与 #define的区别</strong></p>
+<p>通常讲，typedef要比#define要好，特别是在有指针的场合。请看例子：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="type">char</span> *pStr1;  </span><br><span class="line"><span class="meta">#<span class="keyword">define</span> pStr2 char *;  </span></span><br><span class="line">pStr1 s1, s2;  </span><br><span class="line">pStr2 s3, s4;  </span><br></pre></td></tr></table></figure>
+<p>在上述的变量定义中，s1、s2、s3都被定义为char *，而s4则定义成了char，<br>根本原因就在于#define只是简单的字符串替换而typedef则是为一个类型起新名字。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="type">char</span> * pStr;  </span><br><span class="line"><span class="type">char</span> string[<span class="number">4</span>] = <span class="string">&quot;abc&quot;</span>;  </span><br><span class="line"><span class="type">const</span> <span class="type">char</span> *p1 = string;  </span><br><span class="line"><span class="type">const</span> pStr p2 = string;  </span><br><span class="line">p1++;  </span><br><span class="line">p2++;  </span><br></pre></td></tr></table></figure>
+<p>p2++出错了。这个问题再一次提醒我们：typedef和#define不同，它不是简单的文本替换。  </p>
+<p>上述代码中const pStr p2并不等于const char * p2。const pStr p2和const long x本质上没有区别，都是对变量进行只读限制，</p>
+<p>只不过此处变量p2的数据类型是我们自己定义的而不是系统固有类型而已。因此，const pStr p2的含义是：<strong>限定数据类型为char *的变量p2为只读</strong>，p2为一个常指针，因此p2++错误。</p>
+<h2 id="算法的时间复杂度问题"><a href="#算法的时间复杂度问题" class="headerlink" title="算法的时间复杂度问题"></a>算法的时间复杂度问题</h2><h3 id="计算算法的时间复杂度"><a href="#计算算法的时间复杂度" class="headerlink" title="计算算法的时间复杂度"></a>计算算法的时间复杂度</h3><h3 id="递归算法的时间复杂度分析"><a href="#递归算法的时间复杂度分析" class="headerlink" title="递归算法的时间复杂度分析"></a>递归算法的时间复杂度分析</h3><p><strong>求x的n次方</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//for循环 O(n)</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">function2</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>; <span class="comment">// return 1 同样是因为0次方是等于1的</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">function2</span>(x, n - <span class="number">1</span>) * x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//一般性递归 O(n)   递归树的总节点数依然为n-1</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">function2</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>; <span class="comment">// return 1 同样是因为0次方是等于1的</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">function2</span>(x, n - <span class="number">1</span>) * x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//版本二  O(n) </span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">function3</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (n % <span class="number">2</span> == <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">function3</span>(x, n / <span class="number">2</span>) * <span class="built_in">function3</span>(x, n / <span class="number">2</span>)*x;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">function3</span>(x, n / <span class="number">2</span>) * <span class="built_in">function3</span>(x, n / <span class="number">2</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 版本3 O(logN) </span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">function4</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">int</span> t = <span class="built_in">function4</span>(x, n / <span class="number">2</span>);<span class="comment">// 这里相对于function3，是把这个递归操作抽取出来</span></span><br><span class="line">    <span class="keyword">if</span> (n % <span class="number">2</span> == <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> t * t * x;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> t * t;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>着重理解递归算法版本3，联系快速幂算法求矩阵幂</strong></p>
+<h3 id="算法的空间复杂度"><a href="#算法的空间复杂度" class="headerlink" title="算法的空间复杂度"></a>算法的空间复杂度</h3><p><img src="/2022/05/04/note/1_04.png" alt="图1_04"></p>
+<ul>
+<li>斐波那契数列<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//版本1</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">fibonacci</span><span class="params">(<span class="type">int</span> i)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">if</span>(i &lt;= <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">       <span class="keyword">if</span>(i == <span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">       <span class="keyword">return</span> <span class="built_in">fibonacci</span>(i<span class="number">-1</span>) + <span class="built_in">fibonacci</span>(i<span class="number">-2</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>一棵深度为K的二叉树的叶子节点上为2^k -1,故而时间复杂度为O(2^n)</li>
+<li><img src="/2022/05/04/note/1_05.png" alt="递归树"><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 版本二</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">fibonacci</span><span class="params">(<span class="type">int</span> first, <span class="type">int</span> second, <span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n &lt;= <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span> (n &lt; <span class="number">3</span>)  <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (n == <span class="number">3</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> first + second;</span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">fibonacci</span>(second, first + second, n - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<strong>注意递归算法版本二的写法</strong></li>
+</ul>
+<h2 id="快速幂算法"><a href="#快速幂算法" class="headerlink" title="快速幂算法"></a>快速幂算法</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 版本3 快速幂算法</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="type">const</span> <span class="type">int</span> MOD = <span class="number">1000000007</span>;</span><br><span class="line"></span><br><span class="line">    vector&lt;vector&lt;<span class="type">long</span>&gt;&gt; <span class="built_in">multiply</span>(vector&lt;vector&lt;<span class="type">long</span>&gt;&gt;&amp; a, vector&lt;vector&lt;<span class="type">long</span>&gt;&gt;&amp; b) &#123;</span><br><span class="line">        vector&lt;vector&lt;<span class="type">long</span>&gt;&gt; c&#123;&#123;<span class="number">0</span>, <span class="number">0</span>&#125;, &#123;<span class="number">0</span>, <span class="number">0</span>&#125;&#125;;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">2</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; <span class="number">2</span>; j++) &#123;</span><br><span class="line">                c[i][j] = (a[i][<span class="number">0</span>] * b[<span class="number">0</span>][j] + a[i][<span class="number">1</span>] * b[<span class="number">1</span>][j]) % MOD;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> c;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    vector&lt;vector&lt;<span class="type">long</span>&gt;&gt; <span class="built_in">pow</span>(vector&lt;vector&lt;<span class="type">long</span>&gt;&gt;&amp; a, <span class="type">int</span> n) &#123;</span><br><span class="line">        vector&lt;vector&lt;<span class="type">long</span>&gt;&gt; ret&#123;&#123;<span class="number">1</span>, <span class="number">0</span>&#125;, &#123;<span class="number">0</span>, <span class="number">1</span>&#125;&#125;;</span><br><span class="line">        <span class="keyword">while</span> (n &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="comment">/*&amp;是位与操作符，n&amp;1,不是将n的二进制形式与00000000 00000001按位做与操作。</span></span><br><span class="line"><span class="comment">            这时，只要n的最右边一位是1，结果就不是0，为true  相当于 n%2==1*/</span></span><br><span class="line">            <span class="keyword">if</span> (n &amp; <span class="number">1</span>) &#123;<span class="comment">//处理奇数情况</span></span><br><span class="line">                ret = <span class="built_in">multiply</span>(ret, a);</span><br><span class="line">            &#125;</span><br><span class="line">            n &gt;&gt;= <span class="number">1</span>;<span class="comment">//注意快速幂算法求矩阵幂的方法</span></span><br><span class="line">            a = <span class="built_in">multiply</span>(a, a);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">fib</span><span class="params">(<span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (n &lt; <span class="number">2</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> n;</span><br><span class="line">        &#125;</span><br><span class="line">        vector&lt;vector&lt;<span class="type">long</span>&gt;&gt; q&#123;&#123;<span class="number">1</span>, <span class="number">1</span>&#125;, &#123;<span class="number">1</span>, <span class="number">0</span>&#125;&#125;;</span><br><span class="line">        vector&lt;vector&lt;<span class="type">long</span>&gt;&gt; res = <span class="built_in">pow</span>(q, n - <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">return</span> res[<span class="number">0</span>][<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/2022/05/04/note/快速幂算法.png" alt><br>若依据图中推理<br><code>vector&lt;vector&lt;long&gt;&gt; res = pow(q, n);</code><br>因为 f(2)=f(1)=1</p>
+<p><img src="/2022/05/04/note/斐波那契数列通项公式解法.png" alt></p>
+<h2 id="递归算法空间复杂度分析"><a href="#递归算法空间复杂度分析" class="headerlink" title="递归算法空间复杂度分析"></a>递归算法空间复杂度分析</h2><p><em>这里相当于用first和second来记录当前相加的两个数值，此时就不用两次递归了。<br>因为每次递归的时候n减1，即只是递归了n次，所以时间复杂度是 O(n)<br>同理递归的深度依然是n，每次递归所需的空间也是常数，所以空间复杂度依然是O(n)</em><br><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//二分查找的递归实现</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">binary_search</span><span class="params">( <span class="type">int</span> arr[], <span class="type">int</span> l, <span class="type">int</span> r, <span class="type">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (r &gt;= l) &#123;</span><br><span class="line">        <span class="type">int</span> mid = l + (r - l) / <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span> (arr[mid] == x)</span><br><span class="line">            <span class="keyword">return</span> mid;</span><br><span class="line">        <span class="keyword">if</span> (arr[mid] &gt; x)</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">binary_search</span>(arr, l, mid - <span class="number">1</span>, x);</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">binary_search</span>(arr, mid + <span class="number">1</span>, r, x);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>解法3</strong></p>
+<ul>
+<li><p>每次递归的空间复杂度可以看出主要就是参数里传入的这个<strong>arr数组</strong>，但需要注意的是在C/C++中函数传递数组参数，不是整个数组拷贝一份传入函数而是传入的数组首元素地址</p>
+</li>
+<li><p>也就是说每一层递归都是公用一块数组地址空间的，所以 每次递归的空间复杂度是常数即：O(1)</p>
+</li>
+<li>再来看递归的深度，二分查找的递归深度是logn ,递归深度就是调用栈的长度，那么这段代码的空间复杂度为 1 * logn = O(logn)</li>
+<li>注意所用的语言在传递函数参数的时，是拷贝整个数值还是拷贝地址，如果是拷贝整个数值那么该二分法的空间复杂度就是O(n\log n)</li>
+</ul>
+<h2 id="c-内存管理"><a href="#c-内存管理" class="headerlink" title="c++内存管理"></a>c++内存管理</h2><p><strong>一个由C/C++编译的程序占用的内存分为以下几个部分：</strong></p>
+<ul>
+<li>栈区(Stack) ：由编译器自动分配释放，存放函数的参数值，局部变量的值等，其操作方式类似于数据结构中的栈。<strong>由高地址向低地址存储</strong></li>
+<li>堆区(Heap) ：一般由程序员分配释放，若程序员不释放，程序结束时可能由OS收回，new的对象</li>
+<li>未初始化数据区： 存放未初始化的全局变量和静态变量</li>
+<li>初始化数据区：存放已经初始化的全局变量和静态变量</li>
+<li>程序代码区(Text)：存放函数体的二进制代码<br><img src="/2022/05/04/note/1_06.png" alt>  </li>
+</ul>
+<p><em>平台原因：不是所有的硬件平台都能访问任意内存地址上的任意数据，某些硬件平台只能在某些地址处取某些特定类型的数据，否则抛出硬件异常。为了同一个程序可以在多平台运行，需要内存对齐</em><br><em>硬件原因：经过内存对齐后，CPU访问内存的速度大大提升。CPU读取内存不是一次读取单个字节，而是一块一块的来读取内存，块的大小可以是2，4，8，16个字节，具体取多少个字节取决于硬件</em></p>
+<h2 id="sizeof-与strlen-以及字节对齐问题"><a href="#sizeof-与strlen-以及字节对齐问题" class="headerlink" title="sizeof()与strlen()以及字节对齐问题"></a>sizeof()与strlen()以及字节对齐问题</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">MyStruct</span>&#123;</span><br><span class="line"><span class="type">double</span> dda1;</span><br><span class="line"><span class="type">char</span> dda;</span><br><span class="line"><span class="type">int</span> type</span><br><span class="line">&#125;；</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p><em>先为第一个成员dda1分配空间，其起始地址跟结构的起始地址相同（刚好偏移量0刚好为sizeof(double)的倍数），该成员变量占用sizeof(double)=8个字节</em></p>
+</li>
+<li><p><em>接下来为第二个成员dda分配空间，这时下一个可以分配的地址对于结构的起始地址的偏移量为8，是sizeof(char)的倍数，所以把dda存放在偏移量为8的地方满足对齐方式，该成员变量占用sizeof(char)=1个字节</em>  </p>
+</li>
+<li><em>接下来为第三个成员type分配空间，<strong>这时下一个可以分配的地址对于结构的起始地址的偏移量为9，不是sizeof(int)=4的倍数，为了满足对齐方式对偏移量的约束问题</strong>，VC自动填充3个字节（这三个字节没有放什么东西）,这时下一个可以分配的地址对于结构的起始地址的偏移量为12，刚好是sizeof(int)=4的倍数，所以把type存放在偏移量为12的地方，该成员变量占用sizeof(int)=4个字节</em> </li>
+<li><em>这时整个结构的成员变量已经都分配了空间，总的占用的空间大小为：8+1+3+4=16，<strong>刚好为结构的字节边界数,即结构中占用最大空间的类型所占用的字节数sizeof(double)=8）的倍数，所以没有空缺的字节需要填充</strong>。所以整个结构的大小为：sizeof(MyStruct)=8+1+ 3+4=16，其中有3个字节是VC自动填充的，没有放任何有意义的东西</em><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">MyStruct</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="comment">//偏移量为0，满足对齐方式，dda占用1个字节</span></span><br><span class="line"><span class="type">char</span> dda; </span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">    下一个可用的地址的偏移量为1，不是sizeof(double)=8的倍数，</span></span><br><span class="line"><span class="comment">    需要补足7个字节才能使偏移量变为8（满足对齐方式），</span></span><br><span class="line"><span class="comment">    因此VC自动填充7个字节，dda1存放在偏移量为8的地址上，它占用8个字节。</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="type">double</span> dda1;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">    下一个可用的地址的偏移量为16，是sizeof(int)=4的倍数，满足int的对齐方式，所以不需要VC自动填充，type存放在偏移量为16的地址上，它占用4个字节。</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="type">int</span> type； </span><br><span class="line">&#125;；</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><em>所有成员变量都分配了空间，空间总的大小为1+7+8+4=20，<strong>不是结构的节边界数,<br>即结构中占用最大空间的类型所占用的字节数sizeof(double)=8）的倍数</strong>，<br>所以需要填充4个字节，以满足结构的大小为sizeof(double)=8的倍数。<br>所以该结构总的大小为：sizeof(MyStruc)为1+7+8+4+4=24。<br>其中总的有7+4=11个字节是VC自动填充的，没有放任何有意义的东西。</em></p>
+<h2 id="strlen-与sizeof"><a href="#strlen-与sizeof" class="headerlink" title="strlen()与sizeof()"></a>strlen()与sizeof()</h2><ol>
+<li>strlen(char <em>)是个函数，其运算结果需要在运行的时候才能计算出来，并且参数只能是char</em>类的字符指针（字符数组名也可以，相当于一个字符的指针）。该函数的功能是获得字符串的长度，从字符串的第一个字符开始遍历直至遇到NULL结束符，NULL结束符不占用字符串的长度。</li>
+<li><p>sizeof()是运算符，其类型在头文件typedef中定义为unsigned int ；参数可以是指针、数组、类型、对象、函数等；该类型保证能容纳实现所建立的最大对象的字节大小；在编译的过程中计算，因此不能用来返回动态分配内存空间的大小，sizeof 返回类型以及静态分配的对象、结构、数组所占的内存空间，返回值跟对象、结构、数组所存储的内容没有关系。<br><strong><em>具体而言，当参数分别如下时，sizeof返回的值表示的含义如下：<br> 数组——编译时分配的数组空间大小；<br> 指针——存储该指针所用的空间大小,存储该指针的地址的长度，是长整型，应该为4<br> 类型——该类型所占的空间大小；<br> 对象——对象的实际占用空间大小；<br> 函数——函数的返回类型所占的空间大小。函数的返回类型不能是void</em></strong></p>
+</li>
+<li><p>sizeof可以用类型做参数，<code>strlen只能用char*做参数，且必须是以&#39;&#39;\0&#39;&#39;结尾的。 sizeof还可以用函数做参数，比如： short f(); printf(&quot;%d\n&quot;, sizeof(f())); 输出的结果是sizeof(short)，即2</code></p>
+</li>
+<li><p>数组做<code>sizeof</code>的参数不退化，传递给strlen就退化为指针了。</p>
+</li>
+<li><p>大部分编译程序 在编译的时候就把sizeof计算过了<code>是类型或是变量的长度这就是sizeof(x)可以用来定义数组维数的原因 char str[20]=&quot;0123456789&quot;; int a=strlen(str); //a=10; int b=sizeof(str); //而b=20;</code> </p>
+</li>
+<li><p>strlen的结果要在运行的时候才能计算出来，时用来计算字符串的长度，不是类型占内存的大小。 </p>
+</li>
+<li><p>sizeof后如果是类型必须加括弧，如果是变量名可以不加括弧。这是因为sizeof是个操作符不是个函数。 </p>
+</li>
+<li><p>当适用了于一个结构类型时或变量， sizeof 返回实际的大小， 当适用一静态地空间数组， sizeof 归还全部数组的尺寸。 sizeof 操作符不能返回动态地被分派了的数组或外部的数组的尺寸</p>
+</li>
+<li><p>数组作为参数传给函数时传的是指针而不是数组，传递的是数组的首地址， 如：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="built_in">fun</span>(<span class="type">char</span> [<span class="number">8</span>])</span><br><span class="line"><span class="built_in">fun</span>(<span class="type">char</span> []) </span><br><span class="line">都等价于 <span class="built_in">fun</span>(<span class="type">char</span> *) 在C++里参数传递数组永远都是传递指向数组首元素的指针，</span><br><span class="line">编译器不知道数组的大小</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="type">char</span> str[<span class="number">20</span>]=<span class="string">&quot;0123456789&quot;</span>;</span><br><span class="line"><span class="type">int</span> a=<span class="built_in">strlen</span>(str); </span><br><span class="line"></span><br><span class="line">a=<span class="number">10</span>; &gt;&gt;&gt;&gt; strlen 计算字符串的长度，以结束符 <span class="number">0x00</span> 为字符串结束。 </span><br><span class="line"><span class="type">int</span> b=<span class="built_in">sizeof</span>(str); </span><br><span class="line"></span><br><span class="line">而b=<span class="number">20</span>; &gt;&gt;&gt;&gt; <span class="keyword">sizeof</span> 计算的则是分配的数组 str[<span class="number">20</span>] 所占的内存空间的大小，</span><br><span class="line">不受里面存储的内容改变,上面是对静态数组处理的结果，如果是对指针，结果就不一样了 </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="type">char</span>* ss = <span class="string">&quot;0123456789&quot;</span>;</span><br><span class="line"><span class="built_in">sizeof</span>(ss) 结果 <span class="number">4</span> ，</span><br><span class="line"></span><br><span class="line">ss是指向字符串常量的字符指针，</span><br><span class="line"><span class="keyword">sizeof</span> 获得的是一个指针的之所占的空间,应该是 长整型的，所以是<span class="number">4</span> </span><br><span class="line"></span><br><span class="line"><span class="built_in">sizeof</span>(*ss) 结果 <span class="number">1</span> *ss是第一个字符 </span><br><span class="line">其实就是获得了字符串的第一位<span class="string">&#x27;0&#x27;</span> 所占的内存空间，是<span class="type">char</span>类 型的，占了 <span class="number">1</span> 位 <span class="built_in">strlen</span>(ss)= <span class="number">10</span> </span><br><span class="line">&gt;&gt;&gt;&gt; 如果要获得这个字符串的长度，则一定要使用 <span class="built_in">strlen</span>()。</span><br></pre></td></tr></table></figure>
+<h2 id="有关ios-sync-with-stdio-false-；和-cin-tie-nullptr-；的介绍与意"><a href="#有关ios-sync-with-stdio-false-；和-cin-tie-nullptr-；的介绍与意" class="headerlink" title="有关ios::sync_with_stdio(false)；和 cin.tie(nullptr)；的介绍与意"></a>有关ios::sync_with_stdio(false)；和 cin.tie(nullptr)；的介绍与意</h2><p><strong>整体来说它们是对C++输入输出流的优化（可以提高速度），但同时也会产生一定的副作用</strong>   </p>
+</li>
+</ol>
+<p>遇到大数据量（cin、cout 数据量级达到 1e5、1e6 ），     </p>
+<p>因为考虑 IO 性能报错 TLE，故选择 scanf、printf 替代 cin、cout</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">​<span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  std::ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>);</span><br><span class="line">  cin.<span class="built_in">tie</span>(<span class="literal">nullptr</span>);</span><br><span class="line">  ... </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>ios::sync_with_stdio(false)</strong></p>
+<p><code>ios::sync_with_stdio(false);</code>是C++的输入输出流（iostream）是否兼容C的输入输出（stdio）的开关。  </p>
+<blockquote>
+<p>因为C++中的std :: cin和std :: cout为了兼容C，保证在代码中同时出现std :: cin和scanf或std :: cout和printf时输出不发生混乱，<br>所以C++用一个流缓冲区来同步C的标准流。通过std :: ios_base :: sync_with_stdio函数可以解除这种同步，<br>让std :: cin和std :: cout不再经过缓冲区，自然就节省了许多时间。<br>当设置为false时，cin就不能和scanf，sscanf, getchar, fgets等同时使用。<br>据说，endl用”\n”代替和cout使用，也可节约时间。</p>
+</blockquote>
+<p><strong>cin.tie(nullptr)</strong></p>
+<blockquote>
+<p>因为std :: cin默认是与std :: cout绑定的，所以每次操作的时候（也就是调用”&lt;&lt;”或者”&gt;&gt;”）都要刷新（调用flush），<br>这样增加了IO的负担，通过tie(nullptr)来解除std :: cin和std :: cout之间的绑定，来降低IO的负担使效率提升。</p>
+</blockquote>
+<p><strong>cin.tie(NULL);和cin.tie(nullptr); 的区别</strong></p>
+<blockquote>
+<p>nullptr是c++11中的关键字，表示空指针<br>NULL是一个宏定义，在c和c++中的定义不同，c中NULL为（void<em>)0,而c++中NULL为整数0<br>nullptr是一个字面值常量，类型为std::nullptr_t,空指针常数可以转换为任意类型的指针类型。<br>在c++中（void </em>）不能转化为任意类型的指针，即 int <em>p=(void</em>)是错误的，<br>但int <em>p=nullptr是正确的。原因是对于函数重载：若c++中 （void </em>）支持任意类型转换，函数重载时将出现问题。<br>下列代码中fun(NULL)将不能判断调用哪个函数</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">fun</span><span class="params">(<span class="type">int</span> i)</span></span>&#123;cout&lt;&lt;<span class="string">&quot;1&quot;</span>;&#125;;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">fun</span><span class="params">(<span class="type">char</span> *p)</span></span>&#123;cout&lt;&lt;<span class="string">&quot;2&quot;</span>;&#125;;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">fun</span>(<span class="literal">NULL</span>);        <span class="comment">//输出1，c++中NULL为整数0</span></span><br><span class="line">    <span class="built_in">fun</span>(<span class="literal">nullptr</span>);     <span class="comment">//输出2，nullptr 为空指针常量。是指针类型</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>未归档笔记</category>
+      </categories>
+      <tags>
+        <tag>c++</tag>
       </tags>
   </entry>
   <entry>
@@ -382,168 +612,6 @@
       </categories>
       <tags>
         <tag>动态规划</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>随笔</title>
-    <url>/2022/05/04/note/</url>
-    <content><![CDATA[<p>记录一些暂时未分类的笔记</p>
-<span id="more"></span>              
-<h1 id="Temp-Note"><a href="#Temp-Note" class="headerlink" title="Temp Note"></a>Temp Note</h1><ul>
-<li><a href="#temp-note">Temp Note</a><ul>
-<li><a href="#argcargv的具体含义">argc、argv的具体含义</a></li>
-<li><a href="#前缀表达式与后缀表达式问题">前缀表达式与后缀表达式问题</a></li>
-<li><a href="#c模板类的声明与实现的分离编译问题">c++模板类的声明与实现的分离编译问题</a></li>
-<li><a href="#typedef的用法">typedef的用法</a></li>
-<li><a href="#算法的时间复杂度问题">算法的时间复杂度问题</a><ul>
-<li><a href="#计算算法的时间复杂度">计算算法的时间复杂度</a></li>
-<li><a href="#递归算法的时间复杂度分析">递归算法的时间复杂度分析</a></li>
-<li><a href="#算法的空间复杂度">算法的空间复杂度</a></li>
-</ul>
-</li>
-<li><a href="#快速幂算法">快速幂算法</a></li>
-<li><a href="#递归算法空间复杂度分析">递归算法空间复杂度分析</a></li>
-<li><a href="#c内存管理">c++内存管理</a></li>
-<li><a href="#sizeof与strlen以及字节对齐问题">sizeof()与strlen()以及字节对齐问题</a></li>
-<li><a href="#strlen与sizeof">strlen()与sizeof()</a></li>
-<li><a href="#有关iossync_with_stdiofalse和-cintienullptr的介绍与意">有关ios::sync_with_stdio(false)；和 cin.tie(nullptr)；的介绍与意</a></li>
-</ul>
-</li>
-</ul>
-<h2 id="argc、argv的具体含义"><a href="#argc、argv的具体含义" class="headerlink" title="argc、argv的具体含义"></a>argc、argv的具体含义</h2><blockquote>
-<p>argc和argv参数在用命令行编译程序时有用。main( int argc, char<em> argv[], char *</em>env ) 中 </p>
-<ul>
-<li>第一个参数，int型的argc，为整型，用来统计程序运行时发送给main函数的命令行参数的个数，在VS中默认值为1。 </li>
-<li>第二个参数，char*型的argv[]，为字符串数组，用来存放指向的字符串参数的指针数组，每一个元素指向一个参数。各成员含义如下：<br>argv[0]指向程序运行的全路径名<br>argv[1]指向在DOS命令行中执行程序名后的第一个字符串<br>argv[2]指向执行程序名后的第二个字符串<br>argv[3]指向执行程序名后的第三个字符串<br>argv[argc]为NULL </li>
-</ul>
-</blockquote>
-<ul>
-<li>第三个参数，char**型的env，为字符串数组。env[]的每一个元素都包含ENVVAR=value形式的字符串，其中ENVVAR为环境变量，value为其对应的值。平时使用到的比较少。</li>
-</ul>
-<h2 id="前缀表达式与后缀表达式问题"><a href="#前缀表达式与后缀表达式问题" class="headerlink" title="前缀表达式与后缀表达式问题"></a>前缀表达式与后缀表达式问题</h2><p><img src="/2022/05/04/note/前缀表达式与后缀表达式问题.png" alt><br><img src="/2022/05/04/note/前缀表达式与后缀表达式转换.png" alt></p>
-<p><a href="https://www.cnblogs.com/tech-bird/p/3971555.html">基于栈实现简单表达式的计算</a></p>
-<h2 id="c-模板类的声明与实现的分离编译问题"><a href="#c-模板类的声明与实现的分离编译问题" class="headerlink" title="c++模板类的声明与实现的分离编译问题"></a>c++模板类的声明与实现的分离编译问题</h2><blockquote>
-<p>模板不支持分离编译, 把你模板类的声明和实现放到.h文件里面<br>C++中每一个对象所占用的空间大小，是在编译的时候就确定的，在模板类没有真正的被使用之前，编译器是无法知道，模板类中使用模板类型的对象的所占用的空间的大小的。<br>只有模板被真正使用的时候，编译器才知道，模板套用的是什么类型，应该分配多少空间。<br>在分离式编译的环境下，编译器编译某一个.cpp文件时并不知道另一个.cpp文件的存在，也不会去查找（当遇到未决符号时它会寄希望于连接器）。<br>这种模式在没有模板的情况下运行良好，但遇到模板时就傻眼了，因为模板仅在需要的时候才会实例化出来，所以，当编译器只看到模板的声明时，它不能实例化该模板，只能创建一个具有外部连接的符号并期待连接器能够将符号的地址决议出来。<br>然而当实现该模板的.cpp文件中没有用到模板的实例时，编译器懒得去实例化，所以，整个工程的.obj中就找不到一行模板实例的二进制代码，于是连接器也黔驴技穷了。</p>
-</blockquote>
-<p><a href="https://blog.csdn.net/weixin_40539125/article/details/83375452">https://blog.csdn.net/weixin_40539125/article/details/83375452</a></p>
-<p><a href="https://www.cnblogs.com/qlwy/archive/2012/03/21/2410045.html">https://www.cnblogs.com/qlwy/archive/2012/03/21/2410045.html</a></p>
-<h2 id="typedef的用法"><a href="#typedef的用法" class="headerlink" title="typedef的用法"></a>typedef的用法</h2><ul>
-<li><p>定义一种类型的别名，而不只是简单的宏替换。可以用作同时声明指针型的多个对象。</p>
-<p><code>typedef char* PCHAR;</code> // 一般用大写<br><code>PCHAR pa, pb;</code> // 可行，同时声明了两个指向字符变量的指针</p>
-</li>
-<li><p>用在旧的C的代码中,帮助struct。以前的代码中，声明struct新对象时，必须要带上struct，即形式为： struct 结构名 对象名，如：</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">tagPOINT1</span>  &#123;  </span><br><span class="line">    <span class="type">int</span> x;  </span><br><span class="line">    <span class="type">int</span> y;  </span><br><span class="line">&#125;;  </span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">tagPOINT1</span> p1;   </span><br></pre></td></tr></table></figure>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">tagPOINT</span>  &#123;  </span><br><span class="line">  <span class="type">int</span> x;  </span><br><span class="line">  <span class="type">int</span> y;  </span><br><span class="line">&#125;POINT;  </span><br><span class="line">POINT p1; <span class="comment">// 这样就比原来的方式少写了一个struct，比较省事，尤其在大量使用的时候  </span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>用typedef来定义与平台无关的类型     </p>
-<blockquote>
-<p>比如定义一个叫 REAL 的浮点类型，在目标平台一上，让它表示最高精度的类型为：<br>typedef long double REAL;<br>在不支持 long double 的平台二上，改为：<br>typedef double REAL;<br>在连 double 都不支持的平台三上，改为：<br>typedef float REAL;<br>也就是说，当跨平台时，只要改下 typedef 本身就行，不用对其他源码做任何修改。<br>标准库就广泛使用了这个技巧，比如size_t。<br>另外，因为typedef是定义了一种类型的新别名，不是简单的字符串替换，所以它比宏来得稳健</p>
-</blockquote>
-</li>
-<li><p>为复杂的声明定义一个新的简单的别名。方法是：在原来的声明里逐步用别名替换一部分复杂声明，如此循环，把带变量名的部分留到最后替换，得到的就是原声明的最简化版。举例：</p>
-<blockquote>
-<p>原声明：int <em>(</em>a[5])(int, char<em>);<br>变量名为a，直接用一个新别名pFun替换a就可以了：<br>typedef int </em>(<em>pFun)(int, char</em>);<br>原声明的最简化版：<br>pFun a[5];</p>
-</blockquote>
-</li>
-</ul>
-<p><strong>陷阱一：</strong></p>
-<p>typedef是定义了一种类型的新别名，不同于宏，它不是简单的字符串替换。比如：<br>先定义：<br><code>typedef char* PSTR;</code><br>然后：<br><code>int mystrcmp(const PSTR, const PSTR);</code></p>
-<p><code>const PSTR</code>实际上相当于<code>const char*</code>吗？不是的，它实际上相当于<code>char* const</code>。<br><strong>原因在于const给予了整个指针本身以常量性</strong>，也就是形成了常量指针<code>char* const</code>。<br>简单来说，记住当const和typedef一起出现时，typedef不会是简单的字符串替换就行。</p>
-<p><strong>陷阱二：</strong><br>typedef在语法上是一个存储类的关键字（如auto、extern、mutable、static、register等一样），虽然它并不真正影响对象的存储特性，如：<br>typedef static int INT2; //不可行<br>编译将失败，会提示“指定了一个以上的存储类”。</p>
-<p><strong>typedef 与 #define的区别</strong></p>
-<p>通常讲，typedef要比#define要好，特别是在有指针的场合。请看例子：</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="type">char</span> *pStr1;  </span><br><span class="line"><span class="meta">#<span class="keyword">define</span> pStr2 char *;  </span></span><br><span class="line">pStr1 s1, s2;  </span><br><span class="line">pStr2 s3, s4;  </span><br></pre></td></tr></table></figure>
-<p>在上述的变量定义中，s1、s2、s3都被定义为char *，而s4则定义成了char，<br>根本原因就在于#define只是简单的字符串替换而typedef则是为一个类型起新名字。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="type">char</span> * pStr;  </span><br><span class="line"><span class="type">char</span> string[<span class="number">4</span>] = <span class="string">&quot;abc&quot;</span>;  </span><br><span class="line"><span class="type">const</span> <span class="type">char</span> *p1 = string;  </span><br><span class="line"><span class="type">const</span> pStr p2 = string;  </span><br><span class="line">p1++;  </span><br><span class="line">p2++;  </span><br></pre></td></tr></table></figure>
-<p>p2++出错了。这个问题再一次提醒我们：typedef和#define不同，它不是简单的文本替换。  </p>
-<p>上述代码中const pStr p2并不等于const char * p2。const pStr p2和const long x本质上没有区别，都是对变量进行只读限制，</p>
-<p>只不过此处变量p2的数据类型是我们自己定义的而不是系统固有类型而已。因此，const pStr p2的含义是：<strong>限定数据类型为char *的变量p2为只读</strong>，p2为一个常指针，因此p2++错误。</p>
-<h2 id="算法的时间复杂度问题"><a href="#算法的时间复杂度问题" class="headerlink" title="算法的时间复杂度问题"></a>算法的时间复杂度问题</h2><h3 id="计算算法的时间复杂度"><a href="#计算算法的时间复杂度" class="headerlink" title="计算算法的时间复杂度"></a>计算算法的时间复杂度</h3><h3 id="递归算法的时间复杂度分析"><a href="#递归算法的时间复杂度分析" class="headerlink" title="递归算法的时间复杂度分析"></a>递归算法的时间复杂度分析</h3><p><strong>求x的n次方</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//for循环 O(n)</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">function2</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>; <span class="comment">// return 1 同样是因为0次方是等于1的</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">function2</span>(x, n - <span class="number">1</span>) * x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//一般性递归 O(n)   递归树的总节点数依然为n-1</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">function2</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>; <span class="comment">// return 1 同样是因为0次方是等于1的</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">function2</span>(x, n - <span class="number">1</span>) * x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//版本二  O(n) </span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">function3</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (n % <span class="number">2</span> == <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">function3</span>(x, n / <span class="number">2</span>) * <span class="built_in">function3</span>(x, n / <span class="number">2</span>)*x;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">function3</span>(x, n / <span class="number">2</span>) * <span class="built_in">function3</span>(x, n / <span class="number">2</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 版本3 O(logN) </span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">function4</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">int</span> t = <span class="built_in">function4</span>(x, n / <span class="number">2</span>);<span class="comment">// 这里相对于function3，是把这个递归操作抽取出来</span></span><br><span class="line">    <span class="keyword">if</span> (n % <span class="number">2</span> == <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> t * t * x;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> t * t;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>着重理解递归算法版本3，联系快速幂算法求矩阵幂</strong></p>
-<h3 id="算法的空间复杂度"><a href="#算法的空间复杂度" class="headerlink" title="算法的空间复杂度"></a>算法的空间复杂度</h3><p><img src="/2022/05/04/note/1_04.png" alt="图1_04"></p>
-<ul>
-<li>斐波那契数列<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//版本1</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">fibonacci</span><span class="params">(<span class="type">int</span> i)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">if</span>(i &lt;= <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">       <span class="keyword">if</span>(i == <span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">       <span class="keyword">return</span> <span class="built_in">fibonacci</span>(i<span class="number">-1</span>) + <span class="built_in">fibonacci</span>(i<span class="number">-2</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>一棵深度为K的二叉树的叶子节点上为2^k -1,故而时间复杂度为O(2^n)</li>
-<li><img src="/2022/05/04/note/1_05.png" alt="递归树"><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 版本二</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">fibonacci</span><span class="params">(<span class="type">int</span> first, <span class="type">int</span> second, <span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n &lt;= <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span> (n &lt; <span class="number">3</span>)  <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (n == <span class="number">3</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> first + second;</span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">fibonacci</span>(second, first + second, n - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<strong>注意递归算法版本二的写法</strong></li>
-</ul>
-<h2 id="快速幂算法"><a href="#快速幂算法" class="headerlink" title="快速幂算法"></a>快速幂算法</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 版本3 快速幂算法</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="type">const</span> <span class="type">int</span> MOD = <span class="number">1000000007</span>;</span><br><span class="line"></span><br><span class="line">    vector&lt;vector&lt;<span class="type">long</span>&gt;&gt; <span class="built_in">multiply</span>(vector&lt;vector&lt;<span class="type">long</span>&gt;&gt;&amp; a, vector&lt;vector&lt;<span class="type">long</span>&gt;&gt;&amp; b) &#123;</span><br><span class="line">        vector&lt;vector&lt;<span class="type">long</span>&gt;&gt; c&#123;&#123;<span class="number">0</span>, <span class="number">0</span>&#125;, &#123;<span class="number">0</span>, <span class="number">0</span>&#125;&#125;;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">2</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; <span class="number">2</span>; j++) &#123;</span><br><span class="line">                c[i][j] = (a[i][<span class="number">0</span>] * b[<span class="number">0</span>][j] + a[i][<span class="number">1</span>] * b[<span class="number">1</span>][j]) % MOD;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> c;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    vector&lt;vector&lt;<span class="type">long</span>&gt;&gt; <span class="built_in">pow</span>(vector&lt;vector&lt;<span class="type">long</span>&gt;&gt;&amp; a, <span class="type">int</span> n) &#123;</span><br><span class="line">        vector&lt;vector&lt;<span class="type">long</span>&gt;&gt; ret&#123;&#123;<span class="number">1</span>, <span class="number">0</span>&#125;, &#123;<span class="number">0</span>, <span class="number">1</span>&#125;&#125;;</span><br><span class="line">        <span class="keyword">while</span> (n &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="comment">/*&amp;是位与操作符，n&amp;1,不是将n的二进制形式与00000000 00000001按位做与操作。</span></span><br><span class="line"><span class="comment">            这时，只要n的最右边一位是1，结果就不是0，为true  相当于 n%2==1*/</span></span><br><span class="line">            <span class="keyword">if</span> (n &amp; <span class="number">1</span>) &#123;<span class="comment">//处理奇数情况</span></span><br><span class="line">                ret = <span class="built_in">multiply</span>(ret, a);</span><br><span class="line">            &#125;</span><br><span class="line">            n &gt;&gt;= <span class="number">1</span>;<span class="comment">//注意快速幂算法求矩阵幂的方法</span></span><br><span class="line">            a = <span class="built_in">multiply</span>(a, a);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">fib</span><span class="params">(<span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (n &lt; <span class="number">2</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> n;</span><br><span class="line">        &#125;</span><br><span class="line">        vector&lt;vector&lt;<span class="type">long</span>&gt;&gt; q&#123;&#123;<span class="number">1</span>, <span class="number">1</span>&#125;, &#123;<span class="number">1</span>, <span class="number">0</span>&#125;&#125;;</span><br><span class="line">        vector&lt;vector&lt;<span class="type">long</span>&gt;&gt; res = <span class="built_in">pow</span>(q, n - <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">return</span> res[<span class="number">0</span>][<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="/2022/05/04/note/快速幂算法.png" alt><br>若依据图中推理<br><code>vector&lt;vector&lt;long&gt;&gt; res = pow(q, n);</code><br>因为 f(2)=f(1)=1</p>
-<p><img src="/2022/05/04/note/斐波那契数列通项公式解法.png" alt></p>
-<h2 id="递归算法空间复杂度分析"><a href="#递归算法空间复杂度分析" class="headerlink" title="递归算法空间复杂度分析"></a>递归算法空间复杂度分析</h2><p><em>这里相当于用first和second来记录当前相加的两个数值，此时就不用两次递归了。<br>因为每次递归的时候n减1，即只是递归了n次，所以时间复杂度是 O(n)<br>同理递归的深度依然是n，每次递归所需的空间也是常数，所以空间复杂度依然是O(n)</em><br><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//二分查找的递归实现</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">binary_search</span><span class="params">( <span class="type">int</span> arr[], <span class="type">int</span> l, <span class="type">int</span> r, <span class="type">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (r &gt;= l) &#123;</span><br><span class="line">        <span class="type">int</span> mid = l + (r - l) / <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span> (arr[mid] == x)</span><br><span class="line">            <span class="keyword">return</span> mid;</span><br><span class="line">        <span class="keyword">if</span> (arr[mid] &gt; x)</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">binary_search</span>(arr, l, mid - <span class="number">1</span>, x);</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">binary_search</span>(arr, mid + <span class="number">1</span>, r, x);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><strong>解法3</strong></p>
-<ul>
-<li><p>每次递归的空间复杂度可以看出主要就是参数里传入的这个<strong>arr数组</strong>，但需要注意的是在C/C++中函数传递数组参数，不是整个数组拷贝一份传入函数而是传入的数组首元素地址</p>
-</li>
-<li><p>也就是说每一层递归都是公用一块数组地址空间的，所以 每次递归的空间复杂度是常数即：O(1)</p>
-</li>
-<li>再来看递归的深度，二分查找的递归深度是logn ,递归深度就是调用栈的长度，那么这段代码的空间复杂度为 1 * logn = O(logn)</li>
-<li>注意所用的语言在传递函数参数的时，是拷贝整个数值还是拷贝地址，如果是拷贝整个数值那么该二分法的空间复杂度就是O(n\log n)</li>
-</ul>
-<h2 id="c-内存管理"><a href="#c-内存管理" class="headerlink" title="c++内存管理"></a>c++内存管理</h2><p><strong>一个由C/C++编译的程序占用的内存分为以下几个部分：</strong></p>
-<ul>
-<li>栈区(Stack) ：由编译器自动分配释放，存放函数的参数值，局部变量的值等，其操作方式类似于数据结构中的栈。<strong>由高地址向低地址存储</strong></li>
-<li>堆区(Heap) ：一般由程序员分配释放，若程序员不释放，程序结束时可能由OS收回，new的对象</li>
-<li>未初始化数据区： 存放未初始化的全局变量和静态变量</li>
-<li>初始化数据区：存放已经初始化的全局变量和静态变量</li>
-<li>程序代码区(Text)：存放函数体的二进制代码<br><img src="/2022/05/04/note/1_06.png" alt>  </li>
-</ul>
-<p><em>平台原因：不是所有的硬件平台都能访问任意内存地址上的任意数据，某些硬件平台只能在某些地址处取某些特定类型的数据，否则抛出硬件异常。为了同一个程序可以在多平台运行，需要内存对齐</em><br><em>硬件原因：经过内存对齐后，CPU访问内存的速度大大提升。CPU读取内存不是一次读取单个字节，而是一块一块的来读取内存，块的大小可以是2，4，8，16个字节，具体取多少个字节取决于硬件</em></p>
-<h2 id="sizeof-与strlen-以及字节对齐问题"><a href="#sizeof-与strlen-以及字节对齐问题" class="headerlink" title="sizeof()与strlen()以及字节对齐问题"></a>sizeof()与strlen()以及字节对齐问题</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">MyStruct</span>&#123;</span><br><span class="line"><span class="type">double</span> dda1;</span><br><span class="line"><span class="type">char</span> dda;</span><br><span class="line"><span class="type">int</span> type</span><br><span class="line">&#125;；</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p><em>先为第一个成员dda1分配空间，其起始地址跟结构的起始地址相同（刚好偏移量0刚好为sizeof(double)的倍数），该成员变量占用sizeof(double)=8个字节</em></p>
-</li>
-<li><p><em>接下来为第二个成员dda分配空间，这时下一个可以分配的地址对于结构的起始地址的偏移量为8，是sizeof(char)的倍数，所以把dda存放在偏移量为8的地方满足对齐方式，该成员变量占用sizeof(char)=1个字节</em>  </p>
-</li>
-<li><em>接下来为第三个成员type分配空间，<strong>这时下一个可以分配的地址对于结构的起始地址的偏移量为9，不是sizeof(int)=4的倍数，为了满足对齐方式对偏移量的约束问题</strong>，VC自动填充3个字节（这三个字节没有放什么东西）,这时下一个可以分配的地址对于结构的起始地址的偏移量为12，刚好是sizeof(int)=4的倍数，所以把type存放在偏移量为12的地方，该成员变量占用sizeof(int)=4个字节</em> </li>
-<li><em>这时整个结构的成员变量已经都分配了空间，总的占用的空间大小为：8+1+3+4=16，<strong>刚好为结构的字节边界数,即结构中占用最大空间的类型所占用的字节数sizeof(double)=8）的倍数，所以没有空缺的字节需要填充</strong>。所以整个结构的大小为：sizeof(MyStruct)=8+1+ 3+4=16，其中有3个字节是VC自动填充的，没有放任何有意义的东西</em><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">MyStruct</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="comment">//偏移量为0，满足对齐方式，dda占用1个字节</span></span><br><span class="line"><span class="type">char</span> dda; </span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">    下一个可用的地址的偏移量为1，不是sizeof(double)=8的倍数，</span></span><br><span class="line"><span class="comment">    需要补足7个字节才能使偏移量变为8（满足对齐方式），</span></span><br><span class="line"><span class="comment">    因此VC自动填充7个字节，dda1存放在偏移量为8的地址上，它占用8个字节。</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="type">double</span> dda1;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">    下一个可用的地址的偏移量为16，是sizeof(int)=4的倍数，满足int的对齐方式，所以不需要VC自动填充，type存放在偏移量为16的地址上，它占用4个字节。</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="type">int</span> type； </span><br><span class="line">&#125;；</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p><em>所有成员变量都分配了空间，空间总的大小为1+7+8+4=20，<strong>不是结构的节边界数,<br>即结构中占用最大空间的类型所占用的字节数sizeof(double)=8）的倍数</strong>，<br>所以需要填充4个字节，以满足结构的大小为sizeof(double)=8的倍数。<br>所以该结构总的大小为：sizeof(MyStruc)为1+7+8+4+4=24。<br>其中总的有7+4=11个字节是VC自动填充的，没有放任何有意义的东西。</em></p>
-<h2 id="strlen-与sizeof"><a href="#strlen-与sizeof" class="headerlink" title="strlen()与sizeof()"></a>strlen()与sizeof()</h2><ol>
-<li>strlen(char <em>)是个函数，其运算结果需要在运行的时候才能计算出来，并且参数只能是char</em>类的字符指针（字符数组名也可以，相当于一个字符的指针）。该函数的功能是获得字符串的长度，从字符串的第一个字符开始遍历直至遇到NULL结束符，NULL结束符不占用字符串的长度。</li>
-<li><p>sizeof()是运算符，其类型在头文件typedef中定义为unsigned int ；参数可以是指针、数组、类型、对象、函数等；该类型保证能容纳实现所建立的最大对象的字节大小；在编译的过程中计算，因此不能用来返回动态分配内存空间的大小，sizeof 返回类型以及静态分配的对象、结构、数组所占的内存空间，返回值跟对象、结构、数组所存储的内容没有关系。<br><strong><em>具体而言，当参数分别如下时，sizeof返回的值表示的含义如下：<br> 数组——编译时分配的数组空间大小；<br> 指针——存储该指针所用的空间大小,存储该指针的地址的长度，是长整型，应该为4<br> 类型——该类型所占的空间大小；<br> 对象——对象的实际占用空间大小；<br> 函数——函数的返回类型所占的空间大小。函数的返回类型不能是void</em></strong></p>
-</li>
-<li><p>sizeof可以用类型做参数，<code>strlen只能用char*做参数，且必须是以&#39;&#39;\0&#39;&#39;结尾的。 sizeof还可以用函数做参数，比如： short f(); printf(&quot;%d\n&quot;, sizeof(f())); 输出的结果是sizeof(short)，即2</code></p>
-</li>
-<li><p>数组做<code>sizeof</code>的参数不退化，传递给strlen就退化为指针了。</p>
-</li>
-<li><p>大部分编译程序 在编译的时候就把sizeof计算过了<code>是类型或是变量的长度这就是sizeof(x)可以用来定义数组维数的原因 char str[20]=&quot;0123456789&quot;; int a=strlen(str); //a=10; int b=sizeof(str); //而b=20;</code> </p>
-</li>
-<li><p>strlen的结果要在运行的时候才能计算出来，时用来计算字符串的长度，不是类型占内存的大小。 </p>
-</li>
-<li><p>sizeof后如果是类型必须加括弧，如果是变量名可以不加括弧。这是因为sizeof是个操作符不是个函数。 </p>
-</li>
-<li><p>当适用了于一个结构类型时或变量， sizeof 返回实际的大小， 当适用一静态地空间数组， sizeof 归还全部数组的尺寸。 sizeof 操作符不能返回动态地被分派了的数组或外部的数组的尺寸</p>
-</li>
-<li><p>数组作为参数传给函数时传的是指针而不是数组，传递的是数组的首地址， 如：</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="built_in">fun</span>(<span class="type">char</span> [<span class="number">8</span>])</span><br><span class="line"><span class="built_in">fun</span>(<span class="type">char</span> []) </span><br><span class="line">都等价于 <span class="built_in">fun</span>(<span class="type">char</span> *) 在C++里参数传递数组永远都是传递指向数组首元素的指针，</span><br><span class="line">编译器不知道数组的大小</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="type">char</span> str[<span class="number">20</span>]=<span class="string">&quot;0123456789&quot;</span>;</span><br><span class="line"><span class="type">int</span> a=<span class="built_in">strlen</span>(str); </span><br><span class="line"></span><br><span class="line">a=<span class="number">10</span>; &gt;&gt;&gt;&gt; strlen 计算字符串的长度，以结束符 <span class="number">0x00</span> 为字符串结束。 </span><br><span class="line"><span class="type">int</span> b=<span class="built_in">sizeof</span>(str); </span><br><span class="line"></span><br><span class="line">而b=<span class="number">20</span>; &gt;&gt;&gt;&gt; <span class="keyword">sizeof</span> 计算的则是分配的数组 str[<span class="number">20</span>] 所占的内存空间的大小，</span><br><span class="line">不受里面存储的内容改变,上面是对静态数组处理的结果，如果是对指针，结果就不一样了 </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="type">char</span>* ss = <span class="string">&quot;0123456789&quot;</span>;</span><br><span class="line"><span class="built_in">sizeof</span>(ss) 结果 <span class="number">4</span> ，</span><br><span class="line"></span><br><span class="line">ss是指向字符串常量的字符指针，</span><br><span class="line"><span class="keyword">sizeof</span> 获得的是一个指针的之所占的空间,应该是 长整型的，所以是<span class="number">4</span> </span><br><span class="line"></span><br><span class="line"><span class="built_in">sizeof</span>(*ss) 结果 <span class="number">1</span> *ss是第一个字符 </span><br><span class="line">其实就是获得了字符串的第一位<span class="string">&#x27;0&#x27;</span> 所占的内存空间，是<span class="type">char</span>类 型的，占了 <span class="number">1</span> 位 <span class="built_in">strlen</span>(ss)= <span class="number">10</span> </span><br><span class="line">&gt;&gt;&gt;&gt; 如果要获得这个字符串的长度，则一定要使用 <span class="built_in">strlen</span>()。</span><br></pre></td></tr></table></figure>
-<h2 id="有关ios-sync-with-stdio-false-；和-cin-tie-nullptr-；的介绍与意"><a href="#有关ios-sync-with-stdio-false-；和-cin-tie-nullptr-；的介绍与意" class="headerlink" title="有关ios::sync_with_stdio(false)；和 cin.tie(nullptr)；的介绍与意"></a>有关ios::sync_with_stdio(false)；和 cin.tie(nullptr)；的介绍与意</h2><p><strong>整体来说它们是对C++输入输出流的优化（可以提高速度），但同时也会产生一定的副作用</strong>   </p>
-</li>
-</ol>
-<p>遇到大数据量（cin、cout 数据量级达到 1e5、1e6 ），     </p>
-<p>因为考虑 IO 性能报错 TLE，故选择 scanf、printf 替代 cin、cout</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">​<span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  std::ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>);</span><br><span class="line">  cin.<span class="built_in">tie</span>(<span class="literal">nullptr</span>);</span><br><span class="line">  ... </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>ios::sync_with_stdio(false)</strong></p>
-<p><code>ios::sync_with_stdio(false);</code>是C++的输入输出流（iostream）是否兼容C的输入输出（stdio）的开关。  </p>
-<blockquote>
-<p>因为C++中的std :: cin和std :: cout为了兼容C，保证在代码中同时出现std :: cin和scanf或std :: cout和printf时输出不发生混乱，<br>所以C++用一个流缓冲区来同步C的标准流。通过std :: ios_base :: sync_with_stdio函数可以解除这种同步，<br>让std :: cin和std :: cout不再经过缓冲区，自然就节省了许多时间。<br>当设置为false时，cin就不能和scanf，sscanf, getchar, fgets等同时使用。<br>据说，endl用”\n”代替和cout使用，也可节约时间。</p>
-</blockquote>
-<p><strong>cin.tie(nullptr)</strong></p>
-<blockquote>
-<p>因为std :: cin默认是与std :: cout绑定的，所以每次操作的时候（也就是调用”&lt;&lt;”或者”&gt;&gt;”）都要刷新（调用flush），<br>这样增加了IO的负担，通过tie(nullptr)来解除std :: cin和std :: cout之间的绑定，来降低IO的负担使效率提升。</p>
-</blockquote>
-<p><strong>cin.tie(NULL);和cin.tie(nullptr); 的区别</strong></p>
-<blockquote>
-<p>nullptr是c++11中的关键字，表示空指针<br>NULL是一个宏定义，在c和c++中的定义不同，c中NULL为（void<em>)0,而c++中NULL为整数0<br>nullptr是一个字面值常量，类型为std::nullptr_t,空指针常数可以转换为任意类型的指针类型。<br>在c++中（void </em>）不能转化为任意类型的指针，即 int <em>p=(void</em>)是错误的，<br>但int <em>p=nullptr是正确的。原因是对于函数重载：若c++中 （void </em>）支持任意类型转换，函数重载时将出现问题。<br>下列代码中fun(NULL)将不能判断调用哪个函数</p>
-</blockquote>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">fun</span><span class="params">(<span class="type">int</span> i)</span></span>&#123;cout&lt;&lt;<span class="string">&quot;1&quot;</span>;&#125;;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">fun</span><span class="params">(<span class="type">char</span> *p)</span></span>&#123;cout&lt;&lt;<span class="string">&quot;2&quot;</span>;&#125;;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">fun</span>(<span class="literal">NULL</span>);        <span class="comment">//输出1，c++中NULL为整数0</span></span><br><span class="line">    <span class="built_in">fun</span>(<span class="literal">nullptr</span>);     <span class="comment">//输出2，nullptr 为空指针常量。是指针类型</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>未归档笔记</category>
-      </categories>
-      <tags>
-        <tag>c++</tag>
       </tags>
   </entry>
   <entry>
@@ -1069,74 +1137,6 @@ dp[i][1] = max(dp[i][1], dp[j][0] + 1)，其中0 &lt; j &lt; i且nums[j] &gt; nu
       </categories>
       <tags>
         <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>git与github项目上传与下载</title>
-    <url>/2022/05/04/git%E4%B8%8Egithub%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0%E4%B8%8E%E4%B8%8B%E8%BD%BD/</url>
-    <content><![CDATA[<p>介绍git的简单使用<br><span id="more"></span>        </p>
-<h1 id="git与github项目上传与下载"><a href="#git与github项目上传与下载" class="headerlink" title="git与github项目上传与下载"></a>git与github项目上传与下载</h1><ul>
-<li><a href="#git与github项目上传与下载">git与github项目上传与下载</a><ul>
-<li><a href="#基础配置">基础配置</a></li>
-<li><a href="#从github上下载项目到本地仓库">从GitHub上下载项目到本地仓库</a></li>
-<li><a href="#从本地git上传项目到github">从本地git上传项目到github</a></li>
-<li><a href="#删除github上的文件">删除GitHub上的文件</a></li>
-<li><a href="#注意事项">注意事项</a></li>
-<li><a href="#常用git命令">常用git命令</a></li>
-</ul>
-</li>
-</ul>
-<h2 id="基础配置"><a href="#基础配置" class="headerlink" title="基础配置"></a>基础配置</h2><ul>
-<li>github账号</li>
-<li>管理本地仓库的 git<ul>
-<li>windows平台下<a href="https://zhuanlan.zhihu.com/p/242540359">git安装</a></li>
-<li>linux平台下（Ubuntu系统为例）apt-get install git<br>查看git版本 git —version</li>
-</ul>
-</li>
-<li><p>配置ssh:本地Git仓库和Github仓库之间的传输是通过SSH加密的</p>
-<ol>
-<li>找到本机的公钥：<br> windows:位于C:\Users\86159.ssh下的id_rsa.pub文件<br> linux:/home/panan/.ssh<br> 如果没有则通过控制命令台生成<br> ssh-keygen -t rsa -C “注册github时用的邮箱” 默认回车即可</li>
-<li>在GitHub上输入id_rsa.pub文件的内容<br><img src="/2022/05/04/git%E4%B8%8Egithub%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0%E4%B8%8E%E4%B8%8B%E8%BD%BD/ssh_key.jpg" alt="ssh"><br>在settings中  点击New SSH key    </li>
-</ol>
-</li>
-<li><p>GitHub选项介绍<br>  Repository name: 仓库名称（输入名字，最好不要使用中文）<br>  Description(可选): 仓库描述介绍<br>  Public, Private : 仓库权限（公开共享，私有或指定合作者）<br>  Initialize this repository with a README: 添加一个README.md</p>
-</li>
-</ul>
-<h2 id="从GitHub上下载项目到本地仓库"><a href="#从GitHub上下载项目到本地仓库" class="headerlink" title="从GitHub上下载项目到本地仓库"></a>从GitHub上下载项目到本地仓库</h2><ol>
-<li>选择项目下载的文件夹 在git终端中进入该目录<br><img src="/2022/05/04/git%E4%B8%8Egithub%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0%E4%B8%8E%E4%B8%8B%E8%BD%BD/02.jpg" alt="ssh"></li>
-<li>git clone （项目链接）<a href="https://github.com/JuZiHHU/Note.git">https://github.com/JuZiHHU/Note.git</a><br><img src="/2022/05/04/git%E4%B8%8Egithub%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0%E4%B8%8E%E4%B8%8B%E8%BD%BD/03.jpg" alt="ssh"><br><img src="/2022/05/04/git%E4%B8%8Egithub%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0%E4%B8%8E%E4%B8%8B%E8%BD%BD/04.jpg" alt="ssh"><br>然后在该文件夹下就可以看到下载的项目</li>
-<li>linux平台下在终端直接执行相应命令即可</li>
-</ol>
-<h2 id="从本地git上传项目到github"><a href="#从本地git上传项目到github" class="headerlink" title="从本地git上传项目到github"></a>从本地git上传项目到github</h2><ol>
-<li>创建本地项目文件 右键 git bash here进入该目录<br>输入git init创建git仓库</li>
-<li>在github上创建仓库</li>
-<li>本地仓库与远程仓库关联</li>
-<li>推送远程</li>
-</ol>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">git init</span><br><span class="line">git add README.md <span class="comment">//git add (将文件添加到本地仓库，git add  * 是添加全部文件)</span></span><br><span class="line">git commit -m <span class="string">&quot;first commit&quot;</span>  提交到本地缓冲 <span class="string">&quot;&quot;</span> 中为注释</span><br><span class="line"><span class="comment">//将本地仓库和远程仓库进行关联</span></span><br><span class="line"><span class="comment">//也可以</span></span><br><span class="line">git remote add origin https:<span class="comment">//github.com/hongduhong/test.git</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">推送到远程 </span></span><br><span class="line"><span class="comment">git push -u origin master</span></span><br><span class="line"><span class="comment">新建的远程仓库是空的，所以要加上-u这个参数，等远程仓库里面有了内容之后，</span></span><br><span class="line"><span class="comment">下次再从本地库上传内容的时候只需下面这样就可以了</span></span><br><span class="line"><span class="comment">*/</span> </span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
-<h2 id="删除GitHub上的文件"><a href="#删除GitHub上的文件" class="headerlink" title="删除GitHub上的文件"></a>删除GitHub上的文件</h2><ol>
-<li><p>取消暂存文件/目录 使用git rm -r —cached 命令标记文件以进行取消暂存：</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">$ git rm -r --cached backup/</span><br><span class="line"></span><br><span class="line">rm <span class="string">&#x27;backup/backup.sh&#x27;</span></span><br><span class="line"></span><br><span class="line">rm <span class="string">&#x27;backup/rsync_exclude.lst&#x27;</span></span><br><span class="line"></span><br><span class="line">将buckup/替换为你的目录或文件。</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>进行新的提交 将新的提交对象/更改保存到本地Git存储库：</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">$ git commit -m <span class="string">&#x27;Remove newly ignored directory &quot;./backup&quot;&#x27;</span></span><br><span class="line"></span><br><span class="line">master d631061] Remove newly ignored directory <span class="string">&quot;./backup&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="number">2</span> files changed, <span class="number">14</span> <span class="built_in">deletions</span>(-)</span><br><span class="line"></span><br><span class="line"><span class="keyword">delete</span> mode <span class="number">100644</span> backup/backup.sh</span><br><span class="line"></span><br><span class="line"><span class="keyword">delete</span> mode <span class="number">100644</span> backup/rsync_exclude.lst</span><br></pre></td></tr></table></figure></li>
-<li>将更改推送到远程git存储库 上一个命令将更改保存到本地git存储库，使用以下命令将它们推送到远程存储库：<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">$ git push origin master</span><br></pre></td></tr></table></figure>
-<a href="https://blog.csdn.net/weixin_42136791/article/details/116651886">参考博客: linux删除远程目录,从远程存储库中删除.gitignore中的git文件/目录</a></li>
-</ol>
-<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><ol>
-<li>在docs命令窗口看到下边的提示：<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">$git config --global user.name <span class="string">&quot;Jhon&quot;</span> </span><br><span class="line"></span><br><span class="line">$git config --global user.email Jhon@example.com<span class="string">&quot;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">解决方案：</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">按照上面的提示，输入</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&gt;git config --global user.name &quot;</span>这里是你github的用户名<span class="string">&quot; </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&gt;git config --global user.email 这里是你注册github的邮箱</span></span><br></pre></td></tr></table></figure></li>
-<li><p>提交到远程仓库的时候，提示：<em>fatal ：remote origin already exists</em><br>解决方案：删除远程仓库；输入命令：<em>git remote rm origin</em></p>
-</li>
-<li><p>昨天还可以git push代码到远程仓库，今天git push时报了这个错：<br><em>fatal: unable to access ‘<a href="https://github.com/">https://github.com/</a>…….’: OpenSSL SSL_read: Connection was reset, errno 10054</em></p>
-</li>
-</ol>
-<h2 id="常用git命令"><a href="#常用git命令" class="headerlink" title="常用git命令"></a>常用git命令</h2><p><a href="https://www.runoob.com/git/git-basic-operations.html">git操作</a><br><a href="https://www.cnblogs.com/du-hong/p/9921214.html">参考博客：Git的使用—如何将本地项目上传到Github</a></p>
-]]></content>
-      <categories>
-        <category>操作教程</category>
-      </categories>
-      <tags>
-        <tag>git</tag>
       </tags>
   </entry>
   <entry>
