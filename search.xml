@@ -1,136 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>git与github项目上传与下载</title>
-    <url>/2022/05/04/git%E4%B8%8Egithub%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0%E4%B8%8E%E4%B8%8B%E8%BD%BD/</url>
-    <content><![CDATA[<p>介绍git的简单使用<br><span id="more"></span>        </p>
-<h1 id="git与github项目上传与下载"><a href="#git与github项目上传与下载" class="headerlink" title="git与github项目上传与下载"></a>git与github项目上传与下载</h1><ul>
-<li><a href="#git与github项目上传与下载">git与github项目上传与下载</a><ul>
-<li><a href="#基础配置">基础配置</a></li>
-<li><a href="#从github上下载项目到本地仓库">从GitHub上下载项目到本地仓库</a></li>
-<li><a href="#从本地git上传项目到github">从本地git上传项目到github</a></li>
-<li><a href="#删除github上的文件">删除GitHub上的文件</a></li>
-<li><a href="#注意事项">注意事项</a></li>
-<li><a href="#常用git命令">常用git命令</a></li>
-</ul>
-</li>
-</ul>
-<h2 id="基础配置"><a href="#基础配置" class="headerlink" title="基础配置"></a>基础配置</h2><ul>
-<li>github账号</li>
-<li>管理本地仓库的 git<ul>
-<li>windows平台下<a href="https://zhuanlan.zhihu.com/p/242540359">git安装</a></li>
-<li>linux平台下（Ubuntu系统为例）apt-get install git<br>查看git版本 git —version</li>
-</ul>
-</li>
-<li><p>配置ssh:本地Git仓库和Github仓库之间的传输是通过SSH加密的</p>
-<ol>
-<li>找到本机的公钥：<br> windows:位于C:\Users\86159.ssh下的id_rsa.pub文件<br> linux:/home/panan/.ssh<br> 如果没有则通过控制命令台生成<br> ssh-keygen -t rsa -C “注册github时用的邮箱” 默认回车即可</li>
-<li>在GitHub上输入id_rsa.pub文件的内容<br><img src="/2022/05/04/git%E4%B8%8Egithub%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0%E4%B8%8E%E4%B8%8B%E8%BD%BD/ssh_key.jpg" alt="ssh"><br>在settings中  点击New SSH key    </li>
-</ol>
-</li>
-<li><p>GitHub选项介绍<br>  Repository name: 仓库名称（输入名字，最好不要使用中文）<br>  Description(可选): 仓库描述介绍<br>  Public, Private : 仓库权限（公开共享，私有或指定合作者）<br>  Initialize this repository with a README: 添加一个README.md</p>
-</li>
-</ul>
-<h2 id="从GitHub上下载项目到本地仓库"><a href="#从GitHub上下载项目到本地仓库" class="headerlink" title="从GitHub上下载项目到本地仓库"></a>从GitHub上下载项目到本地仓库</h2><ol>
-<li>选择项目下载的文件夹 在git终端中进入该目录<br><img src="/2022/05/04/git%E4%B8%8Egithub%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0%E4%B8%8E%E4%B8%8B%E8%BD%BD/02.jpg" alt="ssh"></li>
-<li>git clone （项目链接）<a href="https://github.com/JuZiHHU/Note.git">https://github.com/JuZiHHU/Note.git</a><br><img src="/2022/05/04/git%E4%B8%8Egithub%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0%E4%B8%8E%E4%B8%8B%E8%BD%BD/03.jpg" alt="ssh"><br><img src="/2022/05/04/git%E4%B8%8Egithub%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0%E4%B8%8E%E4%B8%8B%E8%BD%BD/04.jpg" alt="ssh"><br>然后在该文件夹下就可以看到下载的项目</li>
-<li>linux平台下在终端直接执行相应命令即可</li>
-</ol>
-<h2 id="从本地git上传项目到github"><a href="#从本地git上传项目到github" class="headerlink" title="从本地git上传项目到github"></a>从本地git上传项目到github</h2><ol>
-<li>创建本地项目文件 右键 git bash here进入该目录<br>输入git init创建git仓库</li>
-<li>在github上创建仓库</li>
-<li>本地仓库与远程仓库关联</li>
-<li>推送远程</li>
-</ol>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">git init</span><br><span class="line">git add README.md <span class="comment">//git add (将文件添加到本地仓库，git add  * 是添加全部文件)</span></span><br><span class="line">git commit -m <span class="string">&quot;first commit&quot;</span>  提交到本地缓冲 <span class="string">&quot;&quot;</span> 中为注释</span><br><span class="line"><span class="comment">//将本地仓库和远程仓库进行关联</span></span><br><span class="line"><span class="comment">//也可以</span></span><br><span class="line">git remote add origin https:<span class="comment">//github.com/hongduhong/test.git</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">推送到远程 </span></span><br><span class="line"><span class="comment">git push -u origin master</span></span><br><span class="line"><span class="comment">新建的远程仓库是空的，所以要加上-u这个参数，等远程仓库里面有了内容之后，</span></span><br><span class="line"><span class="comment">下次再从本地库上传内容的时候只需下面这样就可以了</span></span><br><span class="line"><span class="comment">*/</span> </span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
-<h2 id="删除GitHub上的文件"><a href="#删除GitHub上的文件" class="headerlink" title="删除GitHub上的文件"></a>删除GitHub上的文件</h2><ol>
-<li><p>取消暂存文件/目录 使用git rm -r —cached 命令标记文件以进行取消暂存：</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">$ git rm -r --cached backup/</span><br><span class="line"></span><br><span class="line">rm <span class="string">&#x27;backup/backup.sh&#x27;</span></span><br><span class="line"></span><br><span class="line">rm <span class="string">&#x27;backup/rsync_exclude.lst&#x27;</span></span><br><span class="line"></span><br><span class="line">将buckup/替换为你的目录或文件。</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>进行新的提交 将新的提交对象/更改保存到本地Git存储库：</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">$ git commit -m <span class="string">&#x27;Remove newly ignored directory &quot;./backup&quot;&#x27;</span></span><br><span class="line"></span><br><span class="line">master d631061] Remove newly ignored directory <span class="string">&quot;./backup&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="number">2</span> files changed, <span class="number">14</span> <span class="built_in">deletions</span>(-)</span><br><span class="line"></span><br><span class="line"><span class="keyword">delete</span> mode <span class="number">100644</span> backup/backup.sh</span><br><span class="line"></span><br><span class="line"><span class="keyword">delete</span> mode <span class="number">100644</span> backup/rsync_exclude.lst</span><br></pre></td></tr></table></figure></li>
-<li>将更改推送到远程git存储库 上一个命令将更改保存到本地git存储库，使用以下命令将它们推送到远程存储库：<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">$ git push origin master</span><br></pre></td></tr></table></figure>
-<a href="https://blog.csdn.net/weixin_42136791/article/details/116651886">参考博客: linux删除远程目录,从远程存储库中删除.gitignore中的git文件/目录</a></li>
-</ol>
-<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><ol>
-<li>在docs命令窗口看到下边的提示：<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">$git config --global user.name <span class="string">&quot;Jhon&quot;</span> </span><br><span class="line"></span><br><span class="line">$git config --global user.email Jhon@example.com<span class="string">&quot;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">解决方案：</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">按照上面的提示，输入</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&gt;git config --global user.name &quot;</span>这里是你github的用户名<span class="string">&quot; </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&gt;git config --global user.email 这里是你注册github的邮箱</span></span><br></pre></td></tr></table></figure></li>
-<li><p>提交到远程仓库的时候，提示：<em>fatal ：remote origin already exists</em><br>解决方案：删除远程仓库；输入命令：<em>git remote rm origin</em></p>
-</li>
-<li><p>昨天还可以git push代码到远程仓库，今天git push时报了这个错：<br><em>fatal: unable to access ‘<a href="https://github.com/">https://github.com/</a>…….’: OpenSSL SSL_read: Connection was reset, errno 10054</em></p>
-</li>
-</ol>
-<h2 id="常用git命令"><a href="#常用git命令" class="headerlink" title="常用git命令"></a>常用git命令</h2><p><a href="https://www.runoob.com/git/git-basic-operations.html">git操作</a><br><a href="https://www.cnblogs.com/du-hong/p/9921214.html">参考博客：Git的使用—如何将本地项目上传到Github</a></p>
-]]></content>
-      <categories>
-        <category>操作教程</category>
-      </categories>
-      <tags>
-        <tag>git</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>hexo搭建个人博客网站</title>
-    <url>/2022/05/18/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/</url>
-    <content><![CDATA[<p>基于hexo+github搭建个人博客网站，使用next主题</p>
-<span id="more"></span>   
-<h1 id="网站效果"><a href="#网站效果" class="headerlink" title="网站效果"></a>网站效果</h1><p><a href="https://juzihhu.github.io/">https://juzihhu.github.io/</a><br>我的整个项目文件已经可从百度网盘下载</p>
-<h1 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h1><ol>
-<li>github账号与特殊仓库<br> 创建repository 命名为{GitHub账户名.github.io}<br><img src="/2022/05/18/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/github配置.png" alt></li>
-</ol>
-<p>在浏览器输入<code>GitHub账户名.github.io</code>,出现如下结果则表示成功<br><img src="/2022/05/18/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/github404.png" alt></p>
-<ol>
-<li><p>安装Node.js<br><a href="https://nodejs.org/dist/v4.2.3/node-v4.2.3-x86.msi">https://nodejs.org/dist/v4.2.3/node-v4.2.3-x86.msi</a>   </p>
-<p><a href="https://nodejs.org/dist/v4.2.3/node-v4.2.3-x64.msi">https://nodejs.org/dist/v4.2.3/node-v4.2.3-x64.msi</a>   </p>
-</li>
-<li><p>安装git,配置git环境</p>
-<p>具体可以参考我的这篇博客<br><a href="https://juzihhu.github.io/2022/05/04/git%E4%B8%8Egithub%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0%E4%B8%8E%E4%B8%8B%E8%BD%BD/">git与github项目上传与下载</a></p>
-</li>
-<li><p>检查安装环境配置<br>打开cmd命令行(win+r 输入cmd回车)分别执行<br>node -v<br>npm -v<br>git —version</p>
-<p><img src="/2022/05/18/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/安装环境配置.png" alt></p>
-</li>
-<li><p>安装Hexo<br>打开cmd命令行(win+r 输入cmd回车)分别执行<br><code>npm install hexo-cli -g</code>   </p>
-<p>等待自动安装完成后。输入<br> <code>hexo -v</code></p>
-<p> 结果如下：<br> $ hexo -v<br> INFO  Validating config<br> hexo: 6.2.0<br> hexo-cli: 4.3.0<br> os: win32 10.0.19043<br> node: 16.15.0<br> v8: 9.4.146.24-node.20<br> uv: 1.43.0<br> zlib: 1.2.11<br> brotli: 1.0.9<br> ares: 1.18.1<br> modules: 93<br> nghttp2: 1.47.0<br> napi: 8<br> llhttp: 6.0.4<br> openssl: 1.1.1n+quic<br> cldr: 40.0<br> icu: 70.1<br> tz: 2021a3<br> unicode: 14.0<br> ngtcp2: 0.1.0-DEV<br> nghttp3: 0.1.0-DEV</p>
-</li>
-</ol>
-<h1 id="网站搭建"><a href="#网站搭建" class="headerlink" title="网站搭建"></a>网站搭建</h1><ol>
-<li><p>新建存放网站项目的文件夹<br>比如我的是新建 HexoBlog</p>
-</li>
-<li><p>右键该文件夹git blash进入<br><img src="/2022/05/18/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/博客文件夹.png" alt></p>
-</li>
-<li><p>使用如下指令</p>
-<p> <code>hexo init</code><br> 初始化hexo。这个命令和git 仓库命令相似。意思一样都是初始化。</p>
-<p> <code>npm install hexo --save</code><br> 初始化hexo基础配置文件。初始化时间比较长，不用急，等完成后输入</p>
-<p> <code>npm install</code><br> 配置node。然后输入</p>
-<p> <code>hexo g</code>（或者 <code>hexo generate</code>）<br> 加载hexo基础html、css、js等文件。</p>
-<p> 在这完成后等于已经在本地创建了一个网页，输入<br> <code>hexo s</code>(或者<code>hexo serve</code>)</p>
-<p> 在浏览器输入：<a href="http://localhost:4000">http://localhost:4000</a><br> <img src="/2022/05/18/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/hexos.jpg" alt></p>
-</li>
-</ol>
-<p><strong>至此博客的初步框架已经搭建完成</strong></p>
-<h1 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h1><ol>
-<li>打开根目录下的 _config.yml 文件,修改如下部分内容 </li>
-</ol>
-<p>在部署之前，我们需要先知道博客的部署地址，它需要对应 GitHub 的一个 Repository 的地址，这个信息需要我们来配置一下。 </p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"># <span class="title class_">Deployment</span></span><br><span class="line">## <span class="title class_">Docs</span>: <span class="attr">https</span>:<span class="comment">//hexo.io/docs/one-command-deployment</span></span><br><span class="line"><span class="attr">deploy</span>:</span><br><span class="line">  <span class="attr">type</span>: git</span><br><span class="line">  <span class="attr">repo</span>: git@github.<span class="property">com</span>:juzihhu/juzihhu.<span class="property">github</span>.<span class="property">io</span>.<span class="property">git</span></span><br><span class="line">  <span class="attr">branch</span>: main</span><br></pre></td></tr></table></figure>
-<p>另外我们还需要额外安装一个支持 Git 的部署插件，名字叫做 hexo-deployer-git，有了它我们才可以顺利将其部署到 GitHub 上面，如果不安装的话，在执行部署命令时会报如下错误：</p>
-<p><code>npm install hexo-deployer-git --save</code><br>安装成功之后，执行部署命令：<br><code>hexo deploy</code></p>
-<ol>
-<li><p>访问<br>浏览器输入博客网站域名<br>这里我的是 <a href="https://juzihhu.github.io/">https://juzihhu.github.io/</a></p>
-<p><img src="/2022/05/18/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/hexo博客初步.jpg" alt></p>
-</li>
-</ol>
-<p>至此博客网站已经初步搭建成功了</p>
-<h1 id="网站信息配置以及主题配置"><a href="#网站信息配置以及主题配置" class="headerlink" title="网站信息配置以及主题配置"></a>网站信息配置以及主题配置</h1><p>更新中…..</p>
-]]></content>
-      <categories>
-        <category>操作教程</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>随笔</title>
     <url>/2022/05/04/note/</url>
     <content><![CDATA[<p>记录一些暂时未分类的笔记</p>
@@ -308,8 +178,13 @@
 <li><a href="#0-1背包理论基础">0-1背包理论基础</a></li>
 <li><a href="#分割等和子集">分割等和子集</a></li>
 <li><a href="#目标和">目标和</a></li>
-<li><a href="#474一和零">474.一和零</a></li>
+<li><a href="#一和零">一和零</a></li>
 <li><a href="#完全背包理论">完全背包理论</a></li>
+<li><a href="#零钱兑换-ii">零钱兑换 II</a></li>
+<li><a href="#组合总和-ⅳ">组合总和 Ⅳ</a></li>
+<li><a href="#零钱兑换">零钱兑换</a></li>
+<li><a href="#单词拆分">单词拆分</a></li>
+<li><a href="#多重背包理论">多重背包理论</a></li>
 </ul>
 </li>
 </ul>
@@ -580,7 +455,7 @@
 <p>公式来了， left - (sum - left) = target -&gt; left = (target + sum)/2 。</p>
 <p>target是固定的，sum是固定的，left就可以求出来。</p>
 <p><strong>从而可以转化为01背包问题</strong><br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">findTargetSumWays</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> S)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; nums.<span class="built_in">size</span>(); i++) sum += nums[i];</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">abs</span>(S) &gt; sum) <span class="keyword">return</span> <span class="number">0</span>; <span class="comment">// 此时没有方案</span></span><br><span class="line">        <span class="keyword">if</span> ((S + sum) % <span class="number">2</span> == <span class="number">1</span>) <span class="keyword">return</span> <span class="number">0</span>; <span class="comment">// 此时没有方案</span></span><br><span class="line">        <span class="type">int</span> bagSize = (S + sum) / <span class="number">2</span>;</span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">dp</span><span class="params">(bagSize + <span class="number">1</span>, <span class="number">0</span>)</span></span>;</span><br><span class="line">        dp[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; nums.<span class="built_in">size</span>(); i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> j = bagSize; j &gt;= nums[i]; j--) &#123;</span><br><span class="line">                dp[j] += dp[j - nums[i]];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[bagSize];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<h2 id="474-一和零"><a href="#474-一和零" class="headerlink" title="474.一和零"></a>474.一和零</h2><p><a href="https://leetcode.cn/problems/ones-and-zeroes">474. 一和零</a></p>
+<h2 id="一和零"><a href="#一和零" class="headerlink" title="一和零"></a>一和零</h2><p><a href="https://leetcode.cn/problems/ones-and-zeroes">474. 一和零</a></p>
 <p>给你一个二进制字符串数组 strs 和两个整数 m 和 n 。<br>请你找出并返回 strs 的最大子集的长度，该子集中 最多 有 m 个 0 和 n 个 1 。<br>如果 x 的所有元素也是 y 的元素，集合 x 是集合 y 的 子集 。</p>
 <pre><code>输入：strs = [&quot;10&quot;, &quot;0001&quot;, &quot;111001&quot;, &quot;1&quot;, &quot;0&quot;], m = 5, n = 3
 输出：4
@@ -606,7 +481,79 @@
 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 先遍历物品，再遍历背包</span></span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; weight.<span class="built_in">size</span>(); i++) &#123; <span class="comment">// 遍历物品</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> j = weight[i]; j &lt;= bagWeight ; j++) &#123; <span class="comment">// 遍历背包容量</span></span><br><span class="line">        dp[j] = <span class="built_in">max</span>(dp[j], dp[j - weight[i]] + value[i]);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>在完全背包中，对于一维dp数组来说，其实两个for循环嵌套顺序同样无所谓！</p>
 <p>因为dp[j] 是根据 下标j之前所对应的dp[j]计算出来的。 只要保证下标j之前的dp[j]都是经过计算的就可以了。</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 先遍历背包，再遍历物品</span></span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j &lt;= bagWeight; j++) &#123; <span class="comment">// 遍历背包容量</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; weight.<span class="built_in">size</span>(); i++) &#123; <span class="comment">// 遍历物品</span></span><br><span class="line">        <span class="keyword">if</span> (j - weight[i] &gt;= <span class="number">0</span>) dp[j] = <span class="built_in">max</span>(dp[j], dp[j - weight[i]] + value[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 先遍历背包，再遍历物品</span></span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j &lt;= bagWeight; j++) &#123; <span class="comment">// 遍历背包容量</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; weight.<span class="built_in">size</span>(); i++) &#123; <span class="comment">// 遍历物品</span></span><br><span class="line">        <span class="keyword">if</span> (j - weight[i] &gt;= <span class="number">0</span>) dp[j] = <span class="built_in">max</span>(dp[j], dp[j - weight[i]] + value[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="零钱兑换-II"><a href="#零钱兑换-II" class="headerlink" title="零钱兑换 II"></a>零钱兑换 II</h2><p><a href="https://leetcode.cn/problems/coin-change-2">518. 零钱兑换 II</a><br>给你一个整数数组 coins 表示不同面额的硬币，另给一个整数 amount 表示总金额。</p>
+<p>请你计算并返回可以凑成总金额的硬币组合数。如果任何硬币组合都无法凑出总金额，返回 0 。</p>
+<p>假设每一种面额的硬币有无限个。 </p>
+<p>题目数据保证结果符合 32 位带符号整数。</p>
+<pre><code>输入：amount = 5, coins = [1, 2, 5]
+输出：4
+解释：有四种方式可以凑成总金额：
+5=5
+5=2+2+1
+5=2+1+1+1
+5=1+1+1+1+1
+</code></pre><p><strong>思路：</strong></p>
+<p>dp[j]：凑成总金额j的货币组合数为dp[j]<br>dp[j] （考虑coins[i]的组合总和） 就是所有的dp[j - coins[i]]（不考虑coins[i]）相加。<br>所以递推公式：<code>dp[j] += dp[j - coins[i]];</code>  </p>
+<p>首先dp[0]一定要为1，dp[0] = 1是 递归公式的基础。<br>从dp[i]的含义上来讲就是，凑成总金额0的货币组合数为1。<br>下标非0的dp[j]初始化为0，这样累计加dp[j - coins[i]]的时候才不会影响真正的dp[j]</p>
+<p><strong>因为纯完全背包求得是能否凑成总和，和凑成总和的元素有没有顺序没关系，即：有顺序也行，没有顺序也行！</strong><br>而本题要求凑成总和的组合数，元素之间要求没有顺序。<br>所以纯完全背包是能凑成总和就行，不用管怎么凑的。<br>本题是求凑出来的方案个数，且每个方案个数是为组合数。<br>那么本题，两个for循环的先后顺序可就有说法了。<br>我们先来看 外层for循环遍历物品（钱币），内层for遍历背包（金钱总额）的情况。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; coins.<span class="built_in">size</span>(); i++) &#123; <span class="comment">// 遍历物品</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> j = coins[i]; j &lt;= amount; j++) &#123; <span class="comment">// 遍历背包容量</span></span><br><span class="line">        dp[j] += dp[j - coins[i]];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>假设：coins[0] = 1，coins[1] = 5。</p>
+<p>那么就是先把1加入计算，然后再把5加入计算，得到的方法数量只有{1, 5}这种情况。而不会出现{5, 1}的情况。</p>
+<p><strong>所以这种遍历顺序中dp[j]里计算的是组合数！</strong></p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt;= amount; j++) &#123; <span class="comment">// 遍历背包容量</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; coins.<span class="built_in">size</span>(); i++) &#123; <span class="comment">// 遍历物品  </span></span><br><span class="line">        <span class="keyword">if</span> (j - coins[i] &gt;= <span class="number">0</span>) dp[j] += dp[j - coins[i]];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>背包容量的每一个值，都是经过 1 和 5 的计算，包含了{1, 5} 和 {5, 1}两种情况。</strong></p>
+<p>此时dp[j]里算出来的就是排列数！</p>
+<p><img src="/2022/05/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/完全背包零钱兑换dp推导.png" alt></p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">change</span><span class="params">(<span class="type">int</span> amount, vector&lt;<span class="type">int</span>&gt;&amp; coins)</span> </span>&#123;</span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">dp</span><span class="params">(amount + <span class="number">1</span>, <span class="number">0</span>)</span></span>;</span><br><span class="line">        dp[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; coins.<span class="built_in">size</span>(); i++) &#123; <span class="comment">// 遍历物品</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> j = coins[i]; j &lt;= amount; j++) &#123; <span class="comment">// 遍历背包</span></span><br><span class="line">                dp[j] += dp[j - coins[i]];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[amount];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="组合总和-Ⅳ"><a href="#组合总和-Ⅳ" class="headerlink" title="组合总和 Ⅳ"></a>组合总和 Ⅳ</h2><p><a href="https://leetcode.cn/problems/combination-sum-iv">377. 组合总和 Ⅳ</a></p>
+<p>给你一个由 不同 整数组成的数组 nums ，和一个目标整数 target 。请你从 nums 中找出并返回总和为 target 的元素组合的个数。</p>
+<p>题目数据保证答案符合 32 位整数范围。</p>
+<pre><code>输入：nums = [1,2,3], target = 4
+输出：7
+解释：
+所有可能的组合为：
+(1, 1, 1, 1)
+(1, 1, 2)
+(1, 2, 1)
+(1, 3)
+(2, 1, 1)
+(2, 2)
+</code></pre><p><strong>本质为求背包排列数，故而应该先遍历背包容量</strong><br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">combinationSum4</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">dp</span><span class="params">(target + <span class="number">1</span>, <span class="number">0</span>)</span></span>;</span><br><span class="line">        dp[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt;= target; i++) &#123; <span class="comment">// 遍历背包</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; nums.<span class="built_in">size</span>(); j++) &#123; <span class="comment">// 遍历物品</span></span><br><span class="line">                <span class="keyword">if</span> (i - nums[j] &gt;= <span class="number">0</span> &amp;&amp; dp[i] &lt; INT_MAX - dp[i - nums[j]]) &#123;</span><br><span class="line">                    dp[i] += dp[i - nums[j]];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[target];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<h2 id="零钱兑换"><a href="#零钱兑换" class="headerlink" title="零钱兑换"></a>零钱兑换</h2><p><a href="https://leetcode.cn/problems/coin-change">322. 零钱兑换</a></p>
+<p>给你一个整数数组 coins ，表示不同面额的硬币；以及一个整数 amount ，表示总金额。</p>
+<p>计算并返回可以凑成总金额所需的 最少的硬币个数 。如果没有任何一种硬币组合能组成总金额，返回 -1 。</p>
+<p>你可以认为每种硬币的数量是无限的。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 版本一</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">coinChange</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; coins, <span class="type">int</span> amount)</span> </span>&#123;</span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">dp</span><span class="params">(amount + <span class="number">1</span>, INT_MAX)</span></span>;</span><br><span class="line">        dp[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; coins.<span class="built_in">size</span>(); i++) &#123; <span class="comment">// 遍历物品</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> j = coins[i]; j &lt;= amount; j++) &#123; <span class="comment">// 遍历背包</span></span><br><span class="line">                <span class="keyword">if</span> (dp[j - coins[i]] != INT_MAX) &#123; <span class="comment">// 如果dp[j - coins[i]]是初始值则跳过</span></span><br><span class="line">                    dp[j] = <span class="built_in">min</span>(dp[j - coins[i]] + <span class="number">1</span>, dp[j]);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (dp[amount] == INT_MAX) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">return</span> dp[amount];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><strong>注意</strong></p>
+<p><code>if (dp[j - coins[i]] != INT_MAX) &#123; // 如果dp[j - coins[i]]是初始值则跳过</code><br>对于无法实现的dp[j]需要跳过</p>
+<p>相似题：</p>
+<p><a href="https://leetcode.cn/problems/perfect-squares/">279. 完全平方数</a></p>
+<h2 id="单词拆分"><a href="#单词拆分" class="headerlink" title="单词拆分"></a>单词拆分</h2><p><a href="https://leetcode.cn/problems/word-break">139. 单词拆分</a></p>
+<p>给你一个字符串 s 和一个字符串列表 wordDict 作为字典。请你判断是否可以利用字典中出现的单词拼接出 s 。</p>
+<p>注意：不要求字典中出现的单词全部都使用，并且字典中的单词可以重复使用。</p>
+<pre><code>输入: s = &quot;leetcode&quot;, wordDict = [&quot;leet&quot;, &quot;code&quot;]
+输出: true
+解释: 返回 true 因为 &quot;leetcode&quot; 可以由 &quot;leet&quot; 和 &quot;code&quot; 拼接成。
+</code></pre><p><strong>思路：</strong></p>
+<ol>
+<li>常规回溯法<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">backtracking</span> <span class="params">(<span class="type">const</span> string&amp; s, <span class="type">const</span> unordered_set&lt;string&gt;&amp; wordSet, <span class="type">int</span> startIndex)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (startIndex &gt;= s.<span class="built_in">size</span>()) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = startIndex; i &lt; s.<span class="built_in">size</span>(); i++) &#123;</span><br><span class="line">            string word = s.<span class="built_in">substr</span>(startIndex, i - startIndex + <span class="number">1</span>);</span><br><span class="line">            <span class="keyword">if</span> (wordSet.<span class="built_in">find</span>(word) != wordSet.<span class="built_in">end</span>() &amp;&amp; <span class="built_in">backtracking</span>(s, wordSet, i + <span class="number">1</span>)) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">wordBreak</span><span class="params">(string s, vector&lt;string&gt;&amp; wordDict)</span> </span>&#123;</span><br><span class="line">        <span class="function">unordered_set&lt;string&gt; <span class="title">wordSet</span><span class="params">(wordDict.begin(), wordDict.end())</span></span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">backtracking</span>(s, wordSet, <span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>改进回溯：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">backtracking</span> <span class="params">(<span class="type">const</span> string&amp; s,</span></span></span><br><span class="line"><span class="params"><span class="function">            <span class="type">const</span> unordered_set&lt;string&gt;&amp; wordSet,</span></span></span><br><span class="line"><span class="params"><span class="function">            vector&lt;<span class="type">bool</span>&gt;&amp; memory,</span></span></span><br><span class="line"><span class="params"><span class="function">            <span class="type">int</span> startIndex)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (startIndex &gt;= s.<span class="built_in">size</span>()) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 如果memory[startIndex]不是初始值了，直接使用memory[startIndex]的结果</span></span><br><span class="line">        <span class="keyword">if</span> (!memory[startIndex]) <span class="keyword">return</span> memory[startIndex];</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = startIndex; i &lt; s.<span class="built_in">size</span>(); i++) &#123;</span><br><span class="line">            string word = s.<span class="built_in">substr</span>(startIndex, i - startIndex + <span class="number">1</span>);</span><br><span class="line">            <span class="keyword">if</span> (wordSet.<span class="built_in">find</span>(word) != wordSet.<span class="built_in">end</span>() &amp;&amp; <span class="built_in">backtracking</span>(s, wordSet, memory, i + <span class="number">1</span>)) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        memory[startIndex] = <span class="literal">false</span>; <span class="comment">// 记录以startIndex开始的子串是不可以被拆分的</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">wordBreak</span><span class="params">(string s, vector&lt;string&gt;&amp; wordDict)</span> </span>&#123;</span><br><span class="line">        <span class="function">unordered_set&lt;string&gt; <span class="title">wordSet</span><span class="params">(wordDict.begin(), wordDict.end())</span></span>;</span><br><span class="line">        <span class="function">vector&lt;<span class="type">bool</span>&gt; <span class="title">memory</span><span class="params">(s.size(), <span class="number">1</span>)</span></span>; <span class="comment">// -1 表示初始化状态</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">backtracking</span>(s, wordSet, memory, <span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p> <strong>动态规划</strong></p>
+<p> dp[i] : 字符串长度为i的话，dp[i]为true，表示可以拆分为一个或多个在字典中出现的单词</p>
+<p> <strong>如果确定dp[j] 是true，且 [j, i] 这个区间的子串出现在字典里，那么dp[i]一定是true。（j &lt; i ）</strong><br> 所以递推公式是 if([j, i] 这个区间的子串出现在字典里 &amp;&amp; dp[j]是true) 那么 dp[i] = true</p>
+<p> 从递归公式中可以看出，<strong>dp[i] 的状态依靠 dp[j]是否为true，那么dp[0]就是递归的根基，dp[0]一定要为true</strong>，否则递归下去后面都都是false了</p>
+<p> 下标非0的dp[i]初始化为false，只要没有被覆盖说明都是不可拆分为一个或多个在字典中出现的单词。</p>
+<p> 题目中说是拆分为一个或多个在字典中出现的单词，所以这是完全背包<br> <strong>如果求组合数就是外层for循环遍历物品，内层for遍历背包。<br> 如果求排列数就是外层for遍历背包，内层for循环遍历物品。</strong><br> 本题最终要求的是是否都出现过，所以对出现单词集合里的元素是组合还是排列，并不在意！</p>
+ <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"> <span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">wordBreak</span><span class="params">(string s, vector&lt;string&gt;&amp; wordDict)</span> </span>&#123;</span><br><span class="line">        <span class="function">unordered_set&lt;string&gt; <span class="title">wordSet</span><span class="params">(wordDict.begin(), wordDict.end())</span></span>;</span><br><span class="line">        <span class="function">vector&lt;<span class="type">bool</span>&gt; <span class="title">dp</span><span class="params">(s.size() + <span class="number">1</span>, <span class="literal">false</span>)</span></span>;</span><br><span class="line">        dp[<span class="number">0</span>] = <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= s.<span class="built_in">size</span>(); i++) &#123;   <span class="comment">// 遍历背包</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; i; j++) &#123;       <span class="comment">// 遍历物品</span></span><br><span class="line">                string word = s.<span class="built_in">substr</span>(j, i - j); <span class="comment">//substr(起始位置，截取的个数)</span></span><br><span class="line">                <span class="keyword">if</span> (wordSet.<span class="built_in">find</span>(word) != wordSet.<span class="built_in">end</span>() &amp;&amp; dp[j]) &#123;</span><br><span class="line">                    dp[i] = <span class="literal">true</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[s.<span class="built_in">size</span>()];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p> <strong>错误思想：</strong><br> 以字典中单词为物品<br> <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"> <span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">wordBreak</span><span class="params">(string s, vector&lt;string&gt;&amp; wordDict)</span> </span>&#123;</span><br><span class="line">        string dp=<span class="string">&quot;&quot;</span>;</span><br><span class="line">        <span class="keyword">while</span>(dp.<span class="built_in">size</span>()&lt;=s.<span class="built_in">size</span>())&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;wordDict.<span class="built_in">size</span>();++j)&#123;</span><br><span class="line">                dp=(dp==s)?dp:dp+wordDict[j];</span><br><span class="line">                <span class="keyword">if</span>(dp==s) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<h2 id="多重背包理论"><a href="#多重背包理论" class="headerlink" title="多重背包理论"></a>多重背包理论</h2><p>有N种物品和一个容量为V 的背包。第i种物品最多有Mi件可用，每件耗费的空间是Ci ，价值是Wi<br>求解将哪些物品装入背包可使这些物品的耗费的空间 总和不超过背包容量，且价值总和最大</p>
+<p><strong>每件物品最多有Mi件可用，把Mi件摊开，其实就是一个01背包问题了</strong></p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">test_multi_pack</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; weight = &#123;<span class="number">1</span>, <span class="number">3</span>, <span class="number">4</span>&#125;;</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; value = &#123;<span class="number">15</span>, <span class="number">20</span>, <span class="number">30</span>&#125;;</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; nums = &#123;<span class="number">2</span>, <span class="number">3</span>, <span class="number">2</span>&#125;;</span><br><span class="line">    <span class="type">int</span> bagWeight = <span class="number">10</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; nums.<span class="built_in">size</span>(); i++) &#123;</span><br><span class="line">        <span class="keyword">while</span> (nums[i] &gt; <span class="number">1</span>) &#123; <span class="comment">// nums[i]保留到1，把其他物品都展开</span></span><br><span class="line">            weight.<span class="built_in">push_back</span>(weight[i]);</span><br><span class="line">            value.<span class="built_in">push_back</span>(value[i]);</span><br><span class="line">            nums[i]--;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">dp</span><span class="params">(bagWeight + <span class="number">1</span>, <span class="number">0</span>)</span></span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; weight.<span class="built_in">size</span>(); i++) &#123; <span class="comment">// 遍历物品</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j = bagWeight; j &gt;= weight[i]; j--) &#123; <span class="comment">// 遍历背包容量</span></span><br><span class="line">            dp[j] = <span class="built_in">max</span>(dp[j], dp[j - weight[i]] + value[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt;= bagWeight; j++) &#123;</span><br><span class="line">            cout &lt;&lt; dp[j] &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        cout &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; dp[bagWeight] &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">test_multi_pack</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
       <categories>
         <category>学习笔记</category>
       </categories>
@@ -819,6 +766,68 @@
       </categories>
       <tags>
         <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>hexo搭建个人博客网站</title>
+    <url>/2022/05/18/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/</url>
+    <content><![CDATA[<p>基于hexo+github搭建个人博客网站，使用next主题</p>
+<span id="more"></span>   
+<h1 id="网站效果"><a href="#网站效果" class="headerlink" title="网站效果"></a>网站效果</h1><p><a href="https://juzihhu.github.io/">https://juzihhu.github.io/</a><br>我的整个项目文件已经可从百度网盘下载</p>
+<h1 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h1><ol>
+<li>github账号与特殊仓库<br> 创建repository 命名为{GitHub账户名.github.io}<br><img src="/2022/05/18/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/github配置.png" alt></li>
+</ol>
+<p>在浏览器输入<code>GitHub账户名.github.io</code>,出现如下结果则表示成功<br><img src="/2022/05/18/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/github404.png" alt></p>
+<ol>
+<li><p>安装Node.js<br><a href="https://nodejs.org/dist/v4.2.3/node-v4.2.3-x86.msi">https://nodejs.org/dist/v4.2.3/node-v4.2.3-x86.msi</a>   </p>
+<p><a href="https://nodejs.org/dist/v4.2.3/node-v4.2.3-x64.msi">https://nodejs.org/dist/v4.2.3/node-v4.2.3-x64.msi</a>   </p>
+</li>
+<li><p>安装git,配置git环境</p>
+<p>具体可以参考我的这篇博客<br><a href="https://juzihhu.github.io/2022/05/04/git%E4%B8%8Egithub%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0%E4%B8%8E%E4%B8%8B%E8%BD%BD/">git与github项目上传与下载</a></p>
+</li>
+<li><p>检查安装环境配置<br>打开cmd命令行(win+r 输入cmd回车)分别执行<br>node -v<br>npm -v<br>git —version</p>
+<p><img src="/2022/05/18/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/安装环境配置.png" alt></p>
+</li>
+<li><p>安装Hexo<br>打开cmd命令行(win+r 输入cmd回车)分别执行<br><code>npm install hexo-cli -g</code>   </p>
+<p>等待自动安装完成后。输入<br> <code>hexo -v</code></p>
+<p> 结果如下：<br> $ hexo -v<br> INFO  Validating config<br> hexo: 6.2.0<br> hexo-cli: 4.3.0<br> os: win32 10.0.19043<br> node: 16.15.0<br> v8: 9.4.146.24-node.20<br> uv: 1.43.0<br> zlib: 1.2.11<br> brotli: 1.0.9<br> ares: 1.18.1<br> modules: 93<br> nghttp2: 1.47.0<br> napi: 8<br> llhttp: 6.0.4<br> openssl: 1.1.1n+quic<br> cldr: 40.0<br> icu: 70.1<br> tz: 2021a3<br> unicode: 14.0<br> ngtcp2: 0.1.0-DEV<br> nghttp3: 0.1.0-DEV</p>
+</li>
+</ol>
+<h1 id="网站搭建"><a href="#网站搭建" class="headerlink" title="网站搭建"></a>网站搭建</h1><ol>
+<li><p>新建存放网站项目的文件夹<br>比如我的是新建 HexoBlog</p>
+</li>
+<li><p>右键该文件夹git blash进入<br><img src="/2022/05/18/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/博客文件夹.png" alt></p>
+</li>
+<li><p>使用如下指令</p>
+<p> <code>hexo init</code><br> 初始化hexo。这个命令和git 仓库命令相似。意思一样都是初始化。</p>
+<p> <code>npm install hexo --save</code><br> 初始化hexo基础配置文件。初始化时间比较长，不用急，等完成后输入</p>
+<p> <code>npm install</code><br> 配置node。然后输入</p>
+<p> <code>hexo g</code>（或者 <code>hexo generate</code>）<br> 加载hexo基础html、css、js等文件。</p>
+<p> 在这完成后等于已经在本地创建了一个网页，输入<br> <code>hexo s</code>(或者<code>hexo serve</code>)</p>
+<p> 在浏览器输入：<a href="http://localhost:4000">http://localhost:4000</a><br> <img src="/2022/05/18/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/hexos.jpg" alt></p>
+</li>
+</ol>
+<p><strong>至此博客的初步框架已经搭建完成</strong></p>
+<h1 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h1><ol>
+<li>打开根目录下的 _config.yml 文件,修改如下部分内容 </li>
+</ol>
+<p>在部署之前，我们需要先知道博客的部署地址，它需要对应 GitHub 的一个 Repository 的地址，这个信息需要我们来配置一下。 </p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"># <span class="title class_">Deployment</span></span><br><span class="line">## <span class="title class_">Docs</span>: <span class="attr">https</span>:<span class="comment">//hexo.io/docs/one-command-deployment</span></span><br><span class="line"><span class="attr">deploy</span>:</span><br><span class="line">  <span class="attr">type</span>: git</span><br><span class="line">  <span class="attr">repo</span>: git@github.<span class="property">com</span>:juzihhu/juzihhu.<span class="property">github</span>.<span class="property">io</span>.<span class="property">git</span></span><br><span class="line">  <span class="attr">branch</span>: main</span><br></pre></td></tr></table></figure>
+<p>另外我们还需要额外安装一个支持 Git 的部署插件，名字叫做 hexo-deployer-git，有了它我们才可以顺利将其部署到 GitHub 上面，如果不安装的话，在执行部署命令时会报如下错误：</p>
+<p><code>npm install hexo-deployer-git --save</code><br>安装成功之后，执行部署命令：<br><code>hexo deploy</code></p>
+<ol>
+<li><p>访问<br>浏览器输入博客网站域名<br>这里我的是 <a href="https://juzihhu.github.io/">https://juzihhu.github.io/</a></p>
+<p><img src="/2022/05/18/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/hexo博客初步.jpg" alt></p>
+</li>
+</ol>
+<p>至此博客网站已经初步搭建成功了</p>
+<h1 id="网站信息配置以及主题配置"><a href="#网站信息配置以及主题配置" class="headerlink" title="网站信息配置以及主题配置"></a>网站信息配置以及主题配置</h1><p>更新中…..</p>
+]]></content>
+      <categories>
+        <category>操作教程</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
       </tags>
   </entry>
   <entry>
@@ -1137,6 +1146,74 @@ dp[i][1] = max(dp[i][1], dp[j][0] + 1)，其中0 &lt; j &lt; i且nums[j] &gt; nu
       </categories>
       <tags>
         <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>git与github项目上传与下载</title>
+    <url>/2022/05/04/git%E4%B8%8Egithub%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0%E4%B8%8E%E4%B8%8B%E8%BD%BD/</url>
+    <content><![CDATA[<p>介绍git的简单使用<br><span id="more"></span>        </p>
+<h1 id="git与github项目上传与下载"><a href="#git与github项目上传与下载" class="headerlink" title="git与github项目上传与下载"></a>git与github项目上传与下载</h1><ul>
+<li><a href="#git与github项目上传与下载">git与github项目上传与下载</a><ul>
+<li><a href="#基础配置">基础配置</a></li>
+<li><a href="#从github上下载项目到本地仓库">从GitHub上下载项目到本地仓库</a></li>
+<li><a href="#从本地git上传项目到github">从本地git上传项目到github</a></li>
+<li><a href="#删除github上的文件">删除GitHub上的文件</a></li>
+<li><a href="#注意事项">注意事项</a></li>
+<li><a href="#常用git命令">常用git命令</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="基础配置"><a href="#基础配置" class="headerlink" title="基础配置"></a>基础配置</h2><ul>
+<li>github账号</li>
+<li>管理本地仓库的 git<ul>
+<li>windows平台下<a href="https://zhuanlan.zhihu.com/p/242540359">git安装</a></li>
+<li>linux平台下（Ubuntu系统为例）apt-get install git<br>查看git版本 git —version</li>
+</ul>
+</li>
+<li><p>配置ssh:本地Git仓库和Github仓库之间的传输是通过SSH加密的</p>
+<ol>
+<li>找到本机的公钥：<br> windows:位于C:\Users\86159.ssh下的id_rsa.pub文件<br> linux:/home/panan/.ssh<br> 如果没有则通过控制命令台生成<br> ssh-keygen -t rsa -C “注册github时用的邮箱” 默认回车即可</li>
+<li>在GitHub上输入id_rsa.pub文件的内容<br><img src="/2022/05/04/git%E4%B8%8Egithub%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0%E4%B8%8E%E4%B8%8B%E8%BD%BD/ssh_key.jpg" alt="ssh"><br>在settings中  点击New SSH key    </li>
+</ol>
+</li>
+<li><p>GitHub选项介绍<br>  Repository name: 仓库名称（输入名字，最好不要使用中文）<br>  Description(可选): 仓库描述介绍<br>  Public, Private : 仓库权限（公开共享，私有或指定合作者）<br>  Initialize this repository with a README: 添加一个README.md</p>
+</li>
+</ul>
+<h2 id="从GitHub上下载项目到本地仓库"><a href="#从GitHub上下载项目到本地仓库" class="headerlink" title="从GitHub上下载项目到本地仓库"></a>从GitHub上下载项目到本地仓库</h2><ol>
+<li>选择项目下载的文件夹 在git终端中进入该目录<br><img src="/2022/05/04/git%E4%B8%8Egithub%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0%E4%B8%8E%E4%B8%8B%E8%BD%BD/02.jpg" alt="ssh"></li>
+<li>git clone （项目链接）<a href="https://github.com/JuZiHHU/Note.git">https://github.com/JuZiHHU/Note.git</a><br><img src="/2022/05/04/git%E4%B8%8Egithub%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0%E4%B8%8E%E4%B8%8B%E8%BD%BD/03.jpg" alt="ssh"><br><img src="/2022/05/04/git%E4%B8%8Egithub%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0%E4%B8%8E%E4%B8%8B%E8%BD%BD/04.jpg" alt="ssh"><br>然后在该文件夹下就可以看到下载的项目</li>
+<li>linux平台下在终端直接执行相应命令即可</li>
+</ol>
+<h2 id="从本地git上传项目到github"><a href="#从本地git上传项目到github" class="headerlink" title="从本地git上传项目到github"></a>从本地git上传项目到github</h2><ol>
+<li>创建本地项目文件 右键 git bash here进入该目录<br>输入git init创建git仓库</li>
+<li>在github上创建仓库</li>
+<li>本地仓库与远程仓库关联</li>
+<li>推送远程</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">git init</span><br><span class="line">git add README.md <span class="comment">//git add (将文件添加到本地仓库，git add  * 是添加全部文件)</span></span><br><span class="line">git commit -m <span class="string">&quot;first commit&quot;</span>  提交到本地缓冲 <span class="string">&quot;&quot;</span> 中为注释</span><br><span class="line"><span class="comment">//将本地仓库和远程仓库进行关联</span></span><br><span class="line"><span class="comment">//也可以</span></span><br><span class="line">git remote add origin https:<span class="comment">//github.com/hongduhong/test.git</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">推送到远程 </span></span><br><span class="line"><span class="comment">git push -u origin master</span></span><br><span class="line"><span class="comment">新建的远程仓库是空的，所以要加上-u这个参数，等远程仓库里面有了内容之后，</span></span><br><span class="line"><span class="comment">下次再从本地库上传内容的时候只需下面这样就可以了</span></span><br><span class="line"><span class="comment">*/</span> </span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
+<h2 id="删除GitHub上的文件"><a href="#删除GitHub上的文件" class="headerlink" title="删除GitHub上的文件"></a>删除GitHub上的文件</h2><ol>
+<li><p>取消暂存文件/目录 使用git rm -r —cached 命令标记文件以进行取消暂存：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">$ git rm -r --cached backup/</span><br><span class="line"></span><br><span class="line">rm <span class="string">&#x27;backup/backup.sh&#x27;</span></span><br><span class="line"></span><br><span class="line">rm <span class="string">&#x27;backup/rsync_exclude.lst&#x27;</span></span><br><span class="line"></span><br><span class="line">将buckup/替换为你的目录或文件。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>进行新的提交 将新的提交对象/更改保存到本地Git存储库：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">$ git commit -m <span class="string">&#x27;Remove newly ignored directory &quot;./backup&quot;&#x27;</span></span><br><span class="line"></span><br><span class="line">master d631061] Remove newly ignored directory <span class="string">&quot;./backup&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="number">2</span> files changed, <span class="number">14</span> <span class="built_in">deletions</span>(-)</span><br><span class="line"></span><br><span class="line"><span class="keyword">delete</span> mode <span class="number">100644</span> backup/backup.sh</span><br><span class="line"></span><br><span class="line"><span class="keyword">delete</span> mode <span class="number">100644</span> backup/rsync_exclude.lst</span><br></pre></td></tr></table></figure></li>
+<li>将更改推送到远程git存储库 上一个命令将更改保存到本地git存储库，使用以下命令将它们推送到远程存储库：<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">$ git push origin master</span><br></pre></td></tr></table></figure>
+<a href="https://blog.csdn.net/weixin_42136791/article/details/116651886">参考博客: linux删除远程目录,从远程存储库中删除.gitignore中的git文件/目录</a></li>
+</ol>
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><ol>
+<li>在docs命令窗口看到下边的提示：<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">$git config --global user.name <span class="string">&quot;Jhon&quot;</span> </span><br><span class="line"></span><br><span class="line">$git config --global user.email Jhon@example.com<span class="string">&quot;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">解决方案：</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">按照上面的提示，输入</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&gt;git config --global user.name &quot;</span>这里是你github的用户名<span class="string">&quot; </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&gt;git config --global user.email 这里是你注册github的邮箱</span></span><br></pre></td></tr></table></figure></li>
+<li><p>提交到远程仓库的时候，提示：<em>fatal ：remote origin already exists</em><br>解决方案：删除远程仓库；输入命令：<em>git remote rm origin</em></p>
+</li>
+<li><p>昨天还可以git push代码到远程仓库，今天git push时报了这个错：<br><em>fatal: unable to access ‘<a href="https://github.com/">https://github.com/</a>…….’: OpenSSL SSL_read: Connection was reset, errno 10054</em></p>
+</li>
+</ol>
+<h2 id="常用git命令"><a href="#常用git命令" class="headerlink" title="常用git命令"></a>常用git命令</h2><p><a href="https://www.runoob.com/git/git-basic-operations.html">git操作</a><br><a href="https://www.cnblogs.com/du-hong/p/9921214.html">参考博客：Git的使用—如何将本地项目上传到Github</a></p>
+]]></content>
+      <categories>
+        <category>操作教程</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
       </tags>
   </entry>
   <entry>
