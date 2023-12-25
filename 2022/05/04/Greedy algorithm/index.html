@@ -1,0 +1,571 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>贪心 | JuZi</title><meta name="author" content="JuZi"><meta name="copyright" content="JuZi"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="referrer" content="no-referrer"><meta name="description" content="介绍贪心算法思想以及常用的案例">
+<meta property="og:type" content="article">
+<meta property="og:title" content="贪心">
+<meta property="og:url" content="http://juzihhu.github.io/2022/05/04/Greedy%20algorithm/index.html">
+<meta property="og:site_name" content="JuZi">
+<meta property="og:description" content="介绍贪心算法思想以及常用的案例">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://juzihhu.github.io/img/photo-1677608088361-c4c3fdabb682.png">
+<meta property="article:published_time" content="2022-05-04T13:48:28.000Z">
+<meta property="article:modified_time" content="2023-07-11T12:51:49.291Z">
+<meta property="article:author" content="JuZi">
+<meta property="article:tag" content="贪心算法">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://juzihhu.github.io/img/photo-1677608088361-c4c3fdabb682.png"><link rel="shortcut icon" href="/img/tangerine.png"><link rel="canonical" href="http://juzihhu.github.io/2022/05/04/Greedy%20algorithm/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script async="async" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script>(adsbygoogle = window.adsbygoogle || []).push({
+  google_ad_client: 'ca-pub-2733661678797546',
+  enable_page_level_ads: 'true'
+});</script><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?c80b8bf4bfd944299945633ffd0b5478";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":300},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":150,"languages":{"author":"作者: JuZi","link":"链接: ","source":"来源: JuZi","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-left"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '贪心',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-07-11 20:51:49'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const now = new Date()
+          const hour = now.getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js@latest/pace.min.js"/><script src="https://cdn.jsdelivr.net/npm/pace-js/pace.min.js"></script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/tx.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">28</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">25</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/login/"><i class="fa-fw fa-solid fa-right-to-bracket"></i><span> 登录</span></a></div><div class="menus_item"><a class="site-page" href="/register/"><i class="fa-fw fa-solid fa-registered"></i><span> 注册</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url('/img/photo-1677608088361-c4c3fdabb682.png')"><nav id="nav"><span id="blog-info"><a href="/" title="JuZi"><span class="site-name">JuZi</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/login/"><i class="fa-fw fa-solid fa-right-to-bracket"></i><span> 登录</span></a></div><div class="menus_item"><a class="site-page" href="/register/"><i class="fa-fw fa-solid fa-registered"></i><span> 注册</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">贪心</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-05-04T13:48:28.000Z" title="发表于 2022-05-04 21:48:28">2022-05-04</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-07-11T12:51:49.291Z" title="更新于 2023-07-11 20:51:49">2023-07-11</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">7.4k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>27分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="贪心"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>介绍贪心算法思想以及常用的案例</p>
+<span id="more"></span>     
+<h1 id="第4章-贪心算法"><a href="#第4章-贪心算法" class="headerlink" title="第4章 贪心算法"></a>第4章 贪心算法</h1><ul>
+<li><a href="#%E7%AC%AC4%E7%AB%A0-%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95">第4章 贪心算法</a><ul>
+<li><a href="#%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%E6%A6%82%E8%BF%B0">贪心算法概述</a></li>
+<li><a href="#%E8%B4%AA%E5%BF%83%E4%B8%80%E8%88%AC%E8%A7%A3%E9%A2%98%E6%AD%A5%E9%AA%A4">贪心一般解题步骤</a></li>
+<li><a href="#%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%E5%B8%B8%E8%A7%81%E6%A1%88%E4%BE%8B">贪心算法常见案例</a><ul>
+<li><a href="#%E5%88%86%E5%8F%91%E9%A5%BC%E5%B9%B2">分发饼干</a></li>
+<li><a href="#%E6%91%86%E5%8A%A8%E5%BA%8F%E5%88%97">摆动序列</a></li>
+<li><a href="#%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BAii">买卖股票的最佳时机II</a></li>
+<li><a href="#%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F">跳跃游戏</a></li>
+<li><a href="#%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F-ii">跳跃游戏 II</a></li>
+<li><a href="#%E5%8A%A0%E6%B2%B9%E7%AB%99">加油站</a></li>
+<li><a href="#%E5%88%86%E5%8F%91%E7%B3%96%E6%9E%9C">分发糖果</a></li>
+<li><a href="#%E6%A0%B9%E6%8D%AE%E8%BA%AB%E9%AB%98%E9%87%8D%E5%BB%BA%E9%98%9F%E5%88%97">根据身高重建队列</a></li>
+<li><a href="#%E7%94%A8%E6%9C%80%E5%B0%91%E6%95%B0%E9%87%8F%E7%9A%84%E7%AE%AD%E5%BC%95%E7%88%86%E6%B0%94%E7%90%83">用最少数量的箭引爆气球</a></li>
+<li><a href="#763-%E5%88%92%E5%88%86%E5%AD%97%E6%AF%8D%E5%8C%BA%E9%97%B4">763. 划分字母区间</a></li>
+<li><a href="#738-%E5%8D%95%E8%B0%83%E9%80%92%E5%A2%9E%E7%9A%84%E6%95%B0%E5%AD%97">738. 单调递增的数字</a></li>
+<li><a href="#714-%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA%E5%90%AB%E6%89%8B%E7%BB%AD%E8%B4%B9">714. 买卖股票的最佳时机含手续费</a></li>
+<li><a href="#968%E7%9B%91%E6%8E%A7%E4%BA%8C%E5%8F%89%E6%A0%91">968.监控二叉树</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="贪心算法概述"><a href="#贪心算法概述" class="headerlink" title="贪心算法概述"></a>贪心算法概述</h2><p>贪心的本质是选择每一阶段的局部最优，从而达到全局最优。<br>一般数学证明有如下两种方法：</p>
+<ul>
+<li>数学归纳法</li>
+<li>反证法</li>
+</ul>
+<h2 id="贪心一般解题步骤"><a href="#贪心一般解题步骤" class="headerlink" title="贪心一般解题步骤"></a>贪心一般解题步骤</h2><ol>
+<li>将问题分解为若干个子问题</li>
+<li>找出适合的贪心策略</li>
+<li>求解每一个子问题的最优解</li>
+<li>将局部最优解堆叠成全局最优解</li>
+</ol>
+<h2 id="贪心算法常见案例"><a href="#贪心算法常见案例" class="headerlink" title="贪心算法常见案例"></a>贪心算法常见案例</h2><h3 id="分发饼干"><a href="#分发饼干" class="headerlink" title="分发饼干"></a>分发饼干</h3><p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/assign-cookies">455. 分发饼干</a><br>假设你是一位很棒的家长，想要给你的孩子们一些小饼干。但是，每个孩子最多只能给一块饼干。</p>
+<p>对每个孩子 i，都有一个胃口值 g[i]，这是能让孩子们满足胃口的饼干的最小尺寸；并且每块饼干 j，都有一个尺寸 s[j] 。如果 s[j] &gt;&#x3D; g[i]，我们可以将这个饼干 j 分配给孩子 i ，这个孩子会得到满足。你的目标是尽可能满足越多数量的孩子，并输出这个最大数值。</p>
+<p>示例 1:<br>输入: g &#x3D; [1,2,3], s &#x3D; [1,1]<br>输出: 1<br>解释:<br>你有三个孩子和两块小饼干，3个孩子的胃口值分别是：1,2,3。<br>虽然你有两块小饼干，由于他们的尺寸都是1，你只能让胃口值是1的孩子满足。<br>所以你应该输出1。</p>
+<p>思路：</p>
+<ol>
+<li>这里的局部最优就是大饼干喂给胃口大的，充分利用饼干尺寸喂饱一个，全局最优就是喂饱尽可能多的小孩。</li>
+<li>小饼干先喂饱小胃口</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">findContentChildren</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; g, vector&lt;<span class="type">int</span>&gt;&amp; s)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">sort</span>(g.<span class="built_in">begin</span>(),g.<span class="built_in">end</span>());</span><br><span class="line">        <span class="built_in">sort</span>(s.<span class="built_in">begin</span>(),s.<span class="built_in">end</span>());</span><br><span class="line">        <span class="type">int</span> index=<span class="number">0</span>,count=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;s.<span class="built_in">size</span>();++i)&#123;</span><br><span class="line">            <span class="keyword">if</span>(s[i]&gt;=g[index])&#123;</span><br><span class="line">                ++index;</span><br><span class="line">                ++count;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(index==g.<span class="built_in">size</span>()) <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="摆动序列"><a href="#摆动序列" class="headerlink" title="摆动序列"></a>摆动序列</h3><p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/wiggle-subsequence">376.摆动序列</a></p>
+<p>如果连续数字之间的差严格地在正数和负数之间交替，则数字序列称为 摆动序列 。第一个差（如果存在的话）可能是正数或负数。仅有一个元素或者含两个不等元素的序列也视作摆动序列。</p>
+<pre><code>例如， [1, 7, 4, 9, 2, 5] 是一个 摆动序列 ，因为差值 (6, -3, 5, -7, 3) 是正负交替出现的。
+相反，[1, 4, 7, 2, 5] 和 [1, 7, 4, 5, 5] 不是摆动序列，第一个序列是因为它的前两个差值都是正数，第二个序列是因为它的最后一个差值为零。
+</code></pre>
+<p>子序列 可以通过从原始序列中删除一些（也可以不删除）元素来获得，剩下的元素保持其原始顺序。</p>
+<p>给你一个整数数组 nums ，返回 nums 中作为 摆动序列 的 最长子序列的长度 。</p>
+<p>示例 1：</p>
+<pre><code>输入：nums = [1,7,4,9,2,5]
+输出：6
+解释：整个序列均为摆动序列，各元素之间的差值为 (6, -3, 5, -7, 3) 。
+</code></pre>
+<p>示例 2：</p>
+<pre><code>输入：nums = [1,17,5,10,13,15,10,5,16,8]
+输出：7
+解释：这个序列包含几个长度为 7 摆动序列。
+其中一个是 [1, 17, 10, 13, 10, 16, 8] ，各元素之间的差值为 (16, -7, 3, -3, 6, -8) 。
+</code></pre>
+<p>示例 3：</p>
+<pre><code>输入：nums = [1,2,3,4,5,6,7,8,9]
+输出：2
+</code></pre>
+<p><strong>贪心思想：</strong> </p>
+<pre><code>局部最优：删除单调坡度上的节点（不包括单调坡度两端的节点），那么这个坡度就可以有两个局部峰值。
+
+整体最优：整个序列有最多的局部峰值，从而达到最长摆动序列。
+</code></pre>
+<p><img src="https://gitee.com/juzihhu/image_bed/raw/master/img/%E6%91%86%E5%8A%A8%E5%BA%8F%E5%88%97.png"></p>
+<p>实际操作上，其实连删除的操作都不用做，因为题目要求的是最长摆动子序列的长度，所以只需要统计数组的峰值数量就可以了（相当于是删除单一坡度上的节点，然后统计长度）</p>
+<p>这就是贪心所贪的地方，让峰值尽可能的保持峰值，然后删除单一坡度上的节点。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">wiggleMaxLength</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (nums.<span class="built_in">size</span>() &lt;= <span class="number">1</span>) <span class="keyword">return</span> nums.<span class="built_in">size</span>();</span><br><span class="line">        <span class="type">int</span> curDiff = <span class="number">0</span>; <span class="comment">// 当前一对差值</span></span><br><span class="line">        <span class="type">int</span> preDiff = <span class="number">0</span>; <span class="comment">// 前一对差值</span></span><br><span class="line">        <span class="type">int</span> result = <span class="number">1</span>;  <span class="comment">// 记录峰值个数，序列默认序列最右边有一个峰值</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; nums.<span class="built_in">size</span>() - <span class="number">1</span>; i++) &#123;</span><br><span class="line">            curDiff = nums[i + <span class="number">1</span>] - nums[i];</span><br><span class="line">            <span class="comment">// 出现峰值</span></span><br><span class="line">            <span class="keyword">if</span> ((curDiff &gt; <span class="number">0</span> &amp;&amp; preDiff &lt;= <span class="number">0</span>) || (preDiff &gt;= <span class="number">0</span> &amp;&amp; curDiff &lt; <span class="number">0</span>)) &#123;</span><br><span class="line">                result++;</span><br><span class="line">                preDiff = curDiff;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><strong>动态规划：</strong><br>很容易可以发现，对于我们当前考虑的这个数，要么是作为山峰（即nums[i] &gt; nums[i-1]），要么是作为山谷（即nums[i] &lt; nums[i - 1]）。</p>
+<pre><code>设dp状态dp[i][0]，表示考虑前i个数，第i个数作为山峰的摆动子序列的最长长度
+设dp状态dp[i][1]，表示考虑前i个数，第i个数作为山谷的摆动子序列的最长长度
+</code></pre>
+<p>则转移方程为：</p>
+<pre><code>dp[i][0] = max(dp[i][0], dp[j][1] + 1)，其中0 &lt; j &lt; i且nums[j] &lt; nums[i]，表示将nums[i]接到前面某个山谷后面，作为山峰。
+dp[i][1] = max(dp[i][1], dp[j][0] + 1)，其中0 &lt; j &lt; i且nums[j] &gt; nums[i]，表示将nums[i]接到前面某个山峰后面，作为山谷。
+</code></pre>
+<p>初始状态：</p>
+<p>由于一个数可以接到前面的某个数后面，也可以以自身为子序列的起点，所以初始状态为：dp[0][0] &#x3D; dp[0][1] &#x3D; 1。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="type">int</span> dp[<span class="number">1005</span>][<span class="number">2</span>];</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">wiggleMaxLength</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">memset</span>(dp, <span class="number">0</span>, <span class="keyword">sizeof</span> dp);</span><br><span class="line">        dp[<span class="number">0</span>][<span class="number">0</span>] = dp[<span class="number">0</span>][<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt; nums.<span class="built_in">size</span>(); ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            dp[i][<span class="number">0</span>] = dp[i][<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; i; ++j)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span> (nums[j] &gt; nums[i]) dp[i][<span class="number">1</span>] = <span class="built_in">max</span>(dp[i][<span class="number">1</span>], dp[j][<span class="number">0</span>] + <span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; i; ++j)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span> (nums[j] &lt; nums[i]) dp[i][<span class="number">0</span>] = <span class="built_in">max</span>(dp[i][<span class="number">0</span>], dp[j][<span class="number">1</span>] + <span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">max</span>(dp[nums.<span class="built_in">size</span>() - <span class="number">1</span>][<span class="number">0</span>], dp[nums.<span class="built_in">size</span>() - <span class="number">1</span>][<span class="number">1</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<pre><code>时间复杂度：$O(n^2)$
+空间复杂度：$O(n)$
+</code></pre>
+<p>进阶</p>
+<p>可以用两棵线段树来维护区间的最大值</p>
+<pre><code>每次更新dp[i][0]，则在tree1的nums[i]位置值更新为dp[i][0]
+每次更新dp[i][1]，则在tree2的nums[i]位置值更新为dp[i][1]
+则dp转移方程中就没有必要j从0遍历到i-1，可以直接在线段树中查询指定区间的值即可。
+</code></pre>
+<p>时间复杂度：$O(n\log n)$</p>
+<p>空间复杂度：$O(n)$</p>
+<h3 id="买卖股票的最佳时机II"><a href="#买卖股票的最佳时机II" class="headerlink" title="买卖股票的最佳时机II"></a>买卖股票的最佳时机II</h3><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-ii">买卖股票的最佳时机II</a></p>
+<p>给你一个整数数组 prices ，其中 prices[i] 表示某支股票第 i 天的价格。</p>
+<p>在每一天，你可以决定是否购买和&#x2F;或出售股票。你在任何时候 最多 只能持有 一股 股票。你也可以先购买，然后在 同一天 出售。</p>
+<p>返回 你能获得的 最大 利润 。</p>
+<p>输入：prices &#x3D; [7,1,5,3,6,4]<br>输出：7<br>解释：在第 2 天（股票价格 &#x3D; 1）的时候买入，在第 3 天（股票价格 &#x3D; 5）的时候卖出, 这笔交易所能获得利润 &#x3D; 5 - 1 &#x3D; 4 。<br>     随后，在第 4 天（股票价格 &#x3D; 3）的时候买入，在第 5 天（股票价格 &#x3D; 6）的时候卖出, 这笔交易所能获得利润 &#x3D; 6 - 3 &#x3D; 3 。<br>     总利润为 4 + 3 &#x3D; 7 。</p>
+<p><strong>贪心思想</strong></p>
+<p>这道题目可能我们只会想，选一个低的买入，在选个高的卖，在选一个低的买入…..循环反复。</p>
+<p>如果想到其实最终利润是可以分解的，那么本题就很容易了！</p>
+<p>假如第0天买入，第3天卖出，那么利润为：<code>prices[3] - prices[0]</code></p>
+<p>相当于<code>(prices[3] - prices[2]) + (prices[2] - prices[1]) + (prices[1] - prices[0])</code></p>
+<p>此时就是把利润分解为每天为单位的维度，而不是从0天到第3天整体去考虑！</p>
+<p>可以发现，其实我们需要收集每天的正利润就可以，收集正利润的区间，就是股票买卖的区间，而我们只需要关注最终利润，不需要记录区间。</p>
+<p><strong>那么只收集正利润就是贪心所贪的地方！</strong></p>
+<p><strong>局部最优：收集每天的正利润，全局最优：求得最大利润。</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">maxProfit</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; prices)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> result = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt; prices.<span class="built_in">size</span>(); i++) &#123;</span><br><span class="line">            result += <span class="built_in">max</span>(prices[i] - prices[i - <span class="number">1</span>], <span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="跳跃游戏"><a href="#跳跃游戏" class="headerlink" title="跳跃游戏"></a>跳跃游戏</h3><p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/jump-game/">55. 跳跃游戏</a></p>
+<p>给定一个非负整数数组，你最初位于数组的第一个位置。</p>
+<p>数组中的每个元素代表你在该位置可以跳跃的最大长度。</p>
+<p>判断你是否能够到达最后一个位置。</p>
+<p>输入：nums &#x3D; [2,3,1,1,4]<br>输出：true<br>解释：可以先跳 1 步，从下标 0 到达下标 1, 然后再从下标 1 跳 3 步到达最后一个下标。</p>
+<p><strong>贪心思想</strong><br>贪心算法局部最优解：每次取最大跳跃步数（取最大覆盖范围），    </p>
+<p>整体最优解：最后得到整体最大覆盖范围，看是否能到终点。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">canJump</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> cover = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> (nums.<span class="built_in">size</span>() == <span class="number">1</span>) <span class="keyword">return</span> <span class="literal">true</span>; <span class="comment">// 只有一个元素，就是能达到</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt;= cover; i++) &#123; <span class="comment">// 注意这里是小于等于cover</span></span><br><span class="line">            cover = <span class="built_in">max</span>(i + nums[i], cover);</span><br><span class="line">            <span class="keyword">if</span> (cover &gt;= nums.<span class="built_in">size</span>() - <span class="number">1</span>) <span class="keyword">return</span> <span class="literal">true</span>; <span class="comment">// 说明可以覆盖到终点了</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="跳跃游戏-II"><a href="#跳跃游戏-II" class="headerlink" title="跳跃游戏 II"></a>跳跃游戏 II</h3><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/jump-game-ii/">45. 跳跃游戏 II</a></p>
+<p>给你一个非负整数数组 nums ，你最初位于数组的第一个位置。</p>
+<p>数组中的每个元素代表你在该位置可以跳跃的最大长度。</p>
+<p>你的目标是使用最少的跳跃次数到达数组的最后一个位置。</p>
+<p>假设你总是可以到达数组的最后一个位置。</p>
+<p>输入: nums &#x3D; [2,3,1,1,4]<br>输出: 2<br>解释: 跳到最后一个位置的最小跳跃数是 2。<br>     从下标为 0 跳到下标为 1 的位置，跳 1 步，然后跳 3 步到达数组的最后一个位置。</p>
+<p><strong>贪心思想</strong></p>
+<p>以最小的步数增加最大的覆盖范围，直到覆盖范围覆盖了终点</p>
+<p>每一步选择跨最远距离</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 版本二</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">jump</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> curDistance = <span class="number">0</span>;    <span class="comment">// 当前覆盖的最远距离下标</span></span><br><span class="line">        <span class="type">int</span> ans = <span class="number">0</span>;            <span class="comment">// 记录走的最大步数</span></span><br><span class="line">        <span class="type">int</span> nextDistance = <span class="number">0</span>;   <span class="comment">// 下一步覆盖的最远距离下标</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; nums.<span class="built_in">size</span>() - <span class="number">1</span>; i++) &#123; <span class="comment">// 注意这里是小于nums.size() - 1，这是关键所在</span></span><br><span class="line">            nextDistance = <span class="built_in">max</span>(nums[i] + i, nextDistance); <span class="comment">// 更新下一步覆盖的最远距离下标</span></span><br><span class="line">            <span class="keyword">if</span> (i == curDistance) &#123;                 <span class="comment">// 遇到当前覆盖的最远距离下标</span></span><br><span class="line">                curDistance = nextDistance;         <span class="comment">// 更新当前覆盖的最远距离下标</span></span><br><span class="line">                ans++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+ <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">jump</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(nums.<span class="built_in">size</span>()==<span class="number">1</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> cover=nums[<span class="number">0</span>],steps=<span class="number">1</span>,max=<span class="number">0</span>,temp=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span>(cover&gt;=nums.<span class="built_in">size</span>()<span class="number">-1</span>) <span class="keyword">return</span> steps;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=cover;++i)&#123;</span><br><span class="line">            temp=i+nums[i];</span><br><span class="line">            <span class="keyword">if</span>(temp&gt;max)&#123;</span><br><span class="line">                max=temp;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(i==cover||max&gt;=nums.<span class="built_in">size</span>()<span class="number">-1</span>)&#123;</span><br><span class="line">                ++steps;</span><br><span class="line">                cover=max;</span><br><span class="line">                <span class="keyword">if</span>(cover&gt;=nums.<span class="built_in">size</span>()<span class="number">-1</span>)&#123;<span class="comment">// 当前覆盖范围到达终点，返回步数</span></span><br><span class="line">                    <span class="keyword">return</span> steps;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> steps;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="加油站"><a href="#加油站" class="headerlink" title="加油站"></a>加油站</h3><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/gas-station">134. 加油站</a></p>
+<p>在一条环路上有 n 个加油站，其中第 i 个加油站有汽油 gas[i] 升。</p>
+<p>你有一辆油箱容量无限的的汽车，从第 i 个加油站开往第 i+1 个加油站需要消耗汽油 cost[i] 升。你从其中的一个加油站出发，开始时油箱为空。</p>
+<p>给定两个整数数组 gas 和 cost ，如果你可以绕环路行驶一周，则返回出发时加油站的编号，否则返回 -1 。如果存在解，则 保证 它是 唯一 的。</p>
+<pre><code>输入: gas = [1,2,3,4,5], cost = [3,4,5,1,2]
+输出: 3
+解释:
+从 3 号加油站(索引为 3 处)出发，可获得 4 升汽油。此时油箱有 = 0 + 4 = 4 升汽油
+开往 4 号加油站，此时油箱有 4 - 1 + 5 = 8 升汽油
+开往 0 号加油站，此时油箱有 8 - 2 + 1 = 7 升汽油
+开往 1 号加油站，此时油箱有 7 - 3 + 2 = 6 升汽油
+开往 2 号加油站，此时油箱有 6 - 4 + 3 = 5 升汽油
+开往 3 号加油站，你需要消耗 5 升汽油，正好足够你返回到 3 号加油站。
+因此，3 可为起始索引。
+</code></pre>
+<p><strong>思路</strong>：</p>
+<ol>
+<li><p>暴力双重循环，第二次用while环形遍历</p>
+</li>
+<li><p>贪心思想：<code>每个加油站的剩余量rest[i]为gas[i] - cost[i]</code>    </p>
+<p>如果总油量减去总消耗大于等于零那么一定可以跑完一圈，说明 各个站点的加油站 剩油量rest[i]相加一定是大于等于零的。             </p>
+<p>i从0开始累加rest[i]，和记为curSum，一旦curSum小于零，说明[0, i]区间都不能作为起始位置，起始位置从i+1算起，再从0计算curSum</p>
+<p><strong>局部最优</strong>：当前累加rest[j]的和curSum一旦小于0，起始位置至少要是j+1，因为从j开始一定不行。<br><strong>全局最优</strong>：找到可以跑一圈的起始位置。<br><strong>局部最优可以推出全局最优</strong></p>
+</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">canCompleteCircuit</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; gas, vector&lt;<span class="type">int</span>&gt;&amp; cost)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> curSum = <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> totalSum = <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> start = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; gas.<span class="built_in">size</span>(); i++) &#123;</span><br><span class="line">            curSum += gas[i] - cost[i];</span><br><span class="line">            totalSum += gas[i] - cost[i];</span><br><span class="line">            <span class="keyword">if</span> (curSum &lt; <span class="number">0</span>) &#123;   <span class="comment">// 当前累加rest[i]和 curSum一旦小于0</span></span><br><span class="line">                start = i + <span class="number">1</span>;  <span class="comment">// 起始位置更新为i+1</span></span><br><span class="line">                curSum = <span class="number">0</span>;     <span class="comment">// curSum从0开始</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (totalSum &lt; <span class="number">0</span>) <span class="keyword">return</span> <span class="number">-1</span>; <span class="comment">// 说明怎么走都不可能跑一圈了</span></span><br><span class="line">        <span class="keyword">return</span> start;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="分发糖果"><a href="#分发糖果" class="headerlink" title="分发糖果"></a>分发糖果</h3><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/candy">135. 分发糖果</a><br>n 个孩子站成一排。给你一个整数数组 ratings 表示每个孩子的评分。</p>
+<p>你需要按照以下要求，给这些孩子分发糖果：</p>
+<pre><code>每个孩子至少分配到 1 个糖果。
+相邻两个孩子评分更高的孩子会获得更多的糖果。
+</code></pre>
+<p>请你给每个孩子分发糖果，计算并返回需要准备的 最少糖果数目 。</p>
+<pre><code>输入：ratings = [1,0,2]
+输出：5
+解释：你可以分别给第一个、第二个、第三个孩子分发 2、1、2 颗糖果。
+
+
+
+输入：ratings = [1,2,2]
+输出：4
+解释：你可以分别给第一个、第二个、第三个孩子分发 1、2、1 颗糖果。
+ 第三个孩子只得到 1 颗糖果，这满足题面中的两个条件。
+</code></pre>
+<p><strong>思路：</strong><br>此题不能同时考虑每一个孩子的左右两边<br>先确定右边评分大于左边的情况（也就是从前向后遍历）<br><strong>此时局部最优：只要右边评分比左边大，右边的孩子就多一个糖果，全局最优：相邻的孩子中，评分高的右孩子获得比左边孩子更多的糖果</strong><br>再确定左孩子大于右孩子的情况（从后向前遍历）</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">candy</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; ratings)</span> </span>&#123;</span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">candyVec</span><span class="params">(ratings.size(), <span class="number">1</span>)</span></span>;</span><br><span class="line">        <span class="comment">// 从前向后</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt; ratings.<span class="built_in">size</span>(); i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (ratings[i] &gt; ratings[i - <span class="number">1</span>]) candyVec[i] = candyVec[i - <span class="number">1</span>] + <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 从后向前</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = ratings.<span class="built_in">size</span>() - <span class="number">2</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">            <span class="keyword">if</span> (ratings[i] &gt; ratings[i + <span class="number">1</span>] ) &#123;</span><br><span class="line">                candyVec[i] = <span class="built_in">max</span>(candyVec[i], candyVec[i + <span class="number">1</span>] + <span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 统计结果</span></span><br><span class="line">        <span class="type">int</span> result = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; candyVec.<span class="built_in">size</span>(); i++) result += candyVec[i];</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+ <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">candy</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; ratings)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> n = ratings.<span class="built_in">size</span>();</span><br><span class="line">        <span class="type">int</span> ret = <span class="number">1</span>;<span class="comment">// 糖果数量</span></span><br><span class="line">        <span class="type">int</span> inc = <span class="number">1</span>, dec = <span class="number">0</span>, pre = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (ratings[i] &gt;= ratings[i - <span class="number">1</span>]) &#123;</span><br><span class="line">                dec = <span class="number">0</span>; <span class="comment">// 递减序列</span></span><br><span class="line">                pre = ratings[i] == ratings[i - <span class="number">1</span>] ? <span class="number">1</span> : pre + <span class="number">1</span>; <span class="comment">// 记前一个同学分得的糖果数量</span></span><br><span class="line">                ret += pre;</span><br><span class="line">                inc = pre; <span class="comment">// 递增序列</span></span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                dec++;</span><br><span class="line">                <span class="comment">//当前的递减序列长度和上一个递增序列等长时，需要把最近的递增序列的最后一个同学也并进递减序列中。</span></span><br><span class="line">                <span class="keyword">if</span> (dec == inc) &#123;</span><br><span class="line">                    dec++;</span><br><span class="line">                &#125;</span><br><span class="line">                ret += dec;</span><br><span class="line">                pre = <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/candy/solution/fen-fa-tang-guo-by-leetcode-solution-f01p/">https://leetcode.cn/problems/candy/solution/fen-fa-tang-guo-by-leetcode-solution-f01p/</a></p>
+<h3 id="根据身高重建队列"><a href="#根据身高重建队列" class="headerlink" title="根据身高重建队列"></a>根据身高重建队列</h3><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/queue-reconstruction-by-height">406. 根据身高重建队列</a><br>假设有打乱顺序的一群人站成一个队列，数组 people 表示队列中一些人的属性（不一定按顺序）。每个 people[i] &#x3D; [hi, ki] 表示第 i 个人的身高为 hi ，前面 正好 有 ki 个身高大于或等于 hi 的人。</p>
+<p>请你重新构造并返回输入数组 people 所表示的队列。返回的队列应该格式化为数组 queue ，其中 queue[j] &#x3D; [hj, kj] 是队列中第 j 个人的属性（queue[0] 是排在队列前面的人）。</p>
+<pre><code>输入：people = [[7,0],[4,4],[7,1],[5,0],[6,1],[5,2]]
+输出：[[5,0],[7,0],[5,2],[6,1],[4,4],[7,1]]
+解释：
+编号为 0 的人身高为 5 ，没有身高更高或者相同的人排在他前面。
+编号为 1 的人身高为 7 ，没有身高更高或者相同的人排在他前面。
+编号为 2 的人身高为 5 ，有 2 个身高更高或者相同的人排在他前面，即编号为 0 和 1 的人。
+编号为 3 的人身高为 6 ，有 1 个身高更高或者相同的人排在他前面，即编号为 1 的人。
+编号为 4 的人身高为 4 ，有 4 个身高更高或者相同的人排在他前面，即编号为 0、1、2、3 的人。
+编号为 5 的人身高为 7 ，有 1 个身高更高或者相同的人排在他前面，即编号为 1 的人。
+因此 [[5,0],[7,0],[5,2],[6,1],[4,4],[7,1]] 是重新构造后的队列。
+</code></pre>
+<p><strong>思路</strong><br>如果两个维度一起考虑一定会顾此失彼。<br>按照身高排序之后，优先按身高高的people的k来插入，后序插入节点也不会影响前面已经插入的节点，最终按照k的规则完成了队列。</p>
+<p><strong>局部最优：优先按身高高的people的k来插入。插入操作过后的people满足队列属性</strong><br><strong>全局最优：最后都做完插入操作，整个队列满足题目队列属性</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 版本二</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">// 身高从大到小排（身高相同k小的站前面）</span></span><br><span class="line">    <span class="function"><span class="type">static</span> <span class="type">bool</span> <span class="title">cmp</span><span class="params">(<span class="type">const</span> vector&lt;<span class="type">int</span>&gt;&amp; a, <span class="type">const</span> vector&lt;<span class="type">int</span>&gt;&amp; b)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (a[<span class="number">0</span>] == b[<span class="number">0</span>]) <span class="keyword">return</span> a[<span class="number">1</span>] &lt; b[<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">return</span> a[<span class="number">0</span>] &gt; b[<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">reconstructQueue</span>(vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;&amp; people) &#123;</span><br><span class="line">        <span class="built_in">sort</span> (people.<span class="built_in">begin</span>(), people.<span class="built_in">end</span>(), cmp);</span><br><span class="line">        list&lt;vector&lt;<span class="type">int</span>&gt;&gt; que; <span class="comment">// list底层是链表实现，插入效率比vector高的多</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; people.<span class="built_in">size</span>(); i++) &#123;</span><br><span class="line">            <span class="type">int</span> position = people[i][<span class="number">1</span>]; <span class="comment">// 插入到下标为position的位置</span></span><br><span class="line">            std::list&lt;vector&lt;<span class="type">int</span>&gt;&gt;::iterator it = que.<span class="built_in">begin</span>();</span><br><span class="line">            <span class="keyword">while</span> (position--) &#123; <span class="comment">// 寻找在插入位置</span></span><br><span class="line">                it++;</span><br><span class="line">            &#125;</span><br><span class="line">            que.<span class="built_in">insert</span>(it, people[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;(que.<span class="built_in">begin</span>(), que.<span class="built_in">end</span>());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="用最少数量的箭引爆气球"><a href="#用最少数量的箭引爆气球" class="headerlink" title="用最少数量的箭引爆气球"></a>用最少数量的箭引爆气球</h3><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-number-of-arrows-to-burst-balloons">452. 用最少数量的箭引爆气球</a></p>
+<p> 有一些球形气球贴在一堵用 XY 平面表示的墙面上。墙面上的气球记录在整数数组 points ，其中points[i] &#x3D; [xstart, xend] 表示水平直径在 xstart 和 xend之间的气球。你不知道气球的确切 y 坐标。</p>
+<p>一支弓箭可以沿着 x 轴从不同点 完全垂直 地射出。在坐标 x 处射出一支箭，若有一个气球的直径的开始和结束坐标为 xstart，xend， 且满足  xstart ≤ x ≤ xend，则该气球会被 引爆 。可以射出的弓箭的数量 没有限制 。 弓箭一旦被射出之后，可以无限地前进。</p>
+<p>给你一个数组 points ，返回引爆所有气球所必须射出的 最小 弓箭数 。</p>
+<pre><code>输入：points = [[10,16],[2,8],[1,6],[7,12]]
+输出：2
+解释：气球可以用2支箭来爆破:
+-在x = 6处射出箭，击破气球[2,8]和[1,6]。
+-在x = 11处发射箭，击破气球[10,16]和[7,12]。
+
+
+输入：points = [[1,2],[3,4],[5,6],[7,8]]
+输出：4
+解释：每个气球需要射出一支箭，总共需要4支箭。
+
+输入：points = [[1,2],[2,3],[3,4],[4,5]]
+输出：2
+解释：气球可以用2支箭来爆破:
+- 在x = 2处发射箭，击破气球[1,2]和[2,3]。
+- 在x = 4处射出箭，击破气球[3,4]和[4,5]。
+</code></pre>
+<p><strong>局部最优：当气球出现重叠，一起射，所用弓箭最少。全局最优：把所有气球射爆所用弓箭最少。</strong><br>如果气球重叠了，重叠气球中右边边界的最小值 之前的区间一定需要一个弓箭。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="function"><span class="type">static</span> <span class="type">bool</span> <span class="title">cmp</span><span class="params">(<span class="type">const</span> vector&lt;<span class="type">int</span>&gt;&amp; a, <span class="type">const</span> vector&lt;<span class="type">int</span>&gt;&amp; b)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> a[<span class="number">0</span>] &lt; b[<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">findMinArrowShots</span><span class="params">(vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;&amp; points)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (points.<span class="built_in">size</span>() == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="built_in">sort</span>(points.<span class="built_in">begin</span>(), points.<span class="built_in">end</span>(), cmp);</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> result = <span class="number">1</span>; <span class="comment">// points 不为空至少需要一支箭</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt; points.<span class="built_in">size</span>(); i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (points[i][<span class="number">0</span>] &gt; points[i - <span class="number">1</span>][<span class="number">1</span>]) &#123;  <span class="comment">// 气球i和气球i-1不挨着，注意这里不是&gt;=</span></span><br><span class="line">                result++; <span class="comment">// 需要一支箭</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> &#123;  <span class="comment">// 气球i和气球i-1挨着</span></span><br><span class="line">                points[i][<span class="number">1</span>] = <span class="built_in">min</span>(points[i - <span class="number">1</span>][<span class="number">1</span>], points[i][<span class="number">1</span>]); <span class="comment">// 更新重叠气球最小右边界</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p> 类似需要重载cmp()函数的有：<br> <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/non-overlapping-intervals/">435. 无重叠区间</a><br><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/merge-intervals/">56. 合并区间</a></p>
+<h3 id="763-划分字母区间"><a href="#763-划分字母区间" class="headerlink" title="763. 划分字母区间"></a>763. 划分字母区间</h3><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/partition-labels/">763. 划分字母区间</a><br> 字符串 S 由小写字母组成。我们要把这个字符串划分为尽可能多的片段，同一字母最多出现在一个片段中。返回一个表示每个字符串片段的长度的列表。</p>
+<pre><code>输入：S = &quot;ababcbacadefegdehijhklij&quot;
+输出：[9,7,8]
+解释：
+划分结果为 &quot;ababcbaca&quot;, &quot;defegde&quot;, &quot;hijhklij&quot;。
+每个字母最多出现在一个片段中。
+像 &quot;ababcbacadefegde&quot;, &quot;hijhklij&quot; 的划分是错误的，因为划分的片段数较少。
+</code></pre>
+<p><strong>思路：</strong><br>    统计每一个字符最后出现的位置<br>    从头遍历字符，并更新字符的最远出现下标，如果找到字符最远出现位置下标和当前下标相等了，则找到了分割点</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">partitionLabels</span><span class="params">(string S)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> hash[<span class="number">27</span>] = &#123;<span class="number">0</span>&#125;; <span class="comment">// i为字符，hash[i]为字符出现的最后位置</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; S.<span class="built_in">size</span>(); i++) &#123; <span class="comment">// 统计每一个字符最后出现的位置</span></span><br><span class="line">            hash[S[i] - <span class="string">&#x27;a&#x27;</span>] = i;</span><br><span class="line">        &#125;</span><br><span class="line">        vector&lt;<span class="type">int</span>&gt; result;</span><br><span class="line">        <span class="type">int</span> left = <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> right = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; S.<span class="built_in">size</span>(); i++) &#123;</span><br><span class="line">            right = <span class="built_in">max</span>(right, hash[S[i] - <span class="string">&#x27;a&#x27;</span>]); <span class="comment">// 找到字符出现的最远边界</span></span><br><span class="line">            <span class="keyword">if</span> (i == right) &#123;</span><br><span class="line">                result.<span class="built_in">push_back</span>(right - left + <span class="number">1</span>);</span><br><span class="line">                left = i + <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="738-单调递增的数字"><a href="#738-单调递增的数字" class="headerlink" title="738. 单调递增的数字"></a>738. 单调递增的数字</h3><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/monotone-increasing-digits/">738. 单调递增的数字</a></p>
+<p>当且仅当每个相邻位数上的数字 x 和 y 满足 x &lt;&#x3D; y 时，我们称这个整数是单调递增的。</p>
+<p>给定一个整数 n ，返回 小于或等于 n 的最大数字，且数字呈 单调递增 。</p>
+<pre><code>输入: n = 332
+输出: 299
+</code></pre>
+<p><strong>局部最优</strong>：遇到strNum[i - 1] &gt; strNum[i]的情况，让strNum[i - 1]–，然后strNum[i]给为9，可以保证这两位变成最大单调递增整数。</p>
+<p><strong>全局最优</strong>：得到小于等于N的最大单调递增的整数。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">monotoneIncreasingDigits</span><span class="params">(<span class="type">int</span> N)</span> </span>&#123;</span><br><span class="line">        string s=<span class="built_in">to_string</span>(N);</span><br><span class="line">        <span class="type">int</span> len =s.<span class="built_in">size</span>(),index=len;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=len<span class="number">-1</span>;i&gt;<span class="number">0</span>;--i)&#123;</span><br><span class="line">            <span class="keyword">if</span>(s[i<span class="number">-1</span>]&gt;s[i])&#123;</span><br><span class="line">                index=i;</span><br><span class="line">                --s[i<span class="number">-1</span>];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=index;i&lt;len;++i)&#123;</span><br><span class="line">            s[i]=<span class="string">&#x27;9&#x27;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        N=<span class="built_in">stoi</span>(s);</span><br><span class="line">        <span class="keyword">return</span> N;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="714-买卖股票的最佳时机含手续费"><a href="#714-买卖股票的最佳时机含手续费" class="headerlink" title="714. 买卖股票的最佳时机含手续费"></a>714. 买卖股票的最佳时机含手续费</h3><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/">714. 买卖股票的最佳时机含手续费</a></p>
+<p>给定一个整数数组 prices，其中 prices[i]表示第 i 天的股票价格 ；整数 fee 代表了交易股票的手续费用。</p>
+<p>你可以无限次地完成交易，但是你每笔交易都需要付手续费。如果你已经购买了一个股票，在卖出它之前你就不能再继续购买股票了。</p>
+<p>返回获得利润的最大值。</p>
+<p>注意：这里的一笔交易指买入持有并卖出股票的整个过程，每笔交易你只需要为支付一次手续费。</p>
+<pre><code>输入：prices = [1, 3, 2, 8, 4, 9], fee = 2
+输出：8
+解释：能够达到的最大利润:  
+在此处买入 prices[0] = 1
+在此处卖出 prices[3] = 8
+在此处买入 prices[4] = 4
+在此处卖出 prices[5] = 9
+总利润: ((8 - 1) - 2) + ((9 - 4) - 2) = 8
+</code></pre>
+<p><strong>思路：</strong></p>
+<p>使用贪心策略，就是最低值买，最高值（如果算上手续费还盈利）就卖。</p>
+<p>此时无非就是要找到两个点，买入日期，和卖出日期。</p>
+<pre><code>买入日期：其实很好想，遇到更低点就记录一下。
+卖出日期：这个就不好算了，但也没有必要算出准确的卖出日期，只要当前价格大于（最低价格+手续费），就可以收获利润，至于准确的卖出日期，就是连续收获利润区间里的最后一天（并不需要计算是具体哪一天）。
+</code></pre>
+<p>所以我们在做收获利润操作的时候其实有三种情况：</p>
+<pre><code>情况一：收获利润的这一天并不是收获利润区间里的最后一天（不是真正的卖出，相当于持有股票），所以后面要继续收获利润。
+情况二：前一天是收获利润区间里的最后一天（相当于真正的卖出了），今天要重新记录最小价格了。
+情况三：不作操作，保持原有状态（买入，卖出，不买不卖）
+</code></pre>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">maxProfit</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; prices, <span class="type">int</span> fee)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> result = <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> minPrice = prices[<span class="number">0</span>]; <span class="comment">// 记录最低价格</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt; prices.<span class="built_in">size</span>(); i++) &#123;</span><br><span class="line">            <span class="comment">// 情况二：相当于买入</span></span><br><span class="line">            <span class="keyword">if</span> (prices[i] &lt; minPrice) minPrice = prices[i];</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 情况三：保持原有状态（因为此时买则不便宜，卖则亏本）</span></span><br><span class="line">            <span class="keyword">if</span> (prices[i] &gt;= minPrice &amp;&amp; prices[i] &lt;= minPrice + fee) &#123;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 计算利润，可能有多次计算利润，最后一次计算利润才是真正意义的卖出</span></span><br><span class="line">            <span class="keyword">if</span> (prices[i] &gt; minPrice + fee) &#123;</span><br><span class="line">                result += prices[i] - minPrice - fee;</span><br><span class="line">                minPrice = prices[i] - fee; <span class="comment">// 情况一，这一步很关键</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="968-监控二叉树"><a href="#968-监控二叉树" class="headerlink" title="968.监控二叉树"></a>968.监控二叉树</h3><p> <a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/binary-tree-cameras/">968.监控二叉树</a></p>
+<p>给定一个二叉树，我们在树的节点上安装摄像头。</p>
+<p>节点上的每个摄影头都可以监视其父对象、自身及其直接子对象。</p>
+<p>计算监控树的所有节点所需的最小摄像头数量。</p>
+<p><strong>思路：</strong><br>局部最优：让叶子节点的父节点安摄像头，所用摄像头最少，<br>整体最优：全部摄像头数量所用最少！</p>
+<ol>
+<li>二叉树的遍历：后续遍历，递归实现</li>
+<li>如何隔两个节点放一个摄像头：<br>当前节点的返回状态<br> 0：该节点无覆盖<br> 1：本节点有摄像头<br> 2：本节点有覆盖</li>
+</ol>
+<p>空节点不能是无覆盖的状态，这样叶子节点就要放摄像头了，<br>空节点也不能是有摄像头的状态，这样叶子节点的父节点就没有必要放摄像头了，而是可以把摄像头放在叶子节点的爷爷节点上。<br>所以空节点的状态只能是有覆盖，这样就可以在叶子节点的父节点放摄像头了</p>
+<p>情况1：左右节点都有覆盖<br>情况2：左右节点至少有一个无覆盖的情况<br>情况3：左右节点至少有一个有摄像头<br>情况4：头结点没有覆盖</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 版本一</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="type">int</span> result;</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">traversal</span><span class="params">(TreeNode* cur)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 空节点，该节点有覆盖</span></span><br><span class="line">        <span class="keyword">if</span> (cur == <span class="literal">NULL</span>) <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> left = <span class="built_in">traversal</span>(cur-&gt;left);    <span class="comment">// 左</span></span><br><span class="line">        <span class="type">int</span> right = <span class="built_in">traversal</span>(cur-&gt;right);  <span class="comment">// 右</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 情况1</span></span><br><span class="line">        <span class="comment">// 左右节点都有覆盖</span></span><br><span class="line">        <span class="keyword">if</span> (left == <span class="number">2</span> &amp;&amp; right == <span class="number">2</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 情况2</span></span><br><span class="line">        <span class="comment">// left == 0 &amp;&amp; right == 0 左右节点无覆盖</span></span><br><span class="line">        <span class="comment">// left == 1 &amp;&amp; right == 0 左节点有摄像头，右节点无覆盖</span></span><br><span class="line">        <span class="comment">// left == 0 &amp;&amp; right == 1 左节点有无覆盖，右节点摄像头</span></span><br><span class="line">        <span class="comment">// left == 0 &amp;&amp; right == 2 左节点无覆盖，右节点覆盖</span></span><br><span class="line">        <span class="comment">// left == 2 &amp;&amp; right == 0 左节点覆盖，右节点无覆盖</span></span><br><span class="line">        <span class="keyword">if</span> (left == <span class="number">0</span> || right == <span class="number">0</span>) &#123;</span><br><span class="line">            result++;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 情况3</span></span><br><span class="line">        <span class="comment">// left == 1 &amp;&amp; right == 2 左节点有摄像头，右节点有覆盖</span></span><br><span class="line">        <span class="comment">// left == 2 &amp;&amp; right == 1 左节点有覆盖，右节点有摄像头</span></span><br><span class="line">        <span class="comment">// left == 1 &amp;&amp; right == 1 左右节点都有摄像头</span></span><br><span class="line">        <span class="comment">// 其他情况前段代码均已覆盖</span></span><br><span class="line">        <span class="keyword">if</span> (left == <span class="number">1</span> || right == <span class="number">1</span>) <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 以上代码我没有使用else，主要是为了把各个分支条件展现出来，这样代码有助于读者理解</span></span><br><span class="line">        <span class="comment">// 这个 return -1 逻辑不会走到这里。</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">minCameraCover</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        result = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">// 情况4</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">traversal</span>(root) == <span class="number">0</span>) &#123; <span class="comment">// root 无覆盖</span></span><br><span class="line">            result++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="juzi">JuZi</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://juzihhu.github.io/2022/05/04/Greedy%20algorithm/">http://juzihhu.github.io/2022/05/04/Greedy%20algorithm/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://juzihhu.github.io" target="_blank">JuZi</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/">贪心算法</a></div><div class="post_share"><div class="social-share" data-image="/img/photo-1677608088361-c4c3fdabb682.png" data-sites="wechat,weibo,qq,facebook,twitter"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/wechat.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/alipay.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/05/04/githubProjectUploadandDownload/" title="git与github项目上传与下载"><img class="cover" src="/img/photo-1676675403720-4889b0024944.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">git与github项目上传与下载</div></div></a></div><div class="next-post pull-right"><a href="/2022/05/04/Backtrack/" title="回溯"><img class="cover" src="/img/gratisography-rain-cloud-free-stock-photo-1170x780.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">回溯</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div><div id="comment-switch"><span class="first-comment">Valine</span><span class="switch-btn"></span><span class="second-comment">Livere</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div><div><div id="lv-container" data-id="city" data-uid="MTAyMC81ODEyMi8zNDU4NQ"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/tx.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">JuZi</div><div class="author-info__description">用技术创造美好，用生活感受美好</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">28</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">25</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/juzihhu"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/juzihhu" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:juzi.pan.an@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="https://space.bilibili.com/383439781?spm_id_from=333.337.0.0" target="_blank" title="bilibili"><i class="fa-brands fa-bilibili"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">Welcome !</br> JuZi Blog !</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC4%E7%AB%A0-%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95"><span class="toc-number">1.</span> <span class="toc-text">第4章 贪心算法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%E6%A6%82%E8%BF%B0"><span class="toc-number">1.1.</span> <span class="toc-text">贪心算法概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B4%AA%E5%BF%83%E4%B8%80%E8%88%AC%E8%A7%A3%E9%A2%98%E6%AD%A5%E9%AA%A4"><span class="toc-number">1.2.</span> <span class="toc-text">贪心一般解题步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%E5%B8%B8%E8%A7%81%E6%A1%88%E4%BE%8B"><span class="toc-number">1.3.</span> <span class="toc-text">贪心算法常见案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E5%8F%91%E9%A5%BC%E5%B9%B2"><span class="toc-number">1.3.1.</span> <span class="toc-text">分发饼干</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%91%86%E5%8A%A8%E5%BA%8F%E5%88%97"><span class="toc-number">1.3.2.</span> <span class="toc-text">摆动序列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BAII"><span class="toc-number">1.3.3.</span> <span class="toc-text">买卖股票的最佳时机II</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F"><span class="toc-number">1.3.4.</span> <span class="toc-text">跳跃游戏</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F-II"><span class="toc-number">1.3.5.</span> <span class="toc-text">跳跃游戏 II</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A0%E6%B2%B9%E7%AB%99"><span class="toc-number">1.3.6.</span> <span class="toc-text">加油站</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E5%8F%91%E7%B3%96%E6%9E%9C"><span class="toc-number">1.3.7.</span> <span class="toc-text">分发糖果</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%B9%E6%8D%AE%E8%BA%AB%E9%AB%98%E9%87%8D%E5%BB%BA%E9%98%9F%E5%88%97"><span class="toc-number">1.3.8.</span> <span class="toc-text">根据身高重建队列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%A8%E6%9C%80%E5%B0%91%E6%95%B0%E9%87%8F%E7%9A%84%E7%AE%AD%E5%BC%95%E7%88%86%E6%B0%94%E7%90%83"><span class="toc-number">1.3.9.</span> <span class="toc-text">用最少数量的箭引爆气球</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#763-%E5%88%92%E5%88%86%E5%AD%97%E6%AF%8D%E5%8C%BA%E9%97%B4"><span class="toc-number">1.3.10.</span> <span class="toc-text">763. 划分字母区间</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#738-%E5%8D%95%E8%B0%83%E9%80%92%E5%A2%9E%E7%9A%84%E6%95%B0%E5%AD%97"><span class="toc-number">1.3.11.</span> <span class="toc-text">738. 单调递增的数字</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#714-%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA%E5%90%AB%E6%89%8B%E7%BB%AD%E8%B4%B9"><span class="toc-number">1.3.12.</span> <span class="toc-text">714. 买卖股票的最佳时机含手续费</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#968-%E7%9B%91%E6%8E%A7%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="toc-number">1.3.13.</span> <span class="toc-text">968.监控二叉树</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/12/25/ResumeNote/" title="pytorch+gpu 环境配置"><img src="https://w.wallhaven.cc/full/p9/wallhaven-p9o51m.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="pytorch+gpu 环境配置"/></a><div class="content"><a class="title" href="/2023/12/25/ResumeNote/" title="pytorch+gpu 环境配置">pytorch+gpu 环境配置</a><time datetime="2023-12-25T12:37:37.535Z" title="发表于 2023-12-25 20:37:37">2023-12-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/12/25/math/" title="无题"><img src="https://cdn.pixabay.com/photo/2022/09/07/17/26/vintage-pocket-watch-7439233_960_720.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2023/12/25/math/" title="无题">无题</a><time datetime="2023-12-25T12:37:37.520Z" title="发表于 2023-12-25 20:37:37">2023-12-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/12/25/Interview%20summary/" title="无题"><img src="/img/cover1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2023/12/25/Interview%20summary/" title="无题">无题</a><time datetime="2023-12-25T12:37:37.514Z" title="发表于 2023-12-25 20:37:37">2023-12-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/12/25/Git%E5%88%86%E6%94%AF%E7%AE%A1%E7%90%86/" title="无题"><img src="https://cdn.pixabay.com/photo/2022/09/07/17/26/vintage-pocket-watch-7439233_960_720.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2023/12/25/Git%E5%88%86%E6%94%AF%E7%AE%A1%E7%90%86/" title="无题">无题</a><time datetime="2023-12-25T12:37:37.503Z" title="发表于 2023-12-25 20:37:37">2023-12-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/12/25/Detailed%20explanation%20of%20interview%20questions/" title="无题"><img src="https://cdn.pixabay.com/photo/2022/09/07/17/26/vintage-pocket-watch-7439233_960_720.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2023/12/25/Detailed%20explanation%20of%20interview%20questions/" title="无题">无题</a><time datetime="2023-12-25T12:37:37.496Z" title="发表于 2023-12-25 20:37:37">2023-12-25</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/img/photo-1677608088361-c4c3fdabb682.png')"><div id="footer-wrap"><div class="copyright">&copy;2022 - 2023 By JuZi</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Hi, welcome to my <a href="https://juzihhu.github.io/">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="聊天"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><div class="js-pjax"><script>(() => {
+  const $mermaidWrap = document.querySelectorAll('#article-container .mermaid-wrap')
+  if ($mermaidWrap.length) {
+    window.runMermaid = () => {
+      window.loadMermaid = true
+      const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+      Array.from($mermaidWrap).forEach((item, index) => {
+        const mermaidSrc = item.firstElementChild
+        const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
+        const mermaidID = 'mermaid-' + index
+        const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+        mermaid.mermaidAPI.render(mermaidID, mermaidDefinition, (svgCode) => {
+          mermaidSrc.insertAdjacentHTML('afterend', svgCode)
+        })
+      })
+    }
+
+    const loadMermaid = () => {
+      window.loadMermaid ? runMermaid() : getScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(runMermaid)
+    }
+
+    window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+  }
+})()</script><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'PMLA4YCVqwdSVlHuF4PenwKR-gzGzoHsz',
+      appKey: '6on0ibbvwxIv2VwFkcFvR6bR',
+      avatar: 'monsterid',
+      serverURLs: 'https://pmla4ycv.lc-cn-n1-shared.com',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: true
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !true) {
+  if (true) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script><script>function loadLivere () {
+  if (typeof LivereTower === 'object') {
+    window.LivereTower.init()
+  }
+  else {
+    (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+    })(document, 'script');
+  }
+}
+
+if ('Valine' === 'Livere' || !true) {
+  if (true) btf.loadComment(document.getElementById('lv-container'), loadLivere)
+  else loadLivere()
+}
+else {
+  function loadOtherComment () {
+    loadLivere()
+  }
+}</script></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-heart.min.js" async="async" mobile="false"></script><script>(function(d, w, c) {
+    w.ChatraID = 'Tat3ZsRebPQGuczXg';
+    var s = d.createElement('script');
+    w[c] = w[c] || function() {
+        (w[c].q = w[c].q || []).push(arguments);
+    };
+    s.async = true;
+    s.src = 'https://call.chatra.io/chatra.js';
+    if (d.head) d.head.appendChild(s);
+})(document, window, 'Chatra');
+
+if (true) {
+  var chatBtnFn = () => {
+    var chatBtn = document.getElementById("chat_btn")
+    chatBtn.addEventListener("click", function(){
+      Chatra('openChat')
+    });
+  }
+  chatBtnFn()
+} else {
+  if (true) {
+    function chatBtnHide () {
+      Chatra('hide')
+    }
+    function chatBtnShow () {
+      Chatra('show')
+    }
+  }
+}</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></body></html>
